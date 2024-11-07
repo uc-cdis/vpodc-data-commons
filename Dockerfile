@@ -48,4 +48,4 @@ RUN npm install \
     "@napi-rs/magic-string"
 RUN npm run build
 ENV PORT=3000
-CMD ["node", ".next/standalone/server.js"]
+CMD ["npm", "run", "atart"]
