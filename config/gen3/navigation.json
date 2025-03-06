@@ -7,7 +7,8 @@
     },
     "logo": {
       "src": "/images/vpodc-logo.png",
-      "height": 40
+      "height": 40,
+      "width": 152
     },
     "items": [
       {
