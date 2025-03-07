@@ -8,7 +8,7 @@
     "logo": {
       "src": "/images/vpodc-logo.png",
       "height": 40,
-      "href": "/"
+      "width": 152
     },
     "items": [
       {
@@ -46,6 +46,12 @@
         "href": "/Profile",
         "name": "Profile",
         "tooltip": "Create API keys for programmatic data access, and review your authorization privileges to datasets and services."
+      },
+      {
+        "icon": "gen3:profile",
+        "href": "/DataLibrary",
+        "name": "Data Library",
+        "tooltip": "library of data"
       }
     ]
   },

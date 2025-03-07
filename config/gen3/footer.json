@@ -1,24 +1,46 @@
 {
-  "footerRightLogos": [
-    [
+  "classNames": {
+    "root": "bg-base-darker",
+    "layout": "flex items-center justify-end"
+  },
+  "rightSection": {
+    "columns": [
       {
-        "logo": "/icons/gen3.png",
-        "width": 132,
-        "height": 60,
-        "description": "Gen3 Logo"
+        "rows": [
+          {
+            "Icon": {
+              "logo": "/icons/gen3.png",
+              "width": 132,
+              "height": 60,
+              "description": "Gen3 Logo"
+            }
+          }
+        ]
       },
       {
-        "logo": "/icons/createdby.png",
-        "width": 170,
-        "height": 60,
-        "description": "Created by CTDS"
+        "rows": [
+          {
+            "Icon": {
+              "logo": "/icons/createdby.png",
+              "width": 170,
+              "height": 60,
+              "description": "Created by CTDS"
+            }
+          }
+        ]
       },
       {
-        "logo": "/icons/OCC.png",
-        "width": 150,
-        "height": 60,
-        "description": "Open Commons Consortium"
+        "rows": [
+          {
+            "Icon": {
+              "logo": "/icons/OCC.png",
+              "width": 150,
+              "height": 60,
+              "description": "Open Commons Consortium"
+            }
+          }
+        ]
       }
     ]
-  ]
+  }
 }

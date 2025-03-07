@@ -1,21 +1,16 @@
-import Document, { DocumentContext, DocumentInitialProps } from 'next/document';
-import { ColorSchemeScript } from '@mantine/core';
+import { Head, Html, Main, NextScript } from 'next/document';
+import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core';
 
-class Gen3Document extends Document {
-  static async getInitialProps(
-    ctx: DocumentContext,
-  ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx);
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          <ColorSchemeScript defaultColorScheme="auto" />
-        </>
-      ),
-    };
-  }
+export default function Document() {
+  return (
+    <Html lang="en" {...mantineHtmlProps}>
+      <Head>
+        <ColorSchemeScript defaultColorScheme="auto" />
+      </Head>
+      <body>
+      <Main />
+      <NextScript />
+      </body>
+    </Html>
+  );
 }
-
-export default Gen3Document;
