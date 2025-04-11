@@ -1,5 +1,5 @@
 {
-  "name": "@gen3/commons-portal-app-base",
+  "name": "@gen3/vpodc-data-commons",
   "version": "0.10.89",
   "private": "true",
   "engines": {
