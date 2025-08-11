@@ -4,7 +4,7 @@
 FROM node:22-slim AS builder
 
 WORKDIR /gen3
-
+ENV BASE_PATH="/ff"
 COPY ./package.json ./package-lock.json ./next.config.js ./tsconfig.json ./.env.development  ./tailwind.config.js ./postcss.config.js ./start.sh ./.env.production ./
 RUN npm ci
 COPY ./src ./src
