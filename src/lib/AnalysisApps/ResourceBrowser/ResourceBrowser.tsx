@@ -1,8 +1,9 @@
 import React from 'react';
-import { Card, Text, Grid } from '@mantine/core';
+import { Card, Text, Grid, Title } from '@mantine/core';
 import Link from 'next/link';
 import Image from 'next/image';
 import AtlasLogo from './Icons/atlasLogo.svg';
+import PLPApp from './Icons/PLPApp.png';
 
 const ResourcesData = [
   {
@@ -12,17 +13,24 @@ const ResourcesData = [
       'Use this App for cohort creation. These will be automatically populated in the Gen3 GWAS App',
     imageSrc: AtlasLogo,
   },
+  {
+    title: 'Run Patient Level Prediction Models',
+    link: '/PLPApp',
+    summary:
+      'Use this app for building Patient Level Prediction (PLP) models',
+    imageSrc: PLPApp,
+  },
 ];
 const ResourceBrowser = () => {
   return (
     <div className="p-5">
       <div className="flex justify-between py-4">
-        <h1 className="text-3xl pb-5 font-medium">Apps</h1>
+        <Title order={1}>Apps</Title>
       </div>
 
       <Grid gutter="lg">
-        {ResourcesData.map((resource) => (
-          <Grid.Col key={resource.title} span={{ base: 12, md: 6, lg: 4 }}>
+        {ResourcesData.map((resource, index) => (
+          <Grid.Col key={`${resource.title}-${index}`} span={{ base: 12, md: 6, lg: 4 }}>
             <Link href={resource.link} passHref>
               <Card
                 className="w-full h-full flex flex-col"
