@@ -94,6 +94,43 @@
         "ActionableMutations.Lab",
         "Oncology_Primary.Multiplicitycounter",
         "Oncology_Primary.ICDOSite"
+      ],
+      "columns": {
+        "ActionableMutations.Lab": {
+          "title": "Actionablemutations Lab"
+        },
+        "Oncology_Primary.Multiplicitycounter": {
+          "title": "Oncology Primary Multiplicitycounter"
+        },
+        "Oncology_Primary.ICDOSite": {
+          "title": "Oncology Primary Icdosite"
+        }
+      },
+      "detailsConfig": {
+        "mode": "expand",
+        "panelContainer": "drawer"
+      },
+      "subTables": [
+        {
+          "root": "subRows",
+          "label": "Oncology Primary",
+          "defaultIfEmpty": "NULL",
+          "processData": false,
+          "fields": [
+            "Multiplicitycounter",
+            "ICDOSite"
+          ],
+          "columns":{
+            "ICDOSite": {
+              "field": "ICDOSite",
+              "title": "ICDOSite"
+            },
+            "Multiplicitycounter": {
+              "field": "Multiplicitycounter",
+              "title": "Multiplicitycounter"
+            }
+          }
+        }
       ]
     },
     "guppyConfig": {
