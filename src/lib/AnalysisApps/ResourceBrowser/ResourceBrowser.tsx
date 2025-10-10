@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import AtlasLogo from './Icons/atlasLogo.svg';
 import PLPApp from './Icons/PLPApp.png';
+import TeamProjectHeader from '../SharedUtils/TeamProject/TeamProjectHeader/TeamProjectHeader';
 
 const ResourcesData = [
   {
@@ -26,6 +27,7 @@ const ResourceBrowser = () => {
     <div className="p-5">
       <div className="flex justify-between py-4">
         <Title order={1}>Apps</Title>
+        <TeamProjectHeader isEditable />
       </div>
 
       <Grid gutter="lg">
