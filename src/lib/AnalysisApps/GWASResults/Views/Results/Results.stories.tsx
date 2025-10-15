@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { http, HttpResponse, delay } from 'msw';
 import SharedContext from '../../Utils/SharedContext';
 import Results from './Results';

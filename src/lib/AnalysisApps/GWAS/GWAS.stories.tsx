@@ -1,7 +1,7 @@
 import React from 'react';
 import GWASContainer from './GWASContainer';
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 
 
 const meta: Meta<typeof GWASContainer> = {
