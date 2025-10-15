@@ -23,7 +23,7 @@
           }
         },
         {
-          "title": "ActionableMutations",
+          "title": "actionable_mutations",
           "fields": [
             "project_id",
             "Lab",
@@ -32,7 +32,7 @@
           ]
         },
         {
-          "title": "Oncology Primary",
+          "title": "oncology_primaries",
           "fields": [
             "project_id",
             "Multiplicitycounter",
@@ -94,6 +94,43 @@
         "Lab",
         "Multiplicitycounter",
         "ICDOSite"
+      ],
+      "columns": {
+        "Lab": {
+          "title": "Actionablemutations Lab"
+        },
+        "Multiplicitycounter": {
+          "title": "Oncology Primary Multiplicitycounter"
+        },
+        "ICDOSite": {
+          "title": "Oncology Primary Icdosite"
+        }
+      },
+      "detailsConfig": {
+        "mode": "expand",
+        "panelContainer": "drawer"
+      },
+      "subTables": [
+        {
+          "root": "subRows",
+          "label": "Oncology Primary",
+          "defaultIfEmpty": "NULL",
+          "processData": false,
+          "fields": [
+            "Multiplicitycounter",
+            "ICDOSite"
+          ],
+          "columns":{
+            "ICDOSite": {
+              "field": "ICDOSite",
+              "title": "ICDOSite"
+            },
+            "Multiplicitycounter": {
+              "field": "Multiplicitycounter",
+              "title": "Multiplicitycounter"
+            }
+          }
+        }
       ]
     },
     "guppyConfig": {

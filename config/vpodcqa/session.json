@@ -1,0 +1,12 @@
+{
+  "projectTable": {
+    "columns": [
+      {
+        "name": "Aliquots",
+        "field": "_aliquot_count",
+        "errorIfNotAvailable": false,
+        "valueIfNotAvailable": "n/a"
+      }
+    ]
+  }
+}
