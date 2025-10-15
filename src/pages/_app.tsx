@@ -9,6 +9,7 @@ import {
   RegisteredIcons,
   SessionConfiguration,
   registerExplorerDefaultCellRenderers,
+  // registerCohortDiscoveryApp,
   registerCohortBuilderDefaultPreviewRenderers,
   registerMetadataSchemaApp,
 } from '@gen3/frontend';
@@ -90,6 +91,7 @@ const Gen3App = ({
     </React.Fragment>
   );
 };
+
 
 // TODO: replace with page router
 Gen3App.getInitialProps = async (
