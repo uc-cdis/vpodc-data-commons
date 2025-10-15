@@ -8,6 +8,7 @@ import {
   type ModalsConfig,
   RegisteredIcons,
   SessionConfiguration,
+  registerCohortDiscoveryApp,
   registerExplorerDefaultCellRenderers,
   // registerCohortDiscoveryApp,
   registerCohortBuilderDefaultPreviewRenderers,
@@ -22,7 +23,7 @@ import '@fontsource/montserrat';
 import '@fontsource/source-sans-pro';
 import '@fontsource/poppins';
 
-import { setDRSHostnames } from '@gen3/core';
+import { setDRSHostnames, registerDefaultRemoteSupport } from '@gen3/core';
 import drsHostnames from '../../config/drsHostnames.json';
 import { loadContent } from '@/lib/content/loadContent';
 import Loading from '../components/Loading';
@@ -54,7 +55,9 @@ const Gen3App = ({
   useEffect(() => {
     if (isFirstRender.current) {
       setDRSHostnames(drsHostnames);
+      registerDefaultRemoteSupport();
       registerMetadataSchemaApp();
+      registerCohortDiscoveryApp();
       registerExplorerDefaultCellRenderers();
       registerCohortBuilderDefaultPreviewRenderers();
       registerCohortTableCustomCellRenderers();
