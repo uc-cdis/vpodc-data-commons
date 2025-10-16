@@ -2,6 +2,7 @@ import React from 'react';
 import Script from 'next/script';
 
 const GradioApp = ({ app }: { app: string }) => {
+  return (<>GradioApp</>);//TODO implement diferently if needed
   return (
     <>
       <Script
