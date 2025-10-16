@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Title, Anchor } from '@mantine/core';
 import {
   NavPageLayout,
@@ -10,11 +10,14 @@ import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import TeamProjectHeader from '../lib/AnalysisApps/SharedUtils/TeamProject/TeamProjectHeader/TeamProjectHeader';
 
-
 const OHDSIAtlas = ({ headerProps, footerProps }: NavPageLayoutProps) => {
-  const iframeUrl = `https://atlas.${window.location.hostname}/WebAPI/user/login/openid?redirectUrl=/home`;
-  const userRefreshEvent = new Event("updateUserActivity");
+  const [selectedTeamProject] = useState(
+    localStorage.getItem('teamProject') || '',
+  );
+  const iframeUrl = `https://atlas.${window.location.hostname}/WebAPI/user/login/openid?redirectUrl=/home?teamproject=${selectedTeamProject}`;
 
+  const userRefreshEvent = new Event("updateUserActivity");
+  
   const processAppMessages = (event: MessageEvent) => {
     const pathArray = iframeUrl.split('/');
     const protocol = pathArray[0];
