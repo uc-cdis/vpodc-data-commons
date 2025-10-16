@@ -7,11 +7,6 @@ import { Meta, StoryObj } from '@storybook/nextjs';
 const meta: Meta<typeof GWASResultsContainer> = {
   title: 'Results',
   component: GWASResultsContainer,
-  parameters: { // TODO remove this and fix accessibility
-    a11y: {
-      disable: true,
-    },
-  },
 };
 
 export default meta;
