@@ -2,8 +2,11 @@ import React from 'react';
 import { Card, Text, Grid, Title } from '@mantine/core';
 import Link from 'next/link';
 import Image from 'next/image';
-import AtlasLogo from './Icons/atlasLogo.svg';
 import PLPApp from './Icons/PLPApp.png';
+import GWASUIApp from './Icons/GWASUIApp.svg';
+import GWASResults from './Icons/GWASResults.svg';
+import AtlasLogo from './Icons/atlasLogo.svg';
+import DataDictionary from './Icons/dataDictionary.svg';
 import TeamProjectHeader from '../SharedUtils/TeamProject/TeamProjectHeader/TeamProjectHeader';
 
 const ResourcesData = [
@@ -21,6 +24,19 @@ const ResourcesData = [
       'Use this app for building Patient Level Prediction (PLP) models',
     imageSrc: PLPApp,
   },
+  {
+    title: 'Results',
+    link: '/Results',
+    summary: 'Use this App to view status & results of submitted workflows',
+    imageSrc: GWASResults,
+  },
+  /*{
+    title: 'Data Dictionary',
+    link: '/AtlasDataDictionary',
+    summary:
+      'Use this App to view a tabluar representation of the data dictionary',
+    imageSrc: DataDictionary,
+  },*/
 ];
 const ResourceBrowser = () => {
   return (

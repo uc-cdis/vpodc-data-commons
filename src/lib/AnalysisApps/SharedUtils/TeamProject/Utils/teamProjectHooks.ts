@@ -1,6 +1,6 @@
 import { useGetAuthzMappingsQuery } from '@gen3/core';
 
-interface TeamProject {
+export interface TeamProject {
   teamName: string;
 }
 
