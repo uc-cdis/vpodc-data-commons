@@ -106,7 +106,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
       >
         <div className="team-project-modal_modal-description">
           Please reach out to{' '}
-          <a href="mailto:vadc-support@gen3.org">vadc-support@gen3.org</a>{' '}
+          <a href="mailto:support@gen3.org">support@gen3.org</a>{' '}
           to gain access to the system
         </div>
         <Button key="submit" onClick={redirectToHomepage}>
