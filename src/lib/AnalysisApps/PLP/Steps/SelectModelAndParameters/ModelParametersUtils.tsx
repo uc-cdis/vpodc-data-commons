@@ -22,14 +22,6 @@ export class ModelParametersUtils {
         this.model = model;
     }
     setupInitialValues = () => {
-        console.log('test0', {
-                [this.model]: {
-                    ...(this.modelParameters?.[this.model]
-                        ? this.modelParameters[this.model]
-                        : this.initialModelParameters[this.model]
-                    ),
-                }
-            });
         this.dispatch({
             type: ACTIONS.SET_SELECTED_MODEL_PARAMETERS,
             payload: {
