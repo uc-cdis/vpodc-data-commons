@@ -26,8 +26,18 @@ const Input = () => {
       </div>
     </section>
   );
+  // Placeholder till feature is implemented
+  return (
+    <React.Fragment>
+        {displayTopSection()}
+        <LoadingErrorMessage
+          data-testid='loading-error-message'
+          message={'If you want to get the input details, download the results zip file'}
+        />
+      </React.Fragment>
+  );
 
-  if (isLoading) {
+  /*if (isLoading) {
     return (
       <React.Fragment>
         {displayTopSection()}
@@ -69,6 +79,6 @@ const Input = () => {
       <AttritionTableWrapper data={data} />
       <JobDetails attritionTableData={data} />
     </div>
-  );
+  );*/
 };
 export default Input;
