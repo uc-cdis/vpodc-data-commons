@@ -15,7 +15,7 @@ const Input = () => {
     throw new Error('selectedRowData is not defined in SharedContext');
   }
   const { name, uid } = selectedRowData;
-  const { data, error, isLoading } = getDataForWorkflowArtifact(name, uid, 'gwas_archive_index');
+  const { data, error, isLoading } = getDataForWorkflowArtifact(name, uid, 'attrition_json_index');
 
   const displayTopSection = () => (
     <section className='results-top'>
@@ -25,6 +25,16 @@ const Input = () => {
         </div>
       </div>
     </section>
+  );
+  // Placeholder till feture is added back
+  return (
+    <React.Fragment>
+        {displayTopSection()}
+        <LoadingErrorMessage
+          data-testid='loading-error-message'
+          message={'If you want to get the input details, download the results zip file'}
+        />
+      </React.Fragment>
   );
 
   if (isLoading) {
