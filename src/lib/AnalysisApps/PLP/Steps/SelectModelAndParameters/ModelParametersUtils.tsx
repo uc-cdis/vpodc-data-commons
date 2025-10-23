@@ -21,6 +21,19 @@ export class ModelParametersUtils {
         this.dispatch = dispatch;
         this.model = model;
     }
+    setupInitialValues = () => {
+        this.dispatch({
+            type: ACTIONS.SET_SELECTED_MODEL_PARAMETERS,
+            payload: {
+                [this.model]: {
+                    ...(this.modelParameters?.[this.model]
+                        ? this.modelParameters[this.model]
+                        : this.initialModelParameters[this.model]
+                    ),
+                }
+            },
+        });
+    }
 
     handleSetModelParameters = (
         key: string,
