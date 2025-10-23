@@ -26,7 +26,7 @@ const Input = () => {
       </div>
     </section>
   );
-  // Placeholder till feture is added back
+  // Placeholder till feature is implemented
   return (
     <React.Fragment>
         {displayTopSection()}
@@ -37,7 +37,7 @@ const Input = () => {
       </React.Fragment>
   );
 
-  if (isLoading) {
+  /*if (isLoading) {
     return (
       <React.Fragment>
         {displayTopSection()}
@@ -79,6 +79,6 @@ const Input = () => {
       <AttritionTableWrapper data={data} />
       <JobDetails attritionTableData={data} />
     </div>
-  );
+  );*/
 };
 export default Input;
