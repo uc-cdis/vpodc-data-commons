@@ -15,7 +15,7 @@ const Input = () => {
     throw new Error('selectedRowData is not defined in SharedContext');
   }
   const { name, uid } = selectedRowData;
-  const { data, error, isLoading } = getDataForWorkflowArtifact(name, uid, 'attrition_json_index');
+  const { data, error, isLoading } = getDataForWorkflowArtifact(name, uid, 'gwas_archive_index');
 
   const displayTopSection = () => (
     <section className='results-top'>
