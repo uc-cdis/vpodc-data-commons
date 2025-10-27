@@ -42,7 +42,6 @@
     "@next/mdx": "^15.5.5",
     "@tabler/icons-react": "^3.33.0",
     "clsx": "^2.1.1",
-    "cookies-next": "^6.1.0",
     "dayjs": "^1.11.13",
     "idb": "^8.0.3",
     "jsonpath-plus": "^10.3.0",
