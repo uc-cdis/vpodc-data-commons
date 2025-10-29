@@ -1,6 +1,6 @@
 {
   "name": "@gen3/vpodc-data-commons",
-  "version": "0.11.44",
+  "version": "0.11.48",
   "private": "true",
   "engines": {
     "npm": ">=10.9.0",
@@ -26,8 +26,8 @@
     "@fontsource/montserrat": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
     "@fontsource/source-sans-pro": "^5.2.5",
-    "@gen3/core": "0.11.44",
-    "@gen3/frontend": "0.11.44",
+    "@gen3/core": "0.11.48",
+    "@gen3/frontend": "0.11.48",
     "@grafana/faro-react": "^1.9.1",
     "@grafana/faro-web-sdk": "^1.9.1",
     "@grafana/faro-web-tracing": "^1.9.1",
@@ -42,7 +42,6 @@
     "@next/mdx": "^15.5.5",
     "@tabler/icons-react": "^3.33.0",
     "clsx": "^2.1.1",
-    "cookies-next": "^6.1.0",
     "dayjs": "^1.11.13",
     "idb": "^8.0.3",
     "jsonpath-plus": "^10.3.0",
@@ -53,7 +52,7 @@
   "devDependencies": {
     "@axe-core/react": "^4.10.2",
     "@chromatic-com/storybook": "^4.1.1",
-    "@gen3/toolsff": "0.11.44",
+    "@gen3/toolsff": "0.11.48",
     "@jest/globals": "^29.7.0",
     "@next/eslint-plugin-next": "^15.5.5",
     "@storybook/addon-a11y": "^9.1.10",
