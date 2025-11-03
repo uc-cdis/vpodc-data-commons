@@ -227,7 +227,6 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
       showColumnFilters,
       showGlobalFilter,
       sorting,
-      density: 'xs',
     },
   });
 
