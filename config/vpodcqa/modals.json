@@ -17,6 +17,6 @@
       "className" : "text-base-contrast-max"
     },
     "expireDays": 365,
-    "showOnlyOnLogin": false
+    "showOnlyOnLogin": true
   }
 }
