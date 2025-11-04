@@ -11,7 +11,7 @@ const TableData = [
   },
   {
     uid: '1234',
-    wf_name: 'User Added WF Name 1',
+    wf_name: 'User Added WF Name 2 but its exessivly long so needs to line wrap or somthing so you can see it all',
     name: 'Workflow 2',
     gen3username: 'joedoe@aol.com',
     submittedAt:"2025-08-25T19:09:26Z",
@@ -21,7 +21,7 @@ const TableData = [
   },
   {
     uid: '456',
-    wf_name: 'User Added WF Name 2',
+    wf_name: 'User Added WF Name 3',
     name: 'Workflow 3',
     gen3username: 'janedoe@aol.com',
     startedAt: '2022-02-16T10:00:00Z',
@@ -31,7 +31,7 @@ const TableData = [
   },
   {
     uid: '789',
-    wf_name: 'User Added WF Name 3',
+    wf_name: 'User Added WF Name 4',
     name: 'Workflow 4',
     gen3username: 'jakedoe@aol.com',
     startedAt: '2023-02-16T10:30:00Z',
