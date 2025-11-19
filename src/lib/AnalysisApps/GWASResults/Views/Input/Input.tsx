@@ -5,9 +5,9 @@ import DetailPageHeader from '../../Components/DetailPageHeader/DetailPageHeader
 import JobDetails from './JobDetails/JobDetails';
 import AttritionTableWrapper from './AttritionTable/AttrtitionTableWrapper';
 import SharedContext from '../../Utils/SharedContext';
-import { getDataForWorkflowArtifact } from '../../Utils/gwasWorkflowApi';
 //import queryConfig from '../../../SharedUtils/QueryConfig';
 import LoadingErrorMessage from '../../../SharedUtils/LoadingErrorMessage/LoadingErrorMessage';
+import { useGetPresignedUrlOrDataForWorkflowArtifactQuery } from '@/lib/AnalysisApps/Results/Utils/workflowApi';
 
 const Input = () => {
   const { selectedRowData } = useContext(SharedContext);
@@ -15,7 +15,13 @@ const Input = () => {
     throw new Error('selectedRowData is not defined in SharedContext');
   }
   const { name, uid } = selectedRowData;
-  const { data, error, isLoading } = getDataForWorkflowArtifact(name, uid, 'attrition_json_index');
+  const {data, error, isLoading, isFetching  } = useGetPresignedUrlOrDataForWorkflowArtifactQuery({
+        workflowName: name,
+        workflowUid: uid,
+        artifactName: 'attrition_json_index',
+        retrieveData: true,
+      });
+    console.log('Attrition Table Data:', data);
 
   const displayTopSection = () => (
     <section className='results-top'>
@@ -26,18 +32,8 @@ const Input = () => {
       </div>
     </section>
   );
-  // Placeholder till feature is implemented
-  return (
-    <React.Fragment>
-        {displayTopSection()}
-        <LoadingErrorMessage
-          data-testid='loading-error-message'
-          message={'If you want to get the input details, download the results zip file'}
-        />
-      </React.Fragment>
-  );
 
-  /*if (isLoading) {
+  if (isLoading || isFetching) {
     return (
       <React.Fragment>
         {displayTopSection()}
@@ -54,7 +50,7 @@ const Input = () => {
         {displayTopSection()}
         <LoadingErrorMessage
           data-testid='loading-error-message'
-          message={`Error getting attrition table data due to status: ${error}`}
+          message={`Error getting attrition table data due to status: ${(error as {error: string})?.error ? (error as {error: string}).error : error}`}
         />
       </React.Fragment>
     );
@@ -63,6 +59,7 @@ const Input = () => {
   if (
     !data
     || data.length === 0
+    || !data[0]?.table_type
     || data[0].table_type !== 'case'
   ) {
     return (
@@ -79,6 +76,6 @@ const Input = () => {
       <AttritionTableWrapper data={data} />
       <JobDetails attritionTableData={data} />
     </div>
-  );*/
+  );
 };
 export default Input;

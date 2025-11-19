@@ -168,9 +168,20 @@ const workflowApi = ResultsApiTags.injectEndpoints({
           };
         }
 
+        if (!(
+          workflowDetailsResponse.data as WorkflowDetails
+        )?.outputs?.parameters) {
+          return {
+            error: {
+              error: `No output parameters found for workflow ${workflowName} (uid: ${workflowUid})`,
+              status: 'CUSTOM_ERROR',
+            } as FetchBaseQueryError,
+          };
+        }
+
         const results = (
           workflowDetailsResponse.data as WorkflowDetails
-        )?.outputs?.parameters.filter((entry) => entry.name === artifactName);
+        )?.outputs.parameters.filter((entry) => entry.name === artifactName);
         if (!results || results.length !== 1) {
           return {
             error: {
