@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Provider } from 'react-redux';
+import { coreStore } from '@gen3/core';
 import { Meta, StoryObj } from '@storybook/nextjs';
 import { http, HttpResponse, delay } from 'msw';
 import SharedContext from '../../Utils/SharedContext';
@@ -30,14 +32,16 @@ const meta: Meta<typeof Results> = {
       const { selectedRowData } = parameters;
       console.log('selectedRowData in decorator:', selectedRowData);
       return (
+        <Provider store={coreStore}>
           <SharedContext.Provider
             value={{
               selectedRowData: selectedRowData,
               setCurrentView,
             }}
           >
-      <Story />
-    </SharedContext.Provider>
+            <Story />
+          </SharedContext.Provider>
+        </Provider>
       );
     },
   ],
