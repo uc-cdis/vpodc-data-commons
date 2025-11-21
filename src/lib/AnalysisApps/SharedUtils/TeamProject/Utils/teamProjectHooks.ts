@@ -44,7 +44,8 @@ export const useTeamProjects = (): UseTeamProjectsResult => {
           ),
       )
       .map(([key]) => ({ teamName: key }));
+    return { teams : teams, isFetching, isSuccess, isError, error };
   }
 
-  return { teams : teams, isFetching, isSuccess, isError, error };
+  return { teams : teams, isFetching: true, isSuccess, isError, error };
 };
