@@ -133,7 +133,7 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
         const record = cell.row.original;
         return (
           <div className='flex items-center gap-2'>
-            {/*<Button
+            <Button
               onClick={() => {
                 setSelectedRowData(record);
                 setCurrentView(VIEWS.input);
@@ -141,7 +141,7 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
             >
               Input
             </Button>
-            <Button
+            {/*<Button
               onClick={() => {
                 setSelectedRowData(record);
                 setCurrentView(VIEWS.execution);

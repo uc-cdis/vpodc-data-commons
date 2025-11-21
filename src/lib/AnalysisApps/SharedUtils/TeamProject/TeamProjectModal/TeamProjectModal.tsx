@@ -63,7 +63,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
       </Modal>
     );
   }
-  if (data) {
+  if (status === 'success' && data) {
     if (data.length > 0) {
       return (
         <Modal
