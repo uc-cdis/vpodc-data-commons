@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
+import { coreStore } from '@gen3/core';
 import { Meta, StoryObj } from '@storybook/nextjs';
 //import { QueryClient, QueryClientProvider } from 'react-query';
 import SharedContext from '../../Utils/SharedContext';
@@ -34,6 +36,7 @@ const meta: Meta<typeof Input> = {
         alert(`setCurrentView called with ${currentView}`);
       }, [currentView]);*/
       return (
+        <Provider store={coreStore}>
           <SharedContext.Provider
             value={{
               selectedRowData: selectedRowData,
@@ -44,6 +47,7 @@ const meta: Meta<typeof Input> = {
               <Story />
             </div>
           </SharedContext.Provider>
+        </Provider>
       );
     },
   ],

@@ -68,8 +68,9 @@ const JobDetails = ({ data }: {data?: WorkflowDetails}) => {
           </Group>
           <Divider />
           <Group mt='sm' mb='sm'>
-            {modelRenderer(dataPeramiters.model_list).map(({name, value}) => (
+            {modelRenderer(dataPeramiters.model_list).map(({name, value}, index) => (
               <Group 
+              key={`${name}-${index}`}
               justify="space-between" 
               className='w-full px-4'>
                 <span>{name}</span>
