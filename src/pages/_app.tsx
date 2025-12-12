@@ -8,10 +8,6 @@ import {
   DefaultAuthorizedRoutesConfig,
   Gen3Provider,
   type ModalsConfig,
-  RegisteredIcons,
-  SessionConfiguration,
-  registerCohortDiscoveryApp,
-  registerExplorerDefaultCellRenderers,
   // registerCohortDiscoveryApp,
   registerCohortBuilderDefaultPreviewRenderers,
   registerCohortDiscoveryApp,
@@ -29,7 +25,6 @@ import '@fontsource/montserrat';
 import '@fontsource/source-sans-pro';
 import '@fontsource/poppins';
 
-import { setDRSHostnames, registerDefaultRemoteSupport } from '@gen3/core';
 import drsHostnames from '../../config/drsHostnames.json';
 import { loadContent } from '@/lib/content/loadContent';
 import Loading from '../components/Loading';
