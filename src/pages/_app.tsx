@@ -4,17 +4,19 @@ import { MantineProvider } from '@mantine/core';
 import mantinetheme from '../mantineTheme';
 
 import {
+  type AuthorizedRoutesConfig,
+  DefaultAuthorizedRoutesConfig,
   Gen3Provider,
   type ModalsConfig,
-  RegisteredIcons,
-  SessionConfiguration,
-  registerCohortDiscoveryApp,
-  registerExplorerDefaultCellRenderers,
   // registerCohortDiscoveryApp,
   registerCohortBuilderDefaultPreviewRenderers,
+  registerCohortDiscoveryApp,
+  RegisteredIcons,
+  registerExplorerDefaultCellRenderers,
   registerMetadataSchemaApp,
+  SessionConfiguration,
 } from '@gen3/frontend';
-
+import { registerDefaultRemoteSupport, setDRSHostnames } from '@gen3/core';
 import { registerCohortTableCustomCellRenderers } from '@/lib/CohortBuilder/CustomCellRenderers';
 import { registerCustomExplorerDetailsPanels } from '@/lib/CohortBuilder/FileDetailsPanel';
 
@@ -23,7 +25,6 @@ import '@fontsource/montserrat';
 import '@fontsource/source-sans-pro';
 import '@fontsource/poppins';
 
-import { setDRSHostnames, registerDefaultRemoteSupport } from '@gen3/core';
 import drsHostnames from '../../config/drsHostnames.json';
 import { loadContent } from '@/lib/content/loadContent';
 import Loading from '../components/Loading';
@@ -41,6 +42,7 @@ interface Gen3AppProps {
   icons: Array<RegisteredIcons>;
   modalsConfig: ModalsConfig;
   sessionConfig: SessionConfiguration;
+  protectedRoutes: AuthorizedRoutesConfig;
 }
 
 const Gen3App = ({
@@ -49,6 +51,7 @@ const Gen3App = ({
   icons,
   sessionConfig,
   modalsConfig,
+  protectedRoutes,
 }: AppProps & Gen3AppProps) => {
   const isFirstRender = useRef(true);
 
@@ -70,8 +73,13 @@ const Gen3App = ({
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      setIsClient(false); // Only on client-side
+    }
+    else
     setIsClient(true); // Only on client-side
   }, []);
+
   return (
     <React.Fragment>
       {isClient ? (
@@ -89,6 +97,7 @@ const Gen3App = ({
         </Suspense>
       ) : (
         // Show some fallback UI while waiting for the client to load
+        console.log('Loading...'),
         <Loading />
       )}
     </React.Fragment>
@@ -125,6 +134,7 @@ Gen3App.getInitialProps = async (
     ],
     modalsConfig: {},
     sessionConfig: {},
+    protectedRoutes: DefaultAuthorizedRoutesConfig
   };
 };
 export default Gen3App;
