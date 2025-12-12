@@ -8,6 +8,11 @@ import {
   DefaultAuthorizedRoutesConfig,
   Gen3Provider,
   type ModalsConfig,
+  RegisteredIcons,
+  SessionConfiguration,
+  registerCohortDiscoveryApp,
+  registerExplorerDefaultCellRenderers,
+  // registerCohortDiscoveryApp,
   registerCohortBuilderDefaultPreviewRenderers,
   registerCohortDiscoveryApp,
   RegisteredIcons,
@@ -24,15 +29,16 @@ import '@fontsource/montserrat';
 import '@fontsource/source-sans-pro';
 import '@fontsource/poppins';
 
+import { setDRSHostnames, registerDefaultRemoteSupport } from '@gen3/core';
 import drsHostnames from '../../config/drsHostnames.json';
 import { loadContent } from '@/lib/content/loadContent';
 import Loading from '../components/Loading';
 import DatadogInit from '@/components/DatadogInit';
 
 if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const ReactDOM = require('react-dom');
-  // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const axe = require('@axe-core/react');
   axe(React, ReactDOM, 1000);
 }
@@ -84,18 +90,15 @@ const Gen3App = ({
       {isClient ? (
         <Suspense fallback={<Loading />}>
           <DatadogInit />
-          <MantineProvider theme={mantinetheme}>
-            <Gen3Provider
-              icons={icons}
-              sessionConfig={sessionConfig}
-              modalsConfig={modalsConfig}
-              protectedRoutesConfig={protectedRoutes}
-            >
-
-              <Component {...pageProps} />
-
-            </Gen3Provider>
-          </MantineProvider>
+            <MantineProvider theme={mantinetheme}>
+              <Gen3Provider
+                icons={icons}
+                sessionConfig={sessionConfig}
+                modalsConfig={modalsConfig}
+              >
+                <Component {...pageProps} />
+              </Gen3Provider>
+            </MantineProvider>
         </Suspense>
       ) : (
         // Show some fallback UI while waiting for the client to load
@@ -105,6 +108,7 @@ const Gen3App = ({
     </React.Fragment>
   );
 };
+
 
 // TODO: replace with page router
 Gen3App.getInitialProps = async (
