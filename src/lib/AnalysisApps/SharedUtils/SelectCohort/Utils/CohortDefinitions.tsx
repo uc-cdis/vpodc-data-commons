@@ -31,7 +31,7 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
     CohortsEndpoint + '/' + sourceId + `/by-team-project?team-project=${selectedTeamProject}`,
     (...args) => fetch(...args).then((res) => res.json()),
   );
-  let displayedCohorts: cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
+  const displayedCohorts: cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
 
   if (error)
     return <React.Fragment>Error getting data for table</React.Fragment>;
