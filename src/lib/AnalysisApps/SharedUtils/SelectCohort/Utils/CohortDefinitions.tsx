@@ -31,7 +31,7 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
     CohortsEndpoint + '/' + sourceId + `/by-team-project?team-project=${selectedTeamProject}`,
     (...args) => fetch(...args).then((res) => res.json()),
   );
-  let displayedCohorts: cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
+  const displayedCohorts: cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
 
   if (error)
     return <React.Fragment>Error getting data for table</React.Fragment>;
@@ -43,17 +43,17 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
       </div>
     );
 
-  if (data) {
-    displayedCohorts = displayedCohorts.slice(
+  if (displayedCohorts) {
+    const pageOfDisplayedCohorts = displayedCohorts.slice(
       (page - 1) * rowsPerPage,
       page * rowsPerPage,
     );
-    const totalPagesForPagination = Math.ceil(data.length / rowsPerPage);
+    const totalPagesForPagination = Math.ceil(displayedCohorts.length / rowsPerPage);
 
     return (
       <React.Fragment>
         <div className="w-full min-h-[200px] py-5">
-          {displayedCohorts?.length > 0 ? (
+          {pageOfDisplayedCohorts?.length > 0 ? (
             <Table className="shadow">
               <Table.Thead className="bg-vadc-slate_blue font-light">
                 <Table.Tr>
@@ -63,7 +63,7 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
-                {displayedCohorts.map((cohort, i) => (
+                {pageOfDisplayedCohorts.map((cohort, i) => (
                   <Table.Tr
                     key={i}
                     className={i % 2 ? 'bg-vadc-alternate_row' : ''}
@@ -111,7 +111,10 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
             <Select
               className="pt-5 pl-3 w-32"
               value={rowsPerPage.toString()}
-              onChange={(value) => setRowsPerPage(Number(value))}
+              onChange={(value) => {
+                setRowsPerPage(Number(value));
+                setPage(1);
+              }}
               size="sm"
               aria-label="pagination select"
               data={[

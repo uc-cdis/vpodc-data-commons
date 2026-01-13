@@ -45,6 +45,15 @@ const TestData = {
       }
   ]
 };
+const TestDataLong = {
+  cohort_definitions_and_stats: Array(77).fill({}).map((_, i)=>(
+      {
+          cohort_definition_id: i,
+          cohort_name: `test name ${i}`,
+          size: i * 1000,
+      }
+      ))
+};
 
 const TestSourcesData = {
   sources: [
@@ -87,6 +96,22 @@ export const GenericSelectCohortMockedSuccess: Story = {
       handlers: [
         http.get(CohortsEndpoint + '/:sourceId/by-team-project?team-project=:selectedTeamProject', async () => {
           return HttpResponse.json(TestData);
+        }),
+        http.get(SourcesEndpoint, async () => {
+          return HttpResponse.json(TestSourcesData);
+        }),
+      ],
+    },
+  },
+  render: () => <SelectCohortWithHooks />, // see https://storybook.js.org/docs/writing-stories
+};
+
+export const GenericSelectCohortMockedSuccessLong: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get(CohortsEndpoint + '/:sourceId/by-team-project?team-project=:selectedTeamProject', async () => {
+          return HttpResponse.json(TestDataLong);
         }),
         http.get(SourcesEndpoint, async () => {
           return HttpResponse.json(TestSourcesData);
