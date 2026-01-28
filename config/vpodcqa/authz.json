@@ -1,5 +1,8 @@
 {
   "routes": {
+    "/Explorer": {
+      "loginRequired": true
+    },
     "/DataLibrary": {
       "loginRequired": true
     },
@@ -8,6 +11,9 @@
       "authz": ["/workspace"]
     },
     "/Profile": {
+      "loginRequired": true
+    },
+    "/Query": {
       "loginRequired": true
     },
     "*": {

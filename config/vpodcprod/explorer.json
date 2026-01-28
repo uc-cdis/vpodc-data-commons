@@ -87,23 +87,27 @@
     "table": {
       "enabled": true,
       "fields": [
-        "project_id",
+        "ProjectId",
         "Race",
         "Ethnicity",
         "Gender",
-        "ActionableMutations.Lab",
-        "Oncology_Primary.Multiplicitycounter",
-        "Oncology_Primary.ICDOSite"
+        "ICDOSites",
+        "Diagnosis",
+        "CauseOfDeath",
+        "CancerStages"
       ],
       "columns": {
-        "ActionableMutations.Lab": {
-          "title": "Actionablemutations Lab"
+        "ProjectId": {
+          "title": "Project Id"
         },
-        "Oncology_Primary.Multiplicitycounter": {
-          "title": "Oncology Primary Multiplicitycounter"
+        "ICDOSites": {
+          "title": "Cancer Origin"
         },
-        "Oncology_Primary.ICDOSite": {
-          "title": "Oncology Primary Icdosite"
+        "CauseOfDeath": {
+          "title": "Cause of death"
+        },
+        "CancerStages": {
+          "title": "Stage"
         }
       },
       "detailsConfig": {
