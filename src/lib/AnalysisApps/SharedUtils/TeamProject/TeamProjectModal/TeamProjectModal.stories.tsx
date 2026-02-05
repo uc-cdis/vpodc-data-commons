@@ -8,11 +8,6 @@ import TeamProjectTestData from '../TestData/TeamProjectTestData';
 const meta: Meta<typeof TeamProjectModal> = {
   title: 'SharedUtils/TeamProjectModal',
   component: TeamProjectModal,
-  parameters: { // TODO remove this and fix accessibility
-    a11y: {
-      disable: true,
-    },
-  },
 };
 export default meta;
 
@@ -49,18 +44,31 @@ export const MockedSuccessTeamSelected: Story = {
 export const MockedLoading: Story = {
   args: { ...successArgs, status: 'loading', data: null },
   play: async () => {
+    //added for loading time for automated testing
     await new Promise(resolve => setTimeout(resolve, 1000));
   }
 };
 
 export const MockedLoadingTeamelected: Story = {
-  args: { ...successArgs, status: 'loading', data: null, selectedTeamProject: 'test' }
+  args: { ...successArgs, status: 'loading', data: null, selectedTeamProject: 'test' },
+  play: async () => {
+    //added for loading time for automated testing
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
 };
 
 export const MockedError: Story = {
-  args: { ...successArgs, status: 'error', data: null }
+  args: { ...successArgs, status: 'error', data: null },
+  play: async () => {
+    //added for loading time for automated testing
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
 };
 
 export const MockedNoTeams: Story = {
-  args: { ...successArgs, data: [] }
+  args: { ...successArgs, data: [] },
+  play: async () => {
+    //added for loading time for automated testing
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
 };
