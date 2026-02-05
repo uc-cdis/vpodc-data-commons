@@ -78,6 +78,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
           closeOnClickOutside={!!selectedTeamProject}
           closeOnEscape={!!selectedTeamProject}
           withCloseButton={!!selectedTeamProject}
+          closeButtonProps={{ 'aria-label': 'Close modal' }}
           size="lg"
         >
           <TeamsDropdown
@@ -122,6 +123,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
       onClose={() => setIsModalOpen(false)}
       closeOnEscape={!!selectedTeamProject}
       withCloseButton={!!selectedTeamProject}
+      closeButtonProps={{ 'aria-label': 'Close modal' }}
     >
       <div className="spinner-container">
         <Loader /> Retrieving the list of team projects.
