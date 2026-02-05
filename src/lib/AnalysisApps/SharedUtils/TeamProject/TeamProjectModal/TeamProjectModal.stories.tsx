@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/nextjs';
-import { http, HttpResponse, delay } from 'msw';
-import { GEN3_API, coreStore } from '@gen3/core';
-import { Provider } from 'react-redux';
 import TeamProjectModal from './TeamProjectModal';
-import { TeamProject } from '../Utils/teamProjectHooks';
 
 
 import TeamProjectTestData from '../TestData/TeamProjectTestData';
@@ -24,7 +20,7 @@ const successArgs = {
   setIsModalOpen: (isModalOpen: boolean) => alert(`setIsModalOpen ${isModalOpen}`),
   setBannerText: () => null,
   data: TeamProjectTestData.data,
-  status: 'success' as 'success'
+  status: 'success' as const
 };
 
   //data: TeamProject[] | null;
