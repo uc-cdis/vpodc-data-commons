@@ -124,6 +124,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
       closeOnEscape={!!selectedTeamProject}
       withCloseButton={!!selectedTeamProject}
       closeButtonProps={{ 'aria-label': 'Close modal' }}
+      size="lg"
     >
       <div className="spinner-container">
         <Loader /> Retrieving the list of team projects.

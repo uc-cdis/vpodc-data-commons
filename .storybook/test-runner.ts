@@ -18,6 +18,8 @@ const config: TestRunnerConfig = {
     if (storyContext.parameters?.a11y?.disable) {
       return;
     }
+    // delay testing so things can fully load
+    await new Promise(resolve => setTimeout(resolve, 100));
     await checkA11y(page, '#storybook-root', {
       detailedReport: true,
       detailedReportOptions: {
