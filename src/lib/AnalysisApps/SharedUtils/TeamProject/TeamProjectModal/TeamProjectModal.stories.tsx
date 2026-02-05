@@ -20,7 +20,9 @@ const successArgs = {
   setIsModalOpen: (isModalOpen: boolean) => alert(`setIsModalOpen ${isModalOpen}`),
   setBannerText: () => null,
   data: TeamProjectTestData.data,
-  status: 'success' as const
+  status: 'success' as const,
+  selectedTeamProject: null,
+  setSelectedTeamProject: () => null,
 };
 
   //data: TeamProject[] | null;
