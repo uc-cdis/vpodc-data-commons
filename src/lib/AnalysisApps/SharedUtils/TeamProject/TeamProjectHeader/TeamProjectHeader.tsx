@@ -25,6 +25,7 @@ const TeamProjectHeader: React.FC<TeamProjectHeaderProps> = ({
   };
 
   const router = useRouter();
+
   const rerouteToAppSelectionIfNeeded = () => {
     if (
       !isEditable &&
