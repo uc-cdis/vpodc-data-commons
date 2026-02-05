@@ -104,6 +104,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
         onClose={() => null}
         closeOnEscape={false}
         withCloseButton={false}
+        closeOnClickOutside={false}
       >
         <div className="team-project-modal_modal-description">
           Please reach out to{' '}
@@ -123,6 +124,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
       onClose={() => setIsModalOpen(false)}
       closeOnEscape={!!selectedTeamProject}
       withCloseButton={!!selectedTeamProject}
+      closeOnClickOutside={!!selectedTeamProject}
       closeButtonProps={{ 'aria-label': 'Close modal' }}
       size="lg"
     >

@@ -21,8 +21,6 @@ const successArgs = {
   setBannerText: () => null,
   data: TeamProjectTestData.data,
   status: 'success' as const,
-  selectedTeamProject: null,
-  setSelectedTeamProject: () => null,
 };
 
   //data: TeamProject[] | null;
@@ -44,31 +42,17 @@ export const MockedSuccessTeamSelected: Story = {
 };
 
 export const MockedLoading: Story = {
-  render: (args) => {
-    const [selectedTeamProject, setSelectedTeamProject] = useState<string | null>(null);
-    return <TeamProjectModal {...args} selectedTeamProject={selectedTeamProject} setSelectedTeamProject={setSelectedTeamProject}/>
-  },
   args: { ...successArgs, status: 'loading', data: null }
 };
 
 export const MockedLoadingTeamSelected: Story = {
-  render: (args) => {
-    const [selectedTeamProject, setSelectedTeamProject] = useState<string | null>('test');
-    return <TeamProjectModal {...args} selectedTeamProject={selectedTeamProject} setSelectedTeamProject={setSelectedTeamProject}/>
-  },
-  args: { ...successArgs, status: 'loading', data: null }
+  args: { ...successArgs, status: 'loading', data: null, selectedTeamProject: 'test' }
 };
 
 export const MockedError: Story = {
-  render: (args) => {
-    return <TeamProjectModal {...args} />
-  },
   args: { ...successArgs, status: 'error', data: null }
 };
 
 export const MockedNoTeams: Story = {
-  render: (args) => {
-    return <TeamProjectModal {...args} />
-  },
   args: { ...successArgs, data: [] }
 };
