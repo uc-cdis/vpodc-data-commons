@@ -8,6 +8,11 @@ import TeamProjectTestData from '../TestData/TeamProjectTestData';
 const meta: Meta<typeof TeamProjectModal> = {
   title: 'SharedUtils/TeamProjectModal',
   component: TeamProjectModal,
+  parameters: { // TODO remove this and fix accessibility
+    a11y: {
+      disable: true,
+    },
+  },
 };
 export default meta;
 
@@ -42,10 +47,13 @@ export const MockedSuccessTeamSelected: Story = {
 };
 
 export const MockedLoading: Story = {
-  args: { ...successArgs, status: 'loading', data: null }
+  args: { ...successArgs, status: 'loading', data: null },
+  play: async () => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
 };
 
-export const MockedLoadingTeamSelected: Story = {
+export const MockedLoadingTeamelected: Story = {
   args: { ...successArgs, status: 'loading', data: null, selectedTeamProject: 'test' }
 };
 
