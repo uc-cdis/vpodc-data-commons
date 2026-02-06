@@ -1,10 +1,10 @@
-/*
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
+import { Button } from '@mantine/core';
+/*import {
   Space, Dropdown, Button, notification, Spin,
 } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
+import { IconDots } from '@tabler/icons-react'
 import { components } from '../../../../../../params';
 import {
   fetchMonthlyWorkflowLimitInfo,
@@ -17,9 +17,13 @@ import {
   retryWorkflow,
 } from '../../../../Utils/gwasWorkflowApi';
 import PHASES from '../../../../Utils/PhasesEnumeration';
+*/
+import { fetchPresignedUrlForWorkflowArtifact } from '../../../../Utils/gwasWorkflowApi';
+import PHASES from '../../../../Utils/PhasesEnumeration';
+import { GWASResultsJobs } from '../HomeTable'
 
-const ActionsDropdown = ({ record }) => {
-  const [api, contextHolder] = notification.useNotification();
+const ActionsDropdown = ({ record }: {record: GWASResultsJobs}) => {
+  /*const [api, contextHolder] = notification.useNotification();
 
   // Updates notifaction if already open and the key matches
   // otherwise opens a new notification
@@ -133,25 +137,33 @@ const ActionsDropdown = ({ record }) => {
       disabled: record.phase !== PHASES.Error && record.phase !== PHASES.Failed, // eslint-disable-line
     },
   ];
+  // started to convert to mantine
+  return (
+    <Menu>
+      <ActionIcon>
+        <IconDots />
+      </ActionIcon>
+    </Menu>
+  );
+  */
+
+  const downloadAll = () => {
+    fetchPresignedUrlForWorkflowArtifact(record.name, record.uid, 'gwas_archive_index')
+      .then((res) => {
+        window.open(res, '_blank');
+      })
+      .catch((error) => {
+        alert(`Could not download. \n\n${error}`);
+      });
+  };
 
   return (
-    <React.Fragment>
-      {contextHolder}
-      <Dropdown menu={{ items }} trigger={['click']}>
-        <Space>
-          <Button type='text'>
-            <EllipsisOutlined />
-          </Button>
-        </Space>
-      </Dropdown>
-    </React.Fragment>
+    <Button 
+      onClick={downloadAll} 
+      disabled={record.phase !== PHASES.Succeeded}>
+        Download All Results
+    </Button>
   );
 };
 
-ActionsDropdown.propTypes = {
-  record: PropTypes.object.isRequired,
-};
-
 export default ActionsDropdown;
-
-*/
