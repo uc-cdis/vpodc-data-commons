@@ -13,7 +13,7 @@ import duration from 'dayjs/plugin/duration';
 dayjs.extend(duration);
 
 import SharedContext from '../../../Utils/SharedContext';
-//import ActionsDropdown from './ActionsDropdown/ActionsDropdown';
+import ActionsDropdown from './ActionsDropdown/ActionsDropdown';
 import Icons from './TableIcons/Icons';
 import PHASES from '../../../Utils/PhasesEnumeration';
 import VIEWS from '../../../Utils/ViewsEnumeration';
@@ -66,7 +66,7 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
       header: 'Date/Time Submitted',
       accessorKey: 'submittedAt',
       filterVariant: 'date-range',
-      Cell: ({ cell }) => cell.getValue<Date>().toLocaleDateString(),
+      Cell: ({ cell }) => cell.getValue<Date>().toLocaleString(),
     },
     {
       header: 'Job status',
@@ -107,7 +107,7 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
       Cell: ({ cell }) => {
         const date = cell.getValue<Date>();
         return date && !isNaN(date.getTime()) && date.getTime() !== 0
-          ? date.toLocaleDateString()
+          ? date.toLocaleString()
           : '--';
       }
     },
@@ -115,6 +115,7 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
       header: 'Run time',
       accessorKey: 'runTime',
       filterVariant: 'range',
+      size: 100,
       Cell: ({ cell }) => {
         const record = cell.row.original;
         const finishedAt = record.finishedAt ? record.finishedAt.getTime() : null;
@@ -171,7 +172,7 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
         const record = cell.row.original;
         return (
           <div className='flex items-center gap-2'>
-            {/*<ActionsDropdown record={record} />*/}
+            <ActionsDropdown record={record} />
           </div>
         );
       },
@@ -181,9 +182,9 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
   const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>(
     [],
   );
-  const [columnVisibility, setColumnVisibility] = useState<MRT_VisibilityState>(
-    {},
-  );
+  const [columnVisibility, setColumnVisibility] = useState<MRT_VisibilityState>({
+      finishedAt: false,
+    });
   const [globalFilter, setGlobalFilter] = useState<string | undefined>(
     undefined,
   );
@@ -205,8 +206,28 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
 
   const table = useMantineReactTable({
     columns,
+    mantineTableProps: {
+      classNames: {
+        table: '',
+        thead: '',
+        tbody: '',
+        tr: '',
+        th: 'p-2',
+        td: 'p-2',
+      }
+    },
+    defaultColumn: {
+      size: 100,
+      mantineFilterDateInputProps: {
+        className: '!min-w-[10px]'
+      },
+      mantineFilterTextInputProps: {
+        className: '!min-w-[10px]'
+      },
+    },
     data,
-    enableColumnFilterModes: true,
+    enableColumnActions: true,
+    enableGlobalFilter: true,
     enableColumnOrdering: true,
     enableFacetedValues: true,
     enableColumnPinning: true,
