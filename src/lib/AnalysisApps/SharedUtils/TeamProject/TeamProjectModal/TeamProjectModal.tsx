@@ -55,6 +55,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
         onClose={() => null}
         closeOnClickOutside={false}
         closeOnEscape={false}
+        withCloseButton={false}
         size="lg"
       >
         <LoadingErrorMessage
@@ -74,13 +75,11 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
             localStorage.getItem('teamProject') &&
             setIsModalOpen(false)
           }
-          closeOnClickOutside={false}
-          closeOnEscape={false}
+          closeOnClickOutside={!!selectedTeamProject}
+          closeOnEscape={!!selectedTeamProject}
+          withCloseButton={!!selectedTeamProject}
+          closeButtonProps={{ 'aria-label': 'Close modal' }}
           size="lg"
-          // onCancel={() => setIsModalOpen(false)}
-          // closable={localStorage.getItem('teamProject')}
-          // maskClosable={localStorage.getItem('teamProject')}
-          // keyboard={localStorage.getItem('teamProject')}
         >
           <TeamsDropdown
             teams={data}
@@ -103,6 +102,9 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
         title="Team Projects"
         size="lg"
         onClose={() => null}
+        closeOnEscape={false}
+        withCloseButton={false}
+        closeOnClickOutside={false}
       >
         <div className="team-project-modal_modal-description">
           Please reach out to{' '}
@@ -116,7 +118,16 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
     );
   }
   return (
-    <Modal opened={isModalOpen} title="Team Projects" onClose={() => null}>
+    <Modal 
+      opened={isModalOpen} 
+      title="Team Projects" 
+      onClose={() => setIsModalOpen(false)}
+      closeOnEscape={!!selectedTeamProject}
+      withCloseButton={!!selectedTeamProject}
+      closeOnClickOutside={!!selectedTeamProject}
+      closeButtonProps={{ 'aria-label': 'Close modal' }}
+      size="lg"
+    >
       <div className="spinner-container">
         <Loader /> Retrieving the list of team projects.
         <br />
