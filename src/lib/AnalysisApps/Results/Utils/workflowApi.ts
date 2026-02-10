@@ -2,10 +2,9 @@ import { GEN3_API, gen3Api } from '@gen3/core';
 import {
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
-const TAGS = 'GWASWorkflow';
+import { GEN3_WORKFLOW_API } from '../../SharedUtils/Endpoints';
 
-export const GEN3_WORKFLOW_API =
-  process.env.NEXT_PUBLIC_GEN3_WORLFLOW_API || `${GEN3_API}/ga4gh/wes/v2`;
+const TAGS = 'GWASWorkflow';
 
 export const ResultsApiTags = gen3Api.enhanceEndpoints({
   addTagTypes: [TAGS],
