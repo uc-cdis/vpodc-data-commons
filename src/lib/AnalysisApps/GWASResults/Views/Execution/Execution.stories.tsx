@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { coreStore } from '@gen3/core';
 import { Meta, StoryObj } from '@storybook/nextjs';
 import SharedContext from '../../Utils/SharedContext';
 import Execution from './Execution';
-import PHASES from '../../Utils/PhasesEnumeration';
-import TableData from '../../TestData/TableData';
 import { http, HttpResponse, delay } from 'msw';
 import { GEN3_WORKFLOW_API } from '../../../SharedUtils/Endpoints';
 
@@ -28,9 +26,6 @@ const meta: Meta<typeof Execution> = {
   decorators: [
     (Story) => {
       const [currentView, setCurrentView] = useState('Execution');
-      /*useEffect(() => {
-        alert(`setCurrentView called with ${currentView}`);
-      }, [currentView]);*/
       return (
         <Provider store={coreStore}>
           <SharedContext.Provider
