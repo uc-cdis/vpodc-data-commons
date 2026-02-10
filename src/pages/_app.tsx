@@ -8,7 +8,6 @@ import {
   DefaultAuthorizedRoutesConfig,
   Gen3Provider,
   type ModalsConfig,
-  // registerCohortDiscoveryApp,
   registerCohortBuilderDefaultPreviewRenderers,
   registerCohortDiscoveryApp,
   RegisteredIcons,
@@ -84,16 +83,21 @@ const Gen3App = ({
     <React.Fragment>
       {isClient ? (
         <Suspense fallback={<Loading />}>
-          <DatadogInit />
-            <MantineProvider theme={mantinetheme}>
-              <Gen3Provider
-                icons={icons}
-                sessionConfig={sessionConfig}
-                modalsConfig={modalsConfig}
-              >
-                <Component {...pageProps} />
-              </Gen3Provider>
-            </MantineProvider>
+          {process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID
+            && process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN
+            && <DatadogInit /> }
+          <MantineProvider theme={mantinetheme}>
+            <Gen3Provider
+              icons={icons}
+              sessionConfig={sessionConfig}
+              modalsConfig={modalsConfig}
+              protectedRoutesConfig={protectedRoutes}
+            >
+
+              <Component {...pageProps} />
+
+            </Gen3Provider>
+          </MantineProvider>
         </Suspense>
       ) : (
         // Show some fallback UI while waiting for the client to load

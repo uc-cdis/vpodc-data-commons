@@ -33,5 +33,9 @@ const config: StorybookConfig = {
 
     return config;
   },
+  env: (config) => ({
+    ...config,
+    NEXT_PUBLIC_GEN3_COMMONS_NAME: 'vpodcprod',
+  }),
 };
 export default config;
