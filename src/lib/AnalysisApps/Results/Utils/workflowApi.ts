@@ -243,7 +243,7 @@ const workflowApi = ResultsApiTags.injectEndpoints({
         return await getUrlData(presignedUrl.data.url, fetchWithBQ);
       },
     }),
-    getWorkflowLogs: builder.query<WorkflowLogs[], WorkflowDetailsRequest>({
+    getWorkflowLogs: builder.query<WorkflowLogs[] | {error: string}, WorkflowDetailsRequest>({
       query: ({ workflowName, workflowUid }) =>
         `${GEN3_WORKFLOW_API}/logs/${workflowName}?uid=${workflowUid}`,
     }),

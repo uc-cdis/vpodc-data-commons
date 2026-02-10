@@ -7,10 +7,7 @@ import {
   type MRT_SortingState,
   type MRT_VisibilityState,
 } from 'mantine-react-table';
-import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
-
-dayjs.extend(duration);
+import duration from '../../../Utils/duration'
 
 import SharedContext from '../../../Utils/SharedContext';
 import ActionsDropdown from './ActionsDropdown/ActionsDropdown';
@@ -118,11 +115,8 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
       size: 100,
       Cell: ({ cell }) => {
         const record = cell.row.original;
-        const finishedAt = record.finishedAt ? record.finishedAt.getTime() : null;
-        const startedAt = record.startedAt ? record.startedAt.getTime() : null;
-        const runTime = (finishedAt && startedAt) ? (finishedAt - startedAt) : null;
 
-        return runTime ? dayjs.duration(runTime).format('H:mm:ss') : '--';
+        return duration(record.startedAt, record.finishedAt);
       }
     },
     {
