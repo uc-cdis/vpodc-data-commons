@@ -2,10 +2,9 @@ import { GEN3_API, gen3Api } from '@gen3/core';
 import {
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
-const TAGS = 'GWASWorkflow';
+import { GEN3_WORKFLOW_API } from '../../SharedUtils/Endpoints';
 
-export const GEN3_WORKFLOW_API =
-  process.env.NEXT_PUBLIC_GEN3_WORLFLOW_API || `${GEN3_API}/ga4gh/wes/v2`;
+const TAGS = 'GWASWorkflow';
 
 export const ResultsApiTags = gen3Api.enhanceEndpoints({
   addTagTypes: [TAGS],
@@ -52,6 +51,15 @@ export interface WorkflowDetails {
   progress: string;
   outputs: WorkflowOutputs;
   gen3teamproject: string;
+}
+
+export interface WorkflowLogs {
+  name: string;
+  node_type: string;
+  node_phase: string;
+  step_name: string;
+  step_template: string;
+  error_interpreted: string;
 }
 
 export interface PresignedUrl {
@@ -144,6 +152,7 @@ export const getUrlData = async (url: string, fetchWithBQ: any) => {
  * - `getWorkflowsMonthly`: Retrieves monthly statistics about user workflows.
  * - `retryWorkflow`: Initiates a retry for a specific workflow using its name and UID.
  * - `getPresignedUrlOrDataForWorkflowArtifact`: Provides a presigned URL or retrieves direct data for a specified workflow artifact.
+ * - `useGetWorkflowLogsQuery`: Retrieves logs for a specific workflow by its name and unique identifier (UID).
  *
  */
 const workflowApi = ResultsApiTags.injectEndpoints({
@@ -234,6 +243,10 @@ const workflowApi = ResultsApiTags.injectEndpoints({
         return await getUrlData(presignedUrl.data.url, fetchWithBQ);
       },
     }),
+    getWorkflowLogs: builder.query<WorkflowLogs[] | {error: string}, WorkflowDetailsRequest>({
+      query: ({ workflowName, workflowUid }) =>
+        `${GEN3_WORKFLOW_API}/logs/${workflowName}?uid=${workflowUid}`,
+    }),
   }),
 });
 
@@ -245,4 +258,6 @@ export const {
   useLazyGetPresignedUrlOrDataForWorkflowArtifactQuery,
   useGetWorkflowsMonthlyQuery,
   useRetryWorkflowMutation,
+  useGetWorkflowLogsQuery,
+  useLazyGetWorkflowLogsQuery,
 } = workflowApi;
