@@ -223,6 +223,7 @@ const HomeTable = ({ data }: { data: GWASResultsJobs[] }) => {
     enableColumnActions: true,
     enableGlobalFilter: true,
     enableColumnOrdering: true,
+    enableColumnDragging: false,
     enableFacetedValues: true,
     enableColumnPinning: true,
     enableDensityToggle: false,
