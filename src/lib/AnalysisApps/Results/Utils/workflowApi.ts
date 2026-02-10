@@ -53,6 +53,15 @@ export interface WorkflowDetails {
   gen3teamproject: string;
 }
 
+export interface WorkflowLogs {
+  name: string;
+  node_type: string;
+  node_phase: string;
+  step_name: string;
+  step_template: string;
+  error_interpreted: string;
+}
+
 export interface PresignedUrl {
   url: string;
 }
@@ -143,6 +152,7 @@ export const getUrlData = async (url: string, fetchWithBQ: any) => {
  * - `getWorkflowsMonthly`: Retrieves monthly statistics about user workflows.
  * - `retryWorkflow`: Initiates a retry for a specific workflow using its name and UID.
  * - `getPresignedUrlOrDataForWorkflowArtifact`: Provides a presigned URL or retrieves direct data for a specified workflow artifact.
+ * - `useGetWorkflowLogsQuery`: Retrieves logs for a specific workflow by its name and unique identifier (UID).
  *
  */
 const workflowApi = ResultsApiTags.injectEndpoints({
@@ -233,6 +243,10 @@ const workflowApi = ResultsApiTags.injectEndpoints({
         return await getUrlData(presignedUrl.data.url, fetchWithBQ);
       },
     }),
+    getWorkflowLogs: builder.query<WorkflowLogs[], WorkflowDetailsRequest>({
+      query: ({ workflowName, workflowUid }) =>
+        `${GEN3_WORKFLOW_API}/logs/${workflowName}?uid=${workflowUid}`,
+    }),
   }),
 });
 
@@ -244,4 +258,6 @@ export const {
   useLazyGetPresignedUrlOrDataForWorkflowArtifactQuery,
   useGetWorkflowsMonthlyQuery,
   useRetryWorkflowMutation,
+  useGetWorkflowLogsQuery,
+  useLazyGetWorkflowLogsQuery,
 } = workflowApi;
