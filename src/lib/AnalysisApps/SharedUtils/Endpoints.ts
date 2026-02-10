@@ -1,5 +1,4 @@
 import { GEN3_API } from '@gen3/core';
-export const GwasWorkflowEndpoint = 'ga4gh/wes/v2/workflows';
 
 export const GEN3_WORKFLOW_API =
   process.env.NEXT_PUBLIC_GEN3_WORLFLOW_API || `${GEN3_API}/ga4gh/wes/v2`;
