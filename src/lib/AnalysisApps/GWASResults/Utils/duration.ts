@@ -8,7 +8,10 @@ export default (startedAt: Date, finishedAt: Date, placeHolder = '--') => {
         return placeHolder;
     }
 
-    const runTime = finishedAt.getTime() - startedAt.getTime();
+    let runTime = finishedAt.getTime() - startedAt.getTime();
+    if (runTime < 0) {
+        runTime = new Date().getTime() - startedAt.getTime();
+    }
 
     return runTime ? dayjs.duration(runTime).format('H:mm:ss') : placeHolder;
 }
