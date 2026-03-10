@@ -9,10 +9,9 @@ import Home from './Home';
 import PHASES from '../../Utils/PhasesEnumeration';
 import TableData from '../../TestData/TableData';
 import InitialHomeTableState from './HomeTableState/InitialHomeTableState';
-import { GwasWorkflowEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
 import { http, HttpResponse, delay } from 'msw';
 import { GWASResultsJobs } from './HomeTable/HomeTable';
-import { GEN3_WORKFLOW_API } from '../../../Results/Utils/workflowApi';
+import { GEN3_WORKFLOW_API } from '../../../SharedUtils/Endpoints';
 
 const meta: Meta<typeof Home> = {
   title: 'Results/Views/Home',
@@ -164,7 +163,7 @@ export const MockedSuccessButFailedRetry: Story = {
           }
         ),
         http.get(
-          `${GwasWorkflowEndpoint}/user-monthly`,
+          `${GEN3_WORKFLOW_API}/workflows/user-monthly`,
           async () => {
             await delay(1000);
             return HttpResponse.json({ workflow_run: 5, workflow_limit: 50 });
@@ -211,7 +210,7 @@ export const MockedSuccessButExceededWorkflowLimitForRetries: Story = {
           },
         ),
         http.get(
-          `${GwasWorkflowEndpoint}/user-monthly`,
+          `${GEN3_WORKFLOW_API}/workflows/user-monthly`,
            async () => {
             await delay(1000);
             return HttpResponse.json({ workflow_run: 50, workflow_limit: 50 });
@@ -234,7 +233,7 @@ export const MockedSuccessButWorkflowLimitReturnsMalformedDataForRetries: Story 
           },
         ),
         http.get(
-          `${GwasWorkflowEndpoint}/user-monthly`,
+          `${GEN3_WORKFLOW_API}/workflows/user-monthly`,
           async () => {
             await delay(3000);
             return HttpResponse.json({
