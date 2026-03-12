@@ -1,7 +1,8 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 
 @import '@mantine/core/styles.css';
+@import '@mantine/dates/styles.css';
 @import '@mantine/notifications/styles.css';
 @import 'mantine-react-table/styles.css';
 
@@ -9,6 +10,8 @@
 
 @import 'graphiql/graphiql.css';
 @import '@graphiql/react/dist/style.css';
+
+@import 'vadcAppStyles.css';
 
 @layer base {
   html {
