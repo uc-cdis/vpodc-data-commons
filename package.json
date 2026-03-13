@@ -1,6 +1,6 @@
 {
   "name": "@gen3/vpodc-data-commons",
-  "version": "0.12.26",
+  "version": "0.12.27",
   "private": "true",
   "engines": {
     "npm": ">=11.9.0",
@@ -31,8 +31,8 @@
     "@fontsource/montserrat": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
     "@fontsource/source-sans-pro": "^5.2.5",
-    "@gen3/core": "0.12.26",
-    "@gen3/frontend": "0.12.26",
+    "@gen3/core": "0.12.27",
+    "@gen3/frontend": "0.12.27",
     "@grafana/faro-react": "^1.9.1",
     "@grafana/faro-web-sdk": "^1.9.1",
     "@grafana/faro-web-tracing": "^1.9.1",
@@ -64,7 +64,7 @@
   "devDependencies": {
     "@axe-core/react": "^4.10.2",
     "@chromatic-com/storybook": "^4.1.1",
-    "@gen3/toolsff": "0.12.26",
+    "@gen3/toolsff": "0.12.27",
     "@jest/globals": "^29.7.0",
     "@next/eslint-plugin-next": "^15.5.9",
     "@storybook/addon-a11y": "^9.1.10",
