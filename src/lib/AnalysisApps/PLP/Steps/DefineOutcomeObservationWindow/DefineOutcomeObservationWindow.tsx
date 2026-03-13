@@ -38,6 +38,9 @@ const DefineOutcomeObservationWindow = ({
         w={400}
         min={0}
         value={outcomeObservationWindow}
+        classNames={{
+          section: 'text-gray-500'
+        }}
         rightSection="days"
         rightSectionWidth={50}
         onChange={(e) => handleDefineOutcomeObservationWindow(toInteger(e))}  // TODO - debounce?
