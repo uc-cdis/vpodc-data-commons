@@ -9,7 +9,7 @@ const JobDetails = ({ data }: {data?: WorkflowDetails}) => {
   if (!(data?.arguments?.parameters)) {
     return <LoadingErrorMessage message='Issue Loading Data for Job Details' />;
   }
-  const dataPeramiters = data?.arguments?.parameters.reduce((acc: {[key: string]: string}, param) => {
+  const dataParameters = data?.arguments?.parameters.reduce((acc: {[key: string]: string}, param) => {
     acc[param.name] = param.value;
     return acc;
   }, {});
@@ -35,40 +35,40 @@ const JobDetails = ({ data }: {data?: WorkflowDetails}) => {
           <Group mt='sm' mb='sm'>
             <Group justify="space-between" className='w-full px-4'>
               <span>Dataset ID</span>
-              <span>{dataPeramiters.dataset_id}</span>
+              <span>{dataParameters.dataset_id}</span>
             </Group>
             <Group justify="space-between" className='w-full px-4'>
               <span>Dataset Observation Window</span>
-              <span>{dataPeramiters.dataset_observation_window} days</span>
+              <span>{dataParameters.dataset_observation_window} days</span>
             </Group>
             <Group justify="space-between" className='w-full px-4'>
               <span>Outcome of Interest ID</span>
-              <span>{dataPeramiters.outcome_id}</span>
+              <span>{dataParameters.outcome_id}</span>
             </Group>
             <Group justify="space-between" className='w-full px-4'>
               <span>Outcome Window</span>
-              <span>{dataPeramiters.outcome_observation_window} days</span>
+              <span>{dataParameters.outcome_observation_window} days</span>
             </Group>
             <Group justify="space-between" className='w-full px-4'>
               <span>Dataset size (after time window filters)</span>
-              <span>see attrition table</span>
+              <span>{dataParameters.dataset_size}</span>
             </Group>
             <Group justify="space-between" className='w-full px-4'>
               <span>Training set size</span>
-              <span>see attrition table</span>
+              <span>{dataParameters.training_set_size}</span>
             </Group>
             <Group justify="space-between" className='w-full px-4'>
               <span>Testing set size</span>
-              <span>see attrition table</span>
+              <span>{dataParameters.test_set_size}</span>
             </Group>
             <Group justify="space-between" className='w-full px-4'>
               <span>Cross-validation</span>
-              <span>{dataPeramiters.n_fold} folds</span>
+              <span>{dataParameters.n_fold} folds</span>
             </Group>
           </Group>
           <Divider />
           <Group mt='sm' mb='sm'>
-            {modelRenderer(dataPeramiters.model_list).map(({name, value}, index) => (
+            {modelRenderer(dataParameters.model_list).map(({name, value}, index) => (
               <Group 
               key={`${name}-${index}`}
               justify="space-between" 
