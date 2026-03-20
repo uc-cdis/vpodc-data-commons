@@ -76,6 +76,10 @@ const JobSubmitModal: React.FC<Props> = ({
 
   // Submit workflow request
   const handleSubmit = async () => {
+    if (!datasetRemainingSize) {
+      setSubmitError('Please wait while the attrition table calculations finish and "Dataset size" is known...');
+      return;
+    }
     if (jobName === '') {
       handleEnterJobName(jobName);
       return; // do not submit if job name invalid
@@ -98,6 +102,9 @@ const JobSubmitModal: React.FC<Props> = ({
         covariate_min_fraction: minimumCovariateOccurrence,
         test_fraction: percentageOfDataToUseAsTest/100,
         n_fold: numberOfCrossValidationFolds,
+        dataset_size: datasetRemainingSize,
+        training_set_size: datasetRemainingSize ? Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100) : null,
+        test_set_size: datasetRemainingSize ? calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize) : null,
         template_version: "plp-template",
         workflow_name: jobName,
         team_project: selectedTeamProject,
@@ -223,7 +230,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Dataset size (after time window filters):
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? datasetRemainingSize : 'see attrition table'}
+                  {datasetRemainingSize !== null ? datasetRemainingSize : 'waiting for attrition table...'}
                 </td>
               </tr>
               <tr>
@@ -231,7 +238,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Training set size:
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? `${Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100)}` : 'see attrition table'}
+                  {datasetRemainingSize !== null ? `${Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100)}` : 'waiting for attrition table...'}
                 </td>
               </tr>
               <tr>
@@ -239,7 +246,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Testing set size:
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? `${calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize)}` : 'see attrition table'}
+                  {datasetRemainingSize !== null ? `${calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize)}` : 'waiting for attrition table...'}
                 </td>
               </tr>
               <tr>
