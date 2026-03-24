@@ -45,6 +45,18 @@ const MockedSuccessJSON = {
       { name: 'n_segments', value: '0' },
       { name: 'segment_length', default: '2000', value: '2000' },
       { name: 'variant_block_size', default: '1024', value: '100' },
+      {
+        name: 'dataset_size',
+        value: '30',
+      },
+      {
+        name: 'training_set_size',
+        value: '20',
+      },
+      {
+        name: 'test_set_size',
+        value: '10',
+      },
       { name: 'mac_threshold', value: '0' },
       {
         name: 'gds_files',
