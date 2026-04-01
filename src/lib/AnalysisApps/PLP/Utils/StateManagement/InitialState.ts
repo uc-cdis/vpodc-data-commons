@@ -4,6 +4,7 @@ const initialState = {
   datasetRemainingSize: null,
   selectedOutcomeCohort: null,
   outcomeObservationWindow: 0,
+  removeIndividualsWithPriorOutcome: false,
   minimumCovariateOccurrence: 0.001,
   useAllCovariates: true,
   numberOfCrossValidationFolds: 3,
@@ -17,7 +18,9 @@ const initialState = {
   showJobSubmitModal: false,
   jobName: '',
   workflowSubmissionStatus: null,
+  workflowSubmissionId: null,
   selectedTeamProject: '',
+  showExpandedAttritionTable: false,
 };
 
 export default initialState;

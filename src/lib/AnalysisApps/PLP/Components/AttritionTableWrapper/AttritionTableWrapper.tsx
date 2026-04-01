@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AttritionTable } from './AttritionTable/AttritionTable';
 import { IconChevronUp, IconChevronDown } from '@tabler/icons-react';
+import ACTIONS from '../../Utils/StateManagement/Actions';
 
 interface AttritionTableWrapperProps {
   dispatch: (action: any) => void;
@@ -8,7 +9,9 @@ interface AttritionTableWrapperProps {
   datasetObservationWindow: number;
   selectedOutcomeCohort: cohort;
   outcomeObservationWindow: number;
+  removeIndividualsWithPriorOutcome: boolean;
   percentageOfDataToUseAsTest: number | null;
+  isOpen: boolean;
 }
 
 interface cohort { // TODO - centralize this interface
@@ -23,10 +26,15 @@ const AttritionTableWrapper: React.FC<AttritionTableWrapperProps> = ({
   datasetObservationWindow,
   selectedOutcomeCohort,
   outcomeObservationWindow,
+  removeIndividualsWithPriorOutcome,
   percentageOfDataToUseAsTest,
+  isOpen,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleArrow = () => setIsOpen((prev) => !prev);
+  const toggleArrow = () =>
+    dispatch({
+      type: ACTIONS.SET_ATTRITION_TABLE_OPEN,
+      payload: !isOpen,
+    });
 
   return (
     <div data-tour="attrition-table">
@@ -56,6 +64,7 @@ const AttritionTableWrapper: React.FC<AttritionTableWrapperProps> = ({
               datasetObservationWindow={datasetObservationWindow}
               selectedOutcomeCohort={selectedOutcomeCohort}
               outcomeObservationWindow={outcomeObservationWindow}
+              removeIndividualsWithPriorOutcome={removeIndividualsWithPriorOutcome}
               percentageOfDataToUseAsTest={percentageOfDataToUseAsTest}
               />
           </div> : null}

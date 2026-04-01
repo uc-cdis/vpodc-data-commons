@@ -113,6 +113,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         value: '100',
       },
       {
+        name: 'dataset_size',
+        value: '30',
+      },
+      {
+        name: 'training_set_size',
+        value: '20',
+      },
+      {
+        name: 'test_set_size',
+        value: '10',
+      },
+      {
         name: 'mac_threshold',
         value: '0',
       },
@@ -125,6 +137,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         name: 'internal_api_env',
         default: 'default',
         value: 'default',
+      },
+      {
+        name: "model_list",
+        value: "[\n{\n\"name\": \"Lasso Logistic Regression\",\n\"params\": {\n\"variance\": 0.01,\n\"forceIntercept\": false,\n\"upperLimit\": 20,\n\"lowerLimit\": 0.01,\n\"tolerance\": 2e-06,\n\"maxIterations\": 3000,\n\"seed\": 0\n}\n}\n]"
       },
     ],
   },

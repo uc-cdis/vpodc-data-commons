@@ -12,6 +12,7 @@ interface Props {
   datasetObservationWindow: number;
   selectedOutcomeCohort: cohort;
   outcomeObservationWindow: number;
+  removeIndividualsWithPriorOutcome: boolean;
   selectedTeamProject: string;
   minimumCovariateOccurrence: number;
   percentageOfDataToUseAsTest: number;
@@ -34,6 +35,7 @@ const JobSubmitModal: React.FC<Props> = ({
   datasetObservationWindow,
   selectedOutcomeCohort,
   outcomeObservationWindow,
+  removeIndividualsWithPriorOutcome,
   selectedTeamProject,
   minimumCovariateOccurrence,
   percentageOfDataToUseAsTest,
@@ -74,6 +76,10 @@ const JobSubmitModal: React.FC<Props> = ({
 
   // Submit workflow request
   const handleSubmit = async () => {
+    if (!datasetRemainingSize) {
+      setSubmitError('Please wait while the attrition table calculations finish and "Dataset size" is known...');
+      return;
+    }
     if (jobName === '') {
       handleEnterJobName(jobName);
       return; // do not submit if job name invalid
@@ -91,11 +97,14 @@ const JobSubmitModal: React.FC<Props> = ({
         min_time_at_risk: 364,  // TODO - advanced option
         include_all_outcomes:  true, // TODO - advanced option
         first_exposure_only: false, // TODO - advanced option
-        remove_subjects_with_prior_outcome: false, // TODO - advanced option
+        remove_subjects_with_prior_outcome: removeIndividualsWithPriorOutcome,
         source_id: sourceId,
         covariate_min_fraction: minimumCovariateOccurrence,
         test_fraction: percentageOfDataToUseAsTest/100,
         n_fold: numberOfCrossValidationFolds,
+        dataset_size: datasetRemainingSize,
+        training_set_size: datasetRemainingSize ? Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100) : null,
+        test_set_size: datasetRemainingSize ? calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize) : null,
         template_version: "plp-template",
         workflow_name: jobName,
         team_project: selectedTeamProject,
@@ -123,7 +132,7 @@ const JobSubmitModal: React.FC<Props> = ({
       // Dispatch success-related actions
       dispatch({
         type: ACTIONS.SET_WORKFLOW_SUBMISSION_STATUS,
-        payload: 'success',
+        payload: {status: 'success', response: responseData},
       });
       dispatch({ type: ACTIONS.HIDE_JOB_SUBMIT_MODAL });
     } catch (error: any) {
@@ -131,7 +140,7 @@ const JobSubmitModal: React.FC<Props> = ({
       // Dispatch error-related actions
       dispatch({
         type: ACTIONS.SET_WORKFLOW_SUBMISSION_STATUS,
-        payload: 'error',
+        payload: {status: 'error', response: error},
       });
       console.error('Error submitting workflow:', error);
     } finally {
@@ -210,10 +219,18 @@ const JobSubmitModal: React.FC<Props> = ({
               </tr>
               <tr>
                 <td className="font-semibold pr-4 text-right align-top whitespace-nowrap">
+                  Remove indiv. with prior outcome:
+                </td>
+                <td className="align-top">
+                  {removeIndividualsWithPriorOutcome ? 'Yes' : 'No'}
+                </td>
+              </tr>
+              <tr>
+                <td className="font-semibold pr-4 text-right align-top whitespace-nowrap">
                   Dataset size (after time window filters):
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? datasetRemainingSize : 'see attrition table'}
+                  {datasetRemainingSize !== null ? datasetRemainingSize : 'waiting for attrition table...'}
                 </td>
               </tr>
               <tr>
@@ -221,7 +238,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Training set size:
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? `${Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100)}` : 'see attrition table'}
+                  {datasetRemainingSize !== null ? `${Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100)}` : 'waiting for attrition table...'}
                 </td>
               </tr>
               <tr>
@@ -229,7 +246,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Testing set size:
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? `${calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize)}` : 'see attrition table'}
+                  {datasetRemainingSize !== null ? `${calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize)}` : 'waiting for attrition table...'}
                 </td>
               </tr>
               <tr>
