@@ -83,6 +83,10 @@ const nextConfig = {
           destination: `${GEN3_TARGET}/requestor/:path*`,
         },
         {
+          source: '/index/:path*',
+          destination: `${GEN3_TARGET}/index/:path*`,
+        },
+        {
           source: '/cohort-middleware/:path*',
           destination: `${APP_TARGET}/cohort-middleware/:path*`,
         },
