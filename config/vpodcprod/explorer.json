@@ -7,70 +7,11 @@
         {
           "title": "Demographic",
           "fields": [
-            "project_id",
-            "Days_To_Birth",
-            "Days_To_Death",
-            "DeceasedFlag",
+            "ProjectId",
             "Ethnicity",
             "Gender",
             "Race"
-          ],
-          "fieldsConfig" : {
-            "DeceasedFlag": {
-              "field": "DeceasedFlag",
-              "label": "Deceasedflag"
-            }
-          }
-        },
-        {
-          "title": "ActionableMutations",
-          "fields": [
-            "project_id",
-            "ActionableMutations.Lab",
-            "ActionableMutations.Gene",
-            "ActionableMutations.DaysFromAnchorDateToBxDate"
           ]
-        },
-        {
-          "title": "Oncology Primary",
-          "fields": [
-            "project_id",
-            "Oncology_Primary.Multiplicitycounter",
-            "Oncology_Primary.ICDOSite",
-            "Oncology_Primary.Radiation",
-            "Oncology_Primary.Chemotherapy",
-            "Oncology_Primary.DaysFromAnchorDateToDiagnosisDate",
-            "Oncology_Primary.Gradedifferentiation",
-            "Oncology_Primary.Laterality",
-            "Oncology_Primary.Stagegroupbest",
-            "Oncology_Primary.RadiationsurgerySequence",
-            "Oncology_Primary.Histologyicdo3X",
-            "Oncology_Primary.Lymphvascularinvasionl",
-            "Oncology_Primary.SeerSummaryStage2000",
-            "Oncology_Primary.PhysiciansStage",
-            "Oncology_Primary.DaysFromAnchorDateToMostdefinitivesurgDate",
-            "Oncology_Primary.ChemotherapyFac",
-            "Oncology_Primary.TumorSize",
-            "Oncology_Primary.SequenceNumber"
-          ],
-          "fieldsConfig" : {
-            "ICDOSite": {
-              "field": "Oncology_Primary.ICDOSite",
-              "label": "Icdosite"
-            },
-            "PhysiciansStage": {
-              "field": "Oncology_Primary.PhysiciansStage",
-              "label": "Physiciansstage"
-            },
-            "TumorSize": {
-              "field": "Oncology_Primary.TumorSize",
-              "label": "Tumorsize"
-            },
-            "SequenceNumber": {
-              "field": "Oncology_Primary.SequenceNumber",
-              "label": "Sequencenumber"
-            }
-          }
         }
       ]
     },
@@ -87,23 +28,23 @@
     "table": {
       "enabled": true,
       "fields": [
-        "project_id",
+        "ProjectId",
         "Race",
         "Ethnicity",
         "Gender",
-        "ActionableMutations.Lab",
-        "Oncology_Primary.Multiplicitycounter",
-        "Oncology_Primary.ICDOSite"
+        "ICDOSites",
+        "Diagnosis",
+        "CancerStages"
       ],
       "columns": {
-        "ActionableMutations.Lab": {
-          "title": "Actionablemutations Lab"
+        "ProjectId": {
+          "title": "Project Id"
         },
-        "Oncology_Primary.Multiplicitycounter": {
-          "title": "Oncology Primary Multiplicitycounter"
+        "ICDOSites": {
+          "title": "Cancer Origin"
         },
-        "Oncology_Primary.ICDOSite": {
-          "title": "Oncology Primary Icdosite"
+        "CancerStages": {
+          "title": "Stage"
         }
       },
       "detailsConfig": {
@@ -134,7 +75,7 @@
       ]
     },
     "guppyConfig": {
-      "dataType": "patients",
+      "dataType": "cohort_b_patients",
       "nodeCountTitle": "Patient",
       "fieldMapping": [],
       "manifestMapping": {
