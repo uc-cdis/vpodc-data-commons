@@ -30,6 +30,7 @@ const TeamsDropdown: React.FC<TeamsDropdownProps> = ({
           label: getLastPathSegment(team.teamName), // e.g., 'project1'
         }))}
         onChange={setSelectedTeamProject}
+        comboboxProps={{ zIndex: 500 }}
       />
     </div>
   );

@@ -87,7 +87,7 @@ const TeamProjectModal: React.FC<TeamProjectModalProps> = ({
             setSelectedTeamProject={setSelectedTeamProject}
           />
           <Button
-            className="mb-4 float-right"
+            className="m-4 float-right"
             disabled={!selectedTeamProject}
             onClick={() => closeAndUpdateTeamProject()}
           >
