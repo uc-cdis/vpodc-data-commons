@@ -2,11 +2,11 @@ import React, { useReducer, Reducer } from 'react';
 import { Button, Group, Title } from '@mantine/core';
 import ProgressBar from './Components/ProgressBar/ProgressBar';
 import { PLPAppSteps } from  './Utils/constants';
-import { SourceContextProvider } from '../SharedUtils/Source';
 import reducer, {State, Action} from './Utils/StateManagement/reducer';
 import ACTIONS from './Utils/StateManagement/Actions';
 import AttritionTableWrapper from './Components/AttritionTableWrapper/AttritionTableWrapper';
 import SelectStudyPopulation from './Steps/SelectStudyPopulation/SelectStudyPopulation';
+import SelectSource from './Steps/SelectSource/SelectSource';
 import SelectOutcomeCohort from './Steps/SelectOutcomeCohort/SelectOutcomeCohort';
 
 import DefineDatasetObservationWindow from './Steps/DefineDatasetObservationWindow/DefineDatasetObservationWindow';
@@ -25,23 +25,37 @@ const PLPContainer = () => {
   const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, InitializeCurrentState());
   const generateStep = () => {
     switch (state.currentStep) {
-      case 0:
-        return (
-          <div data-tour="cohort-intro" className="min-w-[500px]">
-            <div>
-              In this step, you can select an initial dataset for Patient Level Prediction (PLP) training,
-              validation, and testing. This initial dataset is a user-created cohort in Atlas. You will
-              have the opportunity to split this dataset into training, validation, and testing in Step 6.
-            </div>
-            <br/>
-            <SelectStudyPopulation
-              selectedCohort={state.selectedStudyPopulationCohort}
-              dispatch={dispatch}
-              selectedTeamProject={state.selectedTeamProject}
-            />
+    case 0:
+      return (
+        <div data-tour="cohort-intro" className="min-w-[500px]">
+          <div>
+            In this step, you can select an initial data source from which the cohorts can be selected in the following steps
           </div>
-        );
+          <br/>
+          <SelectSource
+            selectedSourceId={state.sourceId}
+            dispatch={dispatch}
+          />
+        </div>
+      );
     case 1:
+      return (
+        <div data-tour="cohort-intro" className="min-w-[500px]">
+          <div>
+            In this step, you can select an initial dataset for Patient Level Prediction (PLP) training,
+            validation, and testing. This initial dataset is a user-created cohort in Atlas. You will
+            have the opportunity to split this dataset into training, validation, and testing in Step 6.
+          </div>
+          <br/>
+          {state.sourceId && <SelectStudyPopulation
+            selectedCohort={state.selectedStudyPopulationCohort}
+            dispatch={dispatch}
+            selectedTeamProject={state.selectedTeamProject}
+            sourceId={state.sourceId}
+          />}
+        </div>
+      );
+    case 2:
       return (
         <div data-tour="cohort-intro" >
           <div>
@@ -57,7 +71,7 @@ const PLPContainer = () => {
           <br/>
         </div>
       );
-    case 2:
+    case 3:
       return (
         <div data-tour="cohort-intro" className="min-w-[500px]">
           <div>
@@ -73,7 +87,7 @@ const PLPContainer = () => {
           />
         </div>
       );
-    case 3:
+    case 4:
       return (
         <div data-tour="cohort-intro" >
           <div>
@@ -91,7 +105,7 @@ const PLPContainer = () => {
           <br/>
         </div>
       );
-    case 4:
+    case 5:
       return (
         <div data-tour="cohort-intro" >
           <div>
@@ -109,7 +123,7 @@ const PLPContainer = () => {
           <br/>
         </div>
       );
-    case 5:
+    case 6:
       return (
         <div data-tour="cohort-intro" >
           <div>
@@ -128,7 +142,7 @@ const PLPContainer = () => {
           <br/>
         </div>
       );
-    case 6:
+    case 7:
       return (
         <div data-tour="cohort-intro" >
           {state.workflowSubmissionStatus && state.workflowSubmissionStatus === 'success' && (
@@ -167,6 +181,7 @@ const PLPContainer = () => {
               datasetRemainingSize={state.datasetRemainingSize}
               model={state.model}
               modelParameters={state.modelParameters}
+              sourceId={state.sourceId}
             />
           )}
           <br/>
@@ -181,17 +196,17 @@ const PLPContainer = () => {
 
   // step specific conditions where progress to next step needs to be blocked:
   if (
-    (state.currentStep === 0 && !state.selectedStudyPopulationCohort) ||
-    (state.currentStep === 1 && !state.datasetObservationWindow) ||
-    (state.currentStep === 2 && !state.selectedOutcomeCohort) ||
-    (state.currentStep === 3 && !state.outcomeObservationWindow) ||
-    (state.currentStep === 5 && !state.percentageOfDataToUseAsTest)
+    (state.currentStep === 0 && !state.sourceId) ||
+    (state.currentStep === 1 && !state.selectedStudyPopulationCohort) ||
+    (state.currentStep === 2 && !state.datasetObservationWindow) ||
+    (state.currentStep === 3 && !state.selectedOutcomeCohort) ||
+    (state.currentStep === 4 && !state.outcomeObservationWindow) ||
+    (state.currentStep === 6 && !state.percentageOfDataToUseAsTest)
   ) {
     nextButtonEnabled = false;
   }
 
   return (
-    <SourceContextProvider>
     <React.Fragment>
       <div>
         <div className="flex justify-between pb-4">
@@ -215,6 +230,7 @@ const PLPContainer = () => {
         outcomeObservationWindow={state.outcomeObservationWindow}
         removeIndividualsWithPriorOutcome={state.removeIndividualsWithPriorOutcome}
         percentageOfDataToUseAsTest={state.percentageOfDataToUseAsTest}
+        sourceId={state.sourceId}
         isOpen={state.showExpandedAttritionTable}
       />
       <div data-testid="GWASApp" className="p-4">
@@ -267,7 +283,6 @@ const PLPContainer = () => {
         </div>
       </div>
     </React.Fragment>
-    </SourceContextProvider>
   );
 };
 

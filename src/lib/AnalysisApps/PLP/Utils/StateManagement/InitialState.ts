@@ -21,6 +21,7 @@ const initialState = {
   workflowSubmissionId: null,
   selectedTeamProject: '',
   showExpandedAttritionTable: false,
+  sourceId: null,
 };
 
 export default initialState;

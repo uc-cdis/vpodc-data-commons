@@ -28,10 +28,13 @@ export interface State {
   workflowSubmissionStatus: string | null;
   workflowSubmissionId: string | null;
   showExpandedAttritionTable: boolean;
+  sourceId: number | null;
 };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case ACTIONS.SET_SELECTED_SOURCE_ID:
+      return { ...state, sourceId: action.payload };
     case ACTIONS.SET_SELECTED_STUDY_POPULATION_COHORT:
       return { ...state, selectedStudyPopulationCohort: action.payload };
     case ACTIONS.SET_SELECTED_OUTCOME_COHORT:
