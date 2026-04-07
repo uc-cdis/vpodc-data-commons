@@ -1,40 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import ACTIONS from '../../Utils/StateManagement/Actions';
+
 import { IconDatabaseOff } from '@tabler/icons-react';
 import { Loader, Table, Pagination, Select } from '@mantine/core';
-import { useFilter } from '../../../PLP/Utils/formHooks';
-import { CohortsEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
+import { SourcesEndpoint } from '../../../SharedUtils/Endpoints';
 import useSWR from 'swr';
 
-interface CohortDefinitionsProps {
-  selectedCohort?: cohort | undefined;
-  handleCohortSelect: (arg0: cohort) => void;
-  searchTerm: string;
-  selectedTeamProject: string;
-  sourceId: number;
-}
-interface cohort { // TODO - centralize this interface
-  cohort_definition_id: number;
-  cohort_name: string;
-  size: number;
+type SelectSourceProps = {
+  dispatch: (action: any) => void;
+  selectedSourceId?: number | null;
+};
+
+interface source { 
+  source_id: number;
+  source_name: string;
 }
 
-const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
-  selectedCohort = undefined,
-  handleCohortSelect,
-  searchTerm,
-  selectedTeamProject,
-  sourceId,
-}) => {
+
+
+
+const SelectSource = ({
+  selectedSourceId,
+  dispatch,
+}: SelectSourceProps) => {
+  const handleSourceSelect = (selectedSource: source) => {
+    dispatch({
+      type: ACTIONS.SET_SELECTED_SOURCE_ID,
+      payload: selectedSource.source_id,
+    });
+  };
+
+  const { data:sourcesFromFetch, error, isLoading } = useSWR(SourcesEndpoint,
+    (...args) => fetch(...args).then((res) => res.json()).then((data) => {
+      if (Array.isArray(data?.sources)) {
+        return data.sources;
+      } else {
+        const message = `Data source recieved in an invalid format:
+          ${JSON.stringify(data)}`;
+        new Error(message);
+      }
+    }),
+  );
+
+
   const [page, setPage] = useState(1); // Track current page
   const [rowsPerPage, setRowsPerPage] = useState(10); // Number of rows to show per page
-  const { data, error, isLoading } = useSWR(
-    CohortsEndpoint + '/' + sourceId + `/by-team-project?team-project=${selectedTeamProject}`,
-    (...args) => fetch(...args).then((res) => res.json()),
-  );
-  const displayedCohorts: cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
-
-  if (error)
-    return <React.Fragment>Error getting data for table</React.Fragment>;
 
   if (isLoading)
     return (
@@ -43,27 +53,29 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
       </div>
     );
 
-  if (displayedCohorts) {
-    const pageOfDisplayedCohorts = displayedCohorts.slice(
-      (page - 1) * rowsPerPage,
-      page * rowsPerPage,
-    );
-    const totalPagesForPagination = Math.ceil(displayedCohorts.length / rowsPerPage);
+  if (error || !sourcesFromFetch)
+    return <React.Fragment>Error getting data for table</React.Fragment>;
 
-    return (
+  const pageOfDisplayedSources = sourcesFromFetch.slice(
+    (page - 1) * rowsPerPage,
+    page * rowsPerPage,
+  );
+  const totalPagesForPagination = Math.ceil(sourcesFromFetch.length / rowsPerPage);
+  return (
+    <div data-tour="source-select">
       <React.Fragment>
         <div className="w-full min-h-[200px] py-5">
-          {pageOfDisplayedCohorts?.length > 0 ? (
+          {pageOfDisplayedSources?.length > 0 ? (
             <Table className="shadow">
               <Table.Thead className="bg-vadc-slate_blue font-light">
                 <Table.Tr>
                   <Table.Th>Select</Table.Th>
-                  <Table.Th>Cohort Name</Table.Th>
-                  <Table.Th>Size</Table.Th>
+                  <Table.Th>Source Name</Table.Th>
+                  <Table.Th>Source ID</Table.Th>
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
-                {pageOfDisplayedCohorts.map((cohort, i) => (
+                {pageOfDisplayedSources.map((source: source, i: number) => (
                   <Table.Tr
                     key={i}
                     className={i % 2 ? 'bg-vadc-alternate_row' : ''}
@@ -72,17 +84,17 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
                       <input
                         type="radio"
                         id={`radio-buttion-${i}`}
-                        checked={selectedCohort?.cohort_definition_id === cohort.cohort_definition_id}
+                        checked={selectedSourceId === source.source_id}
                         onChange={() => {
-                          handleCohortSelect(cohort);
+                          handleSourceSelect(source);
                         }}
                       />
                       <label htmlFor={`radio-buttion-${i}`} className="sr-only">
                         Select this row
                       </label>
                     </Table.Td>
-                    <Table.Td>{cohort.cohort_name}</Table.Td>
-                    <Table.Td>{cohort.size}</Table.Td>
+                    <Table.Td>{source.source_name}</Table.Td>
+                    <Table.Td>{source.source_id}</Table.Td>
                   </Table.Tr>
                 ))}
               </Table.Tbody>
@@ -127,8 +139,8 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
           </div>
         </div>
       </React.Fragment>
-    );
-  }
+    </div>
+  );
 };
 
-export default CohortDefinitions;
+export default SelectSource;

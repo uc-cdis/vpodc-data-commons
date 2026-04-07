@@ -1,4 +1,5 @@
 const ACTIONS = {
+  SET_SELECTED_SOURCE_ID: 'setSelectedSourceId',
   SET_SELECTED_STUDY_POPULATION_COHORT: 'setSelectedStudyPopulationCohort',
   SET_SELECTED_OUTCOME_COHORT: 'setSelectedOutcomeCohort',
   SET_DATASET_OBSERVATION_WINDOW: 'setDatasetObservationWindow',
