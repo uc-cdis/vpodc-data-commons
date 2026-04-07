@@ -6,6 +6,7 @@ type SelectOutcomeCohortProps = {
   dispatch: (action: any) => void;
   selectedCohort?: cohort;
   selectedTeamProject: string;
+  sourceId: number;
 };
 
 interface cohort { // TODO - centralize this interface
@@ -18,6 +19,7 @@ const SelectOutcomeCohort = ({
   selectedCohort,
   dispatch,
   selectedTeamProject,
+  sourceId,
 }: SelectOutcomeCohortProps) => {
   const handleCohortSelect = (selectedCohort: cohort) => {
     dispatch({
@@ -32,6 +34,7 @@ const SelectOutcomeCohort = ({
         selectedCohort={selectedCohort}
         handleCohortSelect={handleCohortSelect}
         selectedTeamProject={selectedTeamProject}
+        sourceId={sourceId}
       />
     </div>
   );
