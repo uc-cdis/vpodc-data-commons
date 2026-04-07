@@ -7,6 +7,7 @@ interface SelectCohortProps {
   selectedCohort?: cohort | undefined;
   handleCohortSelect: (selectedCohort: cohort) => void;
   selectedTeamProject: string;
+  sourceId: number;
 }
 interface cohort { // TODO - centralize this interface
   cohort_definition_id: number;
@@ -18,6 +19,7 @@ const SelectCohort: React.FC<SelectCohortProps> = ({
   selectedCohort,
   handleCohortSelect,
   selectedTeamProject,
+  sourceId,
 }) => {
   const [cohortSearchTerm, setCohortSearchTerm] = useState('');
 
@@ -43,6 +45,7 @@ const SelectCohort: React.FC<SelectCohortProps> = ({
               handleCohortSelect={handleCohortSelect}
               searchTerm={cohortSearchTerm}
               selectedTeamProject={selectedTeamProject}
+              sourceId={sourceId}
             />
           </div>
         </div>
