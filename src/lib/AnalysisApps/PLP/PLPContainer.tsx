@@ -80,11 +80,12 @@ const PLPContainer = () => {
             to create outcome labels for all individuals in the initial dataset.
           </div>
           <br/>
-          <SelectOutcomeCohort
+          {state.sourceId && <SelectOutcomeCohort
             selectedCohort={state.selectedOutcomeCohort}
             dispatch={dispatch}
             selectedTeamProject={state.selectedTeamProject}
-          />
+            sourceId={state.sourceId}
+          />}
         </div>
       );
     case 4:

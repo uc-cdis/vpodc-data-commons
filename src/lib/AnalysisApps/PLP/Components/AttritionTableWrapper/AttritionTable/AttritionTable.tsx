@@ -11,7 +11,7 @@ interface AttritionTableProps {
   outcomeObservationWindow: number;
   removeIndividualsWithPriorOutcome: boolean;
   percentageOfDataToUseAsTest: number | null;
-  sourceId: number | null;
+  sourceId: number;
 }
 
 interface cohort { // TODO - centralize this interface
