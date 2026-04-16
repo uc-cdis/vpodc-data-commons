@@ -1,18 +1,21 @@
-import React, { useContext, useState } from 'react';
-import useSWR from 'swr';
-import { Loader, Button, Tooltip } from '@mantine/core';
+import React, { useContext } from 'react';
+import { Loader } from '@mantine/core';
 import SharedContext from '../../../Utils/SharedContext';
-import { fetchPresignedUrlForWorkflowArtifact } from '../../../Utils/gwasWorkflowApi';
 import LoadingErrorMessage from '../../../../SharedUtils/LoadingErrorMessage/LoadingErrorMessage';
 import { useGetPresignedUrlOrDataForWorkflowArtifactQuery } from '@/lib/AnalysisApps/Results/Utils/workflowApi';
+import StatsTable from './StatsTable'
 
-interface ResultsPngProps {
+interface ResultsStatsProps {
   artifactName: string;
 }
-//TODO update to stats
-const Stats: React.FC<ResultsPngProps> = ({ artifactName }) => {
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
-  const [imageLoadFailed, setImageLoadFailed] = useState<boolean>(false);
+
+interface TableDataItem {
+  evaluation: string;
+  metric: string;
+  value: string;
+}
+
+const Stats: React.FC<ResultsStatsProps> = ({ artifactName }) => {
 
   const { selectedRowData } = useContext(SharedContext);
   if (!selectedRowData) {
@@ -21,9 +24,9 @@ const Stats: React.FC<ResultsPngProps> = ({ artifactName }) => {
   const { name, uid } = selectedRowData;
 
 
-  const { data, error, isLoading, isFetching} = useGetPresignedUrlOrDataForWorkflowArtifactQuery({artifactName, workflowName: name, workflowUid: uid, retrieveData: true });
+  const { data, error, isLoading, isFetching} = useGetPresignedUrlOrDataForWorkflowArtifactQuery({artifactName, workflowName: name, workflowUid: uid, retrieveData: 'tsv'});
 
-  console.log('test 203', artifactName, data);
+
 
   if (error) {
     return (
@@ -38,17 +41,16 @@ const Stats: React.FC<ResultsPngProps> = ({ artifactName }) => {
     );
   }
 
-  if (!data?.url) {
+  if (!data) {
     return (
-      <LoadingErrorMessage message='Failed to load image, no image path' />
+      <LoadingErrorMessage message='No data' />
     );
   }
-
 
   return (
     <div className='results-view'>
       <section className='data-viz'>
-
+        <StatsTable data={data} />
       </section>
     </div>
   );

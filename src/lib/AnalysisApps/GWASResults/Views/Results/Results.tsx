@@ -129,8 +129,10 @@ const Results = () => {
   return (
     <div className='results-view'>
       {displayTopSection()}
-      <section className='data-viz'>{displayStats()}</section>
-      <section className='data-viz'>{displayPlot()}</section>
+      <div className='flex gap-4'>
+        <section className='data-viz flex-1'>{displayStats()}</section>
+        <section className='data-viz flex-1'>{displayPlot()}</section>
+      </div>
     </div>
   );
 };

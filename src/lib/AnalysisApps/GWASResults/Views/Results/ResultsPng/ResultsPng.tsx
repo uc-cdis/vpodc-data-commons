@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react';
-import useSWR from 'swr';
-import { Loader, Button, Tooltip } from '@mantine/core';
+import { Loader, Tooltip } from '@mantine/core';
 import SharedContext from '../../../Utils/SharedContext';
-import { fetchPresignedUrlForWorkflowArtifact } from '../../../Utils/gwasWorkflowApi';
 import LoadingErrorMessage from '../../../../SharedUtils/LoadingErrorMessage/LoadingErrorMessage';
 import { useGetPresignedUrlOrDataForWorkflowArtifactQuery } from '@/lib/AnalysisApps/Results/Utils/workflowApi';
 
@@ -21,7 +19,7 @@ const ResultsPng: React.FC<ResultsPngProps> = ({ artifactName }) => {
   const { name, uid } = selectedRowData;
 
 
-  const { data, error, isLoading, isFetching} = useGetPresignedUrlOrDataForWorkflowArtifactQuery({artifactName, workflowName: name, workflowUid: uid, retrieveData: false });
+  const { data, error, isLoading, isFetching} = useGetPresignedUrlOrDataForWorkflowArtifactQuery({artifactName, workflowName: name, workflowUid: uid });
 
 
   const isSafeImageSrc = (url: string) => {
@@ -90,7 +88,7 @@ const ResultsPng: React.FC<ResultsPngProps> = ({ artifactName }) => {
                 alt='Results plot'
                 onLoad={() => setImageLoaded(true)}
                 onError={() => setImageLoadFailed(true)}
-                className="w-[60%] h-auto max-h-screen p-4 rounded-lg bg-white object-contain"
+                className="h-auto max-h-screen p-4 rounded-lg bg-white object-contain"
               />
             </a>
           </Tooltip>
