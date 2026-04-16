@@ -71,6 +71,10 @@
       {
         "href": "https://docs.gen3.org/",
         "name": "Documentation"
+      },
+      {
+        "href": "mailto:support@gen3.org",
+        "name": "Email Support"
       }
     ],
     "loginButtonVisibility": "visible"
