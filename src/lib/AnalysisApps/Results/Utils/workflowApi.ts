@@ -117,7 +117,7 @@ export const getPresignedUrl = async (
  */
 export const getUrlData = async (url: string, retrieveData: string) => {
   
-  let headers:any = {};
+  const headers:any = {};
   if (retrieveData === 'tsv') {
     headers.Accept = 'text/tab-separated-values';
   }
