@@ -130,8 +130,8 @@ const Results = () => {
     <div className='results-view'>
       {displayTopSection()}
       <div className='flex gap-4'>
-        <section className='data-viz flex-1'>{displayStats()}</section>
         <section className='data-viz flex-1'>{displayPlot()}</section>
+        <section className='data-viz flex-1'>{displayStats()}</section>
       </div>
     </div>
   );
