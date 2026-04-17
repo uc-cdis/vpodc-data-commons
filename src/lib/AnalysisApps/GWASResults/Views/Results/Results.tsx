@@ -5,9 +5,10 @@ import SharedContext from '../../Utils/SharedContext';
 import LoadingErrorMessage from '../../../SharedUtils/LoadingErrorMessage/LoadingErrorMessage';
 //import ResultsPheWeb from './ResultsPheWeb/ResultsPheWeb';
 import ResultsPng from './ResultsPng/ResultsPng';
+import Stats from './Stats/Stats';
 
 import { Loader, Button } from '@mantine/core';
-import { fetchPresignedUrlForWorkflowArtifact, getWorkflowDetails, WorkflowDetailsType } from '../../Utils/gwasWorkflowApi';
+import { fetchPresignedUrlForWorkflowArtifact } from '../../Utils/gwasWorkflowApi';
 import { useGetWorkflowDetailsQuery } from '@/lib/AnalysisApps/Results/Utils/workflowApi';
 
 const Results = () => {
@@ -63,7 +64,7 @@ const Results = () => {
     );
   }
 
-  if (!data) {
+  if (!data?.outputs?.parameters) {
     return (
       <React.Fragment>
         {displayTopSection()}
@@ -106,11 +107,32 @@ const Results = () => {
       <LoadingErrorMessage message='Plot cannot display. This workflow pre-dates the availability of the plot in the user interface. To see the plot please use the “Download All Results” button.' />
     );
   };
+  const displayStats = () => {
+
+    const artifactNames = [
+      'stats_index',
+    ];
+    // Find the first present
+    const foundArtifact = artifactNames.find(artifactName =>
+      data?.outputs?.parameters?.some(entry => entry.name === artifactName)
+    );
+    if (foundArtifact) {
+      return <Stats artifactName={foundArtifact} />;
+    }
+
+    // If none of the above, show error:
+    return (
+      <LoadingErrorMessage message='Stats cannot display. This workflow pre-dates the availability of the stats in the user interface. To see the stats please use the “Download All Results” button.' />
+    );
+  };
 
   return (
     <div className='results-view'>
       {displayTopSection()}
-      <section className='data-viz'>{displayPlot()}</section>
+      <div className='flex gap-4'>
+        <section className='data-viz flex-1'>{displayPlot()}</section>
+        <section className='data-viz flex-1'>{displayStats()}</section>
+      </div>
     </div>
   );
 };
