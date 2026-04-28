@@ -42,6 +42,8 @@ const nextConfig = {
     if (isDev) {
       const GEN3_TARGET =
         process.env.NEXT_PUBLIC_GEN3_API_TARGET || 'https://localhost';
+      const APP_TARGET =
+        process.env.NEXT_VPODC_APPS_TARGET || GEN3_TARGET;
       return [
         { source: '/_status', destination: `${GEN3_TARGET}/_status` },
         { source: '/user/:path*', destination: `${GEN3_TARGET}/user/:path*` },
@@ -83,6 +85,14 @@ const nextConfig = {
         {
           source: '/index/:path*',
           destination: `${GEN3_TARGET}/index/:path*`,
+        },
+        {
+          source: '/cohort-middleware/:path*',
+          destination: `${GEN3_TARGET}/cohort-middleware/:path*`,
+        },
+        {
+          source: '/ga4gh/wes/v2/:path*',
+          destination: `${GEN3_TARGET}/ga4gh/wes/v2/:path*`,
         },
         {
           source: '/login',
