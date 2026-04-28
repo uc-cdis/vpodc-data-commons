@@ -39,6 +39,7 @@ export const loadContent = async () => {
     `icons/`,
     '\\.json',
   );
+
   return {
     modalsConfig: modals,
     sessionConfig: 'sessionConfig' in session ? session.sessionConfig : session,
