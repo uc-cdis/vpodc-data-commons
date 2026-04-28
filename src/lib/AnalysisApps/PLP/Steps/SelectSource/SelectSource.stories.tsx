@@ -15,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof SelectSource>;
 
 const SelectSourceWithHooks = () => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, InitializeCurrentState());
+  const [state, dispatch] = useReducer(reducer, InitializeCurrentState());
 
   return (
     <SelectSource
