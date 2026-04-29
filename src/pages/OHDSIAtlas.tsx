@@ -54,7 +54,7 @@ const OHDSIAtlas = ({ headerProps, footerProps }: NavPageLayoutProps) => {
               <Title order={1}>OHDSI Atlas</Title>
               <TeamProjectHeader isEditable={false} />
             </div>
-            <p>Use this App for cohort creation. These will be automatically populated in the Gen3 GWAS App</p>
+            <p>Use this App for cohort creation. These will be automatically populated in the Gen3 PLP App</p>
           </div>
           <iframe
             className='w-full h-full'
