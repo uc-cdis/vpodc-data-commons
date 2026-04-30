@@ -3,16 +3,13 @@
     "title": "Data Use Agreement for Academic and Institutional Users",
     "content": {
       "text": [
-        "Please see the below two Data Use Agreements: the first one is for Academic and Institutional users for non-commercial use; the second agreement is for commercial use.",
-        "",
-        "",
-        "Data Use Agreement - Non-Commercial Research Use Only",
-        "This Data Use Agreement for Academic and Institutional Users (this “Agreement”) is by and between you and the University and governs your access to and use of the deidentified imaging and associated demographic and clinical data provided to you by the University. By accessing, using, or downloading any data, you are agreeing to be bound by the terms and conditions of this Agreement.",
-        "1. The University is the legal entity that hosts data.",
-        "",
-        "DATA USE AGREEMENT – COMMERCIAL USE PERMITTED",
-        "This Data Use Agreement (this “Agreement”) is by and between you or the entity you represent (“you”) and the University of Chicago (the “University”) and governs your access to and use of the deidentified imaging and associated demographic and clinical data provided to you by the University. By accessing, using, or downloading any data, you are agreeing to be bound by the terms and conditions of this Agreement. If you are entering into this Agreement for an entity, such as the company you work for, you represent and warrant that you have legal authority to bind that entity",
-        "1. The University may terminate this Agreement at any time upon notice to you. The University shall have no liability in the event of any such termination. Upon such termination, the University may direct that you immediately return or destroy all copies of any data and, upon the University’s request, you will certify the foregoing to the University in writing."
+        "The Murtha Cancer Center Data Platform (\"Platform\") provides controlled access to data from the PROMETHEUS and APOLLO research programs, including de-identified clinical, genomic, imaging, and proteomic data from military, veteran, and civilian cohorts contributed by the Department of Defense, Veterans Administration, Department of Energy, National Institutes of Health. The Platform is designed to protect Controlled Data in accordance with applicable security and privacy requirements, including NIST SP 800-171.",
+        "Access to the Platform is granted based on approved authorization, least privilege, and need-to-know principles, and may be subject to repository-specific Data Use Agreements (DUAs). The Platform may contain Controlled Data that has additional restrictions. Users agree to access only data for which they are authorized and to comply with all applicable DUAs and platform controls. Users must maintain the confidentiality of their authentication credentials and may not share access or attempt to bypass security mechanisms.",
+        "All data must be handled in accordance with applicable regulatory, contractual, and platform requirements. Users may not download, store, transmit, or process Controlled Data outside of approved environments unless explicitly authorized. Redistribution of Controlled Data, including posting to external systems or repositories, is strictly prohibited.",
+        "Users are strictly prohibited from attempting to re-identify individuals or contact study participants. Any suspected re-identification, unauthorized access, or security incident must be reported immediately. All user activity on the Platform may be logged, monitored, and reviewed to ensure compliance with security requirements.",
+        "The Platform must be used only for lawful purposes and in accordance with all applicable Federal, State, Local, and institutional requirements. Users agree to access the system only through approved, secure methods and may not attempt to disrupt, intercept, or misuse system resources.",
+        "All data is provided \"as is\" without warranties of any kind. Failure to comply with these Terms of Use or applicable agreements may result in immediate suspension or termination of access, as well as administrative, contractual, or legal action. The Platform operates under a shared responsibility model, and users are responsible for adhering to security and compliance obligations as defined during the assigned Platform training.",
+        "By selecting \"Accept,\" the user certifies that they have read, understand, and agree to comply with these Terms of Use and any applicable Data Use Agreements, and that they will ensure compliance by any individuals under their supervision."
       ],
       "className": "text-base-contrast-max"
     },
