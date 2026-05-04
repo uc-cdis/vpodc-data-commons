@@ -22,7 +22,7 @@ import JobSubmitModal from './Components/JobSubmitModal/JobSubmitModal';
 import DismissibleMessage from '../SharedUtils/DismissibleMessage/DismissibleMessage';
 
 const PLPContainer = () => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, InitializeCurrentState());
+  const [state, dispatch] = useReducer(reducer, InitializeCurrentState());
   const generateStep = () => {
     switch (state.currentStep) {
     case 0:

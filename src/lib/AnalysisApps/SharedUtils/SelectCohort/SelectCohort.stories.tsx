@@ -70,7 +70,7 @@ interface cohort { // TODO - centralize this interface
 }
 
 const SelectCohortWithHooks = () => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleStudyPopulationSelect = (selectedCohort: cohort) => {
     dispatch({

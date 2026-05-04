@@ -14,7 +14,7 @@ const ResourcesData = [
     title: 'OHDSI Atlas',
     link: '/OHDSIAtlas',
     summary:
-      'Use this App for cohort creation. These will be automatically populated in the Gen3 GWAS App',
+      'Use this App for cohort creation. These will be automatically populated in the Gen3 PLP App',
     imageSrc: AtlasLogo,
   },
   {
