@@ -485,7 +485,6 @@ describe('workflowApi', () => {
         workflowName: '123',
         workflowUid: '456',
         artifactName: 'gwas_archive_index',
-        retrieveData: true,
       }),
     );
 

@@ -66,7 +66,7 @@ const AttritionTable = ({ tableData, title }: {tableData: AttritionTableJSONType
   };
 
   const displayGroupBreakDowns = (hareGroupNames: string[], row: AttritionTableJSONrowsType) => {
-    const hareGroupCountsJSX: JSX.Element[] = [];
+    const hareGroupCountsJSX: React.JSX.Element[] = [];
 
     hareGroupNames.forEach((hareGroupName) => {
       const count = getBreakDownForGroup(hareGroupName, row?.concept_breakdown);

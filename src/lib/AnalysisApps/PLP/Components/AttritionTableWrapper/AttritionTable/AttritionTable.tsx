@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Loader } from '@mantine/core';
 import { CohortsEndpoint, CohortsOverlapEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
-import { useSourceContext } from '../../../../SharedUtils/Source';
 import ACTIONS from '../../../Utils/StateManagement/Actions';
 
 interface AttritionTableProps {
@@ -12,6 +11,7 @@ interface AttritionTableProps {
   outcomeObservationWindow: number;
   removeIndividualsWithPriorOutcome: boolean;
   percentageOfDataToUseAsTest: number | null;
+  sourceId: number;
 }
 
 interface cohort { // TODO - centralize this interface
@@ -41,8 +41,8 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
   outcomeObservationWindow,
   removeIndividualsWithPriorOutcome,
   percentageOfDataToUseAsTest,
+  sourceId,
 }) => {
-  const { sourceId } = useSourceContext();
   const steps = [ 1, 2, '4a', '4b', 6 ]; // the workflow step related to each description below
   const descriptions = [
     'Initial data cohort',

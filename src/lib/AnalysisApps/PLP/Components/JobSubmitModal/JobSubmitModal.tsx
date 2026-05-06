@@ -3,7 +3,6 @@ import { Modal, TextInput, Button, Loader } from '@mantine/core';
 import ACTIONS from '../../Utils/StateManagement/Actions';
 //import './JobInputModal.css';
 import { SubmitWorkflowEndpoint, DefaultHeaders } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
-import { useSourceContext } from '../../../SharedUtils/Source';
 
 interface Props {
   jobName: string;
@@ -20,6 +19,7 @@ interface Props {
   datasetRemainingSize: number | null;
   model: string;
   modelParameters: Record<string, any>;
+  sourceId: number | null;
 }
 
 interface cohort { // TODO - centralize this interface
@@ -43,13 +43,13 @@ const JobSubmitModal: React.FC<Props> = ({
   datasetRemainingSize,
   model,
   modelParameters,
+  sourceId,
 }) => {
   // const { data, status } = useQuery(
   //   ['monthly-workflow-limit-job-input-modal'],
   //   fetchMonthlyWorkflowLimitInfo,
   // );
 
-  const { sourceId } = useSourceContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [jobNameError, setJobNameError] = useState(null as string | null);

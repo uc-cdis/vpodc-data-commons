@@ -80,7 +80,7 @@ interface WorkflowDetailsRequest {
 
 interface PresignedUrlWorkflowArtifactRequest extends WorkflowDetailsRequest {
   artifactName: string;
-  retrieveData?: boolean;
+  retrieveData?: string;
 }
 
 
@@ -106,37 +106,41 @@ export const getPresignedUrl = async (
 };
 
 /**
- * Asynchronously fetches data from a given URL using a provided fetch function.
+ * Asynchronously fetches data from a given URL 
  *
- * This function sends a request to the specified URL using the `fetchWithBQ` function and retrieves the response.
  * If an error occurs during the request, it returns an object containing the error.
  * If the request is successful, it returns an object containing the response data.
  *
  * @param {string} url - The URL to fetch data from.
- * @param {Function} fetchWithBQ - A function responsible for making the request, typically a fetch or query utility.
+ * @param {string} retrieveData - A string for the type of api to use and how to process data
  * @returns {Promise<Object>} A promise that resolves to an object containing either the fetched data or an error.
  */
-export const getUrlData = async (url: string, fetchWithBQ: any) => {
-  const csrfToken = document.cookie.replace(/(?:(?:^|.*;\s*)csrftoken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'x-csrf-token': csrfToken,
-  };
-  const response = await fetch(url, { headers });
-  /*const response = await fetchWithBQ({
-    url,
-  });
-  console.log('Fetched URL:', response);
-  if (response.error) {
-    return { error: response.error as FetchBaseQueryError };
+export const getUrlData = async (url: string, retrieveData: string) => {
+  
+  const headers:any = {};
+  if (retrieveData === 'tsv') {
+    headers.Accept = 'text/tab-separated-values';
   }
-  console.log('Fetched URL Data:', response.data);
-  return { data: response.data };*/
+  const response = await fetch(url, { headers });
+
 
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     throw new Error(message);
+  }
+  if (retrieveData === 'tsv') {
+    const text = await response.text();
+    const [headerLine, ...rows] = text.trim().split('\n');
+    const headers = headerLine.split('\t');
+
+    const outputData = rows.map(row => {
+        const values = row.split('\t');
+        return headers.reduce((obj, header, index) => {
+          (obj as any)[header] = values[index];
+          return obj;
+        }, {});
+      });
+    return {data: outputData}
   }
   return response.json();
 };
@@ -240,7 +244,7 @@ const workflowApi = ResultsApiTags.injectEndpoints({
         if (!retrieveData || presignedUrl.data?.url === undefined)
           return presignedUrl;
 
-        return await getUrlData(presignedUrl.data.url, fetchWithBQ);
+        return await getUrlData(presignedUrl.data.url, retrieveData);
       },
     }),
     getWorkflowLogs: builder.query<WorkflowLogs[] | {error: string}, WorkflowDetailsRequest>({

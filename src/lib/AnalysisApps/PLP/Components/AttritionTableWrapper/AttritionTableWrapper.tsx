@@ -11,6 +11,7 @@ interface AttritionTableWrapperProps {
   outcomeObservationWindow: number;
   removeIndividualsWithPriorOutcome: boolean;
   percentageOfDataToUseAsTest: number | null;
+  sourceId: number | null;
   isOpen: boolean;
 }
 
@@ -28,6 +29,7 @@ const AttritionTableWrapper: React.FC<AttritionTableWrapperProps> = ({
   outcomeObservationWindow,
   removeIndividualsWithPriorOutcome,
   percentageOfDataToUseAsTest,
+  sourceId,
   isOpen,
 }) => {
   const toggleArrow = () =>
@@ -58,6 +60,7 @@ const AttritionTableWrapper: React.FC<AttritionTableWrapperProps> = ({
           }`}
         >
           {isOpen ? <div className="pl-4 py-10">
+            {sourceId ?
             <AttritionTable
               dispatch={dispatch}
               selectedStudyPopulationCohort={selectedStudyPopulationCohort}
@@ -66,7 +69,9 @@ const AttritionTableWrapper: React.FC<AttritionTableWrapperProps> = ({
               outcomeObservationWindow={outcomeObservationWindow}
               removeIndividualsWithPriorOutcome={removeIndividualsWithPriorOutcome}
               percentageOfDataToUseAsTest={percentageOfDataToUseAsTest}
+              sourceId={sourceId}
               />
+              :<h2>Select Source</h2>}
           </div> : null}
         </div>{' '}
       </button>

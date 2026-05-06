@@ -4,13 +4,13 @@ import { Loader, Table, Pagination, Select } from '@mantine/core';
 import { useFilter } from '../../../PLP/Utils/formHooks';
 import { CohortsEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
 import useSWR from 'swr';
-import { useSourceContext } from '../../Source';
 
 interface CohortDefinitionsProps {
   selectedCohort?: cohort | undefined;
   handleCohortSelect: (arg0: cohort) => void;
   searchTerm: string;
   selectedTeamProject: string;
+  sourceId: number;
 }
 interface cohort { // TODO - centralize this interface
   cohort_definition_id: number;
@@ -23,8 +23,8 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
   handleCohortSelect,
   searchTerm,
   selectedTeamProject,
+  sourceId,
 }) => {
-  const { sourceId } = useSourceContext();
   const [page, setPage] = useState(1); // Track current page
   const [rowsPerPage, setRowsPerPage] = useState(10); // Number of rows to show per page
   const { data, error, isLoading } = useSWR(

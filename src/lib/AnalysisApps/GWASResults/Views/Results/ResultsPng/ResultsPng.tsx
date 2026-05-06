@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
-import useSWR from 'swr';
-import { Loader, Button, Tooltip } from '@mantine/core';
+import { Loader, Tooltip } from '@mantine/core';
 import SharedContext from '../../../Utils/SharedContext';
-import { fetchPresignedUrlForWorkflowArtifact } from '../../../Utils/gwasWorkflowApi';
 import LoadingErrorMessage from '../../../../SharedUtils/LoadingErrorMessage/LoadingErrorMessage';
+import { useGetPresignedUrlOrDataForWorkflowArtifactQuery } from '@/lib/AnalysisApps/Results/Utils/workflowApi';
 
 interface ResultsPngProps {
   artifactName: string;
@@ -19,17 +18,9 @@ const ResultsPng: React.FC<ResultsPngProps> = ({ artifactName }) => {
   }
   const { name, uid } = selectedRowData;
 
-  type PresignedUrlType = string;
-  const fetcher = (
-    [_key, name, uid, artifactName]: [string, string, string, string]
-  ): Promise<PresignedUrlType> =>
-    fetchPresignedUrlForWorkflowArtifact(name, uid, artifactName);
 
-  const { data, error, isLoading, isValidating } = useSWR<PresignedUrlType, Error>(
-    ['fetchPresignedUrlForWorkflowArtifact', name, uid, artifactName],
-    fetcher
-    // , options // optional
-  );
+  const { data, error, isLoading, isFetching} = useGetPresignedUrlOrDataForWorkflowArtifactQuery({artifactName, workflowName: name, workflowUid: uid });
+
 
   const isSafeImageSrc = (url: string) => {
     return (
@@ -38,14 +29,15 @@ const ResultsPng: React.FC<ResultsPngProps> = ({ artifactName }) => {
     );
   };
 
-  if (error || (data && !isSafeImageSrc(data))) {
+
+  if (error || (data?.url && !isSafeImageSrc(data.url))) {
     return (
       <>
         <LoadingErrorMessage message='Error getting plot' />
       </>
     );
   }
-  if (isLoading || isValidating) {
+  if (isLoading || isFetching) {
     return (
       <>
         <div className='spinner-container'>
@@ -55,7 +47,7 @@ const ResultsPng: React.FC<ResultsPngProps> = ({ artifactName }) => {
     );
   }
 
-  if (!data) {
+  if (!data?.url) {
     return (
       <>
         <LoadingErrorMessage message='Failed to load image, no image path' />
@@ -82,21 +74,21 @@ const ResultsPng: React.FC<ResultsPngProps> = ({ artifactName }) => {
   return (
     <div className='results-view'>
       <section className='data-viz'>
-        {isSafeImageSrc(data) && !imageLoadFailed && (
+        {isSafeImageSrc(data.url) && !imageLoadFailed && (
           <Tooltip label='Click to open in tab. Right click and select “Save Image As” to download'>
             <a
-              href={data}
+              href={data.url}
               target="_blank"
               rel="noopener noreferrer"
             >
               <img
                 // snyk-code-ignore
                 // reason: src attribute is validated by isSafeImageSrc; false positive for DOMXSS
-                src={data}
+                src={data.url}
                 alt='Results plot'
                 onLoad={() => setImageLoaded(true)}
                 onError={() => setImageLoadFailed(true)}
-                className="w-[60%] h-auto max-h-screen p-4 rounded-lg bg-white object-contain"
+                className="h-auto max-h-screen p-4 rounded-lg bg-white object-contain"
               />
             </a>
           </Tooltip>

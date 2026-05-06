@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof DefineTestAndValidationDatasets>;
 
 const DefineTestAndValidationDatasetsWithHooks = () => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, InitializeCurrentState());
+  const [state, dispatch] = useReducer(reducer, InitializeCurrentState());
 
   return (
     <DefineTestAndValidationDatasets

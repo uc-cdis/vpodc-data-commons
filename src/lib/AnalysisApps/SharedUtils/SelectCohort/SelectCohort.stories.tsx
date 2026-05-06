@@ -6,7 +6,6 @@ import initialState from '../../PLP/Utils/StateManagement/InitialState';
 import { CohortsEndpoint, SourcesEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { http, HttpResponse, delay } from 'msw';
-import { SourceContextProvider } from '../Source';
 
 const meta: Meta<typeof SelectCohort> = {
   title: 'Generic/SelectCohort',
@@ -71,7 +70,7 @@ interface cohort { // TODO - centralize this interface
 }
 
 const SelectCohortWithHooks = () => {
-  const [state, dispatch] = useReducer<Reducer<State, Action>>(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleStudyPopulationSelect = (selectedCohort: cohort) => {
     dispatch({
@@ -80,13 +79,12 @@ const SelectCohortWithHooks = () => {
     });
   };
   return (
-    <SourceContextProvider>
       <SelectCohort
         selectedTeamProject=""
         selectedCohort={state.selectedStudyPopulationCohort}
         handleCohortSelect={handleStudyPopulationSelect}
+        sourceId={0}
       />
-    </SourceContextProvider>
   );
 };
 

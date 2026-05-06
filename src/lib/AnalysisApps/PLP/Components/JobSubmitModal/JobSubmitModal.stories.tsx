@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react';
 import JobSubmitModal from './JobSubmitModal';
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { SourceContextProvider } from '../../../SharedUtils/Source';
 import reducer from '../../Utils/StateManagement/reducer';
 import InitializeCurrentState from '../../Utils/StateManagement/InitializeCurrentState';
 
@@ -30,10 +29,10 @@ const AttritionTableWithHooks = () => {
     ...InitializeCurrentState(), 
     selectedStudyPopulationCohort: selectedStudyPopulationCohort,
     selectedOutcomeCohort: selectedOutcomeCohort,
+    sourceId: 0,
   });
 
   return (
-    <SourceContextProvider>
       <JobSubmitModal
         jobName={state.jobName}
         dispatch={dispatch}
@@ -49,8 +48,8 @@ const AttritionTableWithHooks = () => {
         datasetRemainingSize={state.datasetRemainingSize}
         model={state.model}
         modelParameters={state.modelParameters}
+        sourceId={state.sourceId}
       />
-    </SourceContextProvider>
   );
 };
 

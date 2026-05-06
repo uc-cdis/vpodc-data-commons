@@ -1,4 +1,5 @@
 export const PLPAppSteps = [
+  'Select Source',
   'Select Dataset',
   'Define Dataset Observation Window',
   'Select Outcome of Interest',

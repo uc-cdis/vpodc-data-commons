@@ -3,7 +3,6 @@ import { AttritionTable } from './AttritionTable';
 import { CohortsEndpoint, SourcesEndpoint, CohortsOverlapEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { http, HttpResponse } from 'msw';
-import { SourceContextProvider } from '../../../../SharedUtils/Source';
 
 const meta: Meta<typeof AttritionTable> = {
   title: 'PLP/AttritionTable',
@@ -62,7 +61,6 @@ const selectedOutcomeCohort: cohort = {
 const AttritionTableWithHooks = () => {
 
   return (
-    <SourceContextProvider>
       <AttritionTable
         dispatch={() => {return null}}
         selectedStudyPopulationCohort={selectedStudyPopulationCohort}
@@ -71,8 +69,8 @@ const AttritionTableWithHooks = () => {
         outcomeObservationWindow={365}
         removeIndividualsWithPriorOutcome={true}
         percentageOfDataToUseAsTest={25}
+        sourceId={0}
       />
-    </SourceContextProvider>
   );
 };
 

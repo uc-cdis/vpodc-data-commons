@@ -19,11 +19,6 @@ Your version of Node may not ship with npm v10. To install it, run:
 
 If using NVM run
 ```bash
-nvm use
-```
-
-Otherwise
-```bash
 npm install npm@11.9.2 -g
 ```
 
