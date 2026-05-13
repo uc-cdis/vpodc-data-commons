@@ -12,6 +12,22 @@
             "Gender",
             "Race"
           ]
+        },
+        {
+          "title": "Oncology Primary",
+          "fields": [
+            "ProjectId",
+            "ICDOSites",
+            "CancerStages"
+          ],
+          "fieldsConfig" : {
+            "ICDOSites": {
+              "label": "Cancer Origin"
+            },
+            "CancerStages": {
+              "label": "Stage"
+            }
+          }
         }
       ]
     },
@@ -58,31 +74,31 @@
           "defaultIfEmpty": "NULL",
           "processData": false,
           "fields": [
-            "Multiplicitycounter",
-            "ICDOSite"
+            "CancerStages",
+            "ICDOSites"
           ],
           "columns":{
-            "ICDOSite": {
-              "field": "ICDOSite",
-              "title": "ICDOSite"
+            "ICDOSites": {
+              "field": "ICDOSites",
+              "title": "ICDOSites"
             },
-            "Multiplicitycounter": {
-              "field": "Multiplicitycounter",
-              "title": "Multiplicitycounter"
+            "CancerStages": {
+              "field": "CancerStages",
+              "title": "CancerStages"
             }
           }
         }
       ]
     },
     "guppyConfig": {
-      "dataType": "cohort_b_patients",
+      "dataType": "vpodc_patients",
       "nodeCountTitle": "Patient",
       "fieldMapping": [],
       "manifestMapping": {
         "resourceIndexType": "file",
         "resourceIdField": "object_id",
         "referenceIdFieldInResourceIndex": "case_id",
-        "referenceIdFieldInDataIndex": "Chicago_ID"
+        "referenceIdFieldInDataIndex": "vpodc_id"
       }
     }
   },
