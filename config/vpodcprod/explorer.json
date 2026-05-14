@@ -21,6 +21,9 @@
             "CancerStages"
           ],
           "fieldsConfig" : {
+            "ProjectId": {
+              "label": "Project Id"
+            },
             "ICDOSites": {
               "label": "Cancer Origin"
             },
