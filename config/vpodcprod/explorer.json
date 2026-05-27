@@ -20,7 +20,7 @@
             "ICDOSites",
             "CancerStages"
           ],
-          "fieldsConfig" : {
+          "fieldsConfig": {
             "ProjectId": {
               "label": "Project Id"
             },
@@ -80,7 +80,7 @@
             "CancerStages",
             "ICDOSites"
           ],
-          "columns":{
+          "columns": {
             "ICDOSites": {
               "field": "ICDOSites",
               "title": "ICDOSites"
@@ -140,18 +140,37 @@
         "file_name",
         "file_size",
         "object_id"
-      ]
-    },
-    "guppyConfig": {
-      "dataType": "file",
-      "nodeCountTitle": "File",
-      "fieldMapping": [],
-      "manifestMapping": {
-        "resourceIndexType": "file",
-        "resourceIdField": "object_id",
-        "referenceIdFieldInResourceIndex": "object_id",
-        "referenceIdFieldInDataIndex": "Chicago_ID"
+      ],
+      "columns": {
+        "submitter_ID": {
+          "title": "Submitter Id"
+        },
+        "data_type": {
+          "title": "Data Type"
+        },
+        "data_format": {
+          "title": "Data Format"
+        },
+        "file_name": {
+          "title": "File Name"
+        },
+        "file_size": {
+          "title": "File Size"
+        },
+        "object_id": {
+          "title": "Object Id"
+        }
+      },
+      "guppyConfig": {
+        "dataType": "file",
+        "nodeCountTitle": "File",
+        "fieldMapping": [],
+        "manifestMapping": {
+          "resourceIndexType": "file",
+          "resourceIdField": "object_id",
+          "referenceIdFieldInResourceIndex": "object_id",
+          "referenceIdFieldInDataIndex": "object_id"
+        }
       }
     }
-  }
-]
+  ]
