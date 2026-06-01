@@ -150,7 +150,7 @@
         "resourceIndexType": "file",
         "resourceIdField": "object_id",
         "referenceIdFieldInResourceIndex": "object_id",
-        "referenceIdFieldInDataIndex": "Chicago_ID"
+        "referenceIdFieldInDataIndex": "object_id"
       }
     }
   }
