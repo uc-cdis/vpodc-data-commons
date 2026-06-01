@@ -43,7 +43,7 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
   percentageOfDataToUseAsTest,
   sourceId,
 }) => {
-  const steps = [ 1, 2, '4a', '4b', 6 ]; // the workflow step related to each description below
+  const steps = [ 2, 3, '5a', '5b', 7 ]; // the workflow step related to each description below
   const descriptions = [
     'Initial data cohort',
     `Observation window (${datasetObservationWindow} days)`,
