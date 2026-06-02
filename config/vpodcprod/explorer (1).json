@@ -1,0 +1,194 @@
+[
+  {
+    "tabTitle": "Patients",
+    "charts": {},
+    "filters": {
+      "tabs": [
+        {
+          "title": "Demographic",
+          "fields": [
+            "ProjectId",
+            "Ethnicity",
+            "Gender",
+            "Race"
+          ]
+        },
+        {
+          "title": "Oncology Primary",
+          "fields": [
+            "ProjectId",
+            "ICDOSites",
+            "CancerStages"
+          ],
+          "fieldsConfig" : {
+            "ProjectId": {
+              "label": "Project Id"
+            },
+            "ICDOSites": {
+              "label": "Cancer Origin"
+            },
+            "CancerStages": {
+              "label": "Stage"
+            }
+          }
+        }
+      ]
+    },
+    "buttons": [
+      {
+        "enabled": false,
+        "type": "manifest",
+        "title": "Download Manifest",
+        "leftIcon": "datafile",
+        "rightIcon": "download",
+        "fileName": "manifest.json"
+      }
+    ],
+    "table": {
+      "enabled": true,
+      "fields": [
+        "ProjectId",
+        "Race",
+        "Ethnicity",
+        "Gender",
+        "ICDOSites",
+        "Diagnosis",
+        "CancerStages"
+      ],
+      "columns": {
+        "ProjectId": {
+          "title": "Project Id"
+        },
+        "ICDOSites": {
+          "title": "Cancer Origin"
+        },
+        "CancerStages": {
+          "title": "Stage"
+        }
+      },
+      "detailsConfig": {
+        "mode": "expand",
+        "panelContainer": "drawer"
+      },
+      "subTables": [
+        {
+          "root": "subRows",
+          "label": "Oncology Primary",
+          "defaultIfEmpty": "NULL",
+          "processData": false,
+          "fields": [
+            "CancerStages",
+            "ICDOSites"
+          ],
+          "columns":{
+            "ICDOSites": {
+              "field": "ICDOSites",
+              "title": "ICDOSites"
+            },
+            "CancerStages": {
+              "field": "CancerStages",
+              "title": "CancerStages"
+            }
+          }
+        }
+      ]
+    },
+    "guppyConfig": {
+      "dataType": "vpodc_patients",
+      "nodeCountTitle": "Patient",
+      "fieldMapping": [],
+      "manifestMapping": {
+        "resourceIndexType": "file",
+        "resourceIdField": "object_id",
+        "referenceIdFieldInResourceIndex": "case_id",
+        "referenceIdFieldInDataIndex": "vpodc_id"
+      }
+    }
+  },
+  {
+    "tabTitle": "Files",
+    "charts": {},
+    "filters": {
+      "tabs": [
+        {
+          "title": "Files",
+          "fields": [
+            "_project_id",
+            "data_type",
+            "data_format",
+            "file_size"
+          ], 
+          "fieldsConfig" : {
+            "_project_id": {
+              "label": "Project Id"
+            },
+            "data_type": {
+              "label": "Data Type"
+            },
+            "data_format": {
+              "label": "Data Format"
+            },
+            "file_size": {
+              "label": "File Size"
+            }
+          }
+        }
+      ]
+    },
+    "buttons": [
+      {
+        "enabled": false,
+        "type": "file-manifest",
+        "title": "Download Manifest",
+        "leftIcon": "datafile",
+        "rightIcon": "download",
+        "fileName": "manifest.json"
+      }
+    ],
+    "table": {
+      "enabled": true,
+      "fields": [
+        "_case_submitter_id",
+        "data_type",
+        "data_format",
+        "file_name",
+        "file_size",
+        "object_id"
+      ], 
+      "columns": {
+        "_case_submitter_id": {
+          "title": "Case Submitter ID"
+        },
+        "data_type": {
+          "title": "Data Type"
+        },
+        "data_type": {
+          "title": "Cancer Origin"
+        },
+        "data_format": {
+          "title": "Data Format"
+        },
+        "file_name": {
+          "title": "File Name"
+        },
+        "file_size": {
+          "title": "File Size"
+        },
+        "object_id": {
+          "title": "File GUID"
+        }
+      }
+    },
+    "guppyConfig": {
+      "dataType": "file",
+      "nodeCountTitle": "File",
+      "fieldMapping": [],
+      "manifestMapping": {
+        "resourceIndexType": "file",
+        "resourceIdField": "object_id",
+        "referenceIdFieldInResourceIndex": "object_id",
+        "referenceIdFieldInDataIndex": "object_id"
+      }
+    }
+  }
+]
