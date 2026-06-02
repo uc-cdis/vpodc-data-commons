@@ -113,11 +113,24 @@
         {
           "title": "Files",
           "fields": [
-            "project_id",
+            "_project_id",
             "data_type",
             "data_format",
             "file_size"
-          ]
+          ], 
+          "fieldsConfig" : {
+            "_project_id": {
+              "label": "Project Id"
+            },
+            "data_type": {
+              "label": "Data Type"
+            },
+            "data_format": {
+              "label": "Data Format"
+            },
+            "file_size": {
+              "label": "File Size"
+            }
         }
       ]
     },
@@ -134,13 +147,35 @@
     "table": {
       "enabled": true,
       "fields": [
-        "submitter_id",
+        "_case_submitter_id",
         "data_type",
         "data_format",
         "file_name",
         "file_size",
         "object_id"
-      ]
+      ], 
+      "columns": {
+        "_case_submitter_id": {
+          "title": "Case Submitter ID"
+        },
+        "data_type": {
+          "title": "Data Type"
+        },
+        "data_type": {
+          "title": "Cancer Origin"
+        },
+        "data_format": {
+          "title": "Data Format"
+        },
+        "file_name": {
+          "title": "File Name"
+        },
+        "file_size": {
+          "title": "File Size"
+        },
+        "object_id": {
+          "title": "File GUID"
+        }
     },
     "guppyConfig": {
       "dataType": "file",
