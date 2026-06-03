@@ -22,7 +22,7 @@
           ],
           "fieldsConfig" : {
             "ProjectId": {
-              "label": "Project Id"
+              "label": "Project ID"
             },
             "ICDOSites": {
               "label": "Cancer Origin"
@@ -57,7 +57,7 @@
       ],
       "columns": {
         "ProjectId": {
-          "title": "Project Id"
+          "title": "Project ID"
         },
         "ICDOSites": {
           "title": "Cancer Origin"
@@ -120,7 +120,7 @@
           ], 
           "fieldsConfig" : {
             "project_id": {
-              "label": "Project Id"
+              "label": "Project ID"
             },
             "data_type": {
               "label": "Data Type"
@@ -148,7 +148,7 @@
     "table": {
       "enabled": true,
       "fields": [
-        "submitter_id",
+        "case_submitter_id",
         "data_type",
         "data_format",
         "file_name",
@@ -156,7 +156,7 @@
         "object_id"
       ], 
       "columns": {
-        "submitter_id": {
+        "case_submitter_id": {
           "title": "Case Submitter ID"
         },
         "data_type": {
