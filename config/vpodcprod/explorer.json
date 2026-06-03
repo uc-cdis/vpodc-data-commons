@@ -172,7 +172,7 @@
           "title": "File Size"
         },
         "object_id": {
-          "title": "Object ID"
+          "title": "File GUID"
         }
       }
     },
