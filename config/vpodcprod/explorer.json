@@ -22,7 +22,7 @@
           ],
           "fieldsConfig" : {
             "ProjectId": {
-              "label": "Project Id"
+              "label": "Project ID"
             },
             "ICDOSites": {
               "label": "Cancer Origin"
@@ -57,7 +57,7 @@
       ],
       "columns": {
         "ProjectId": {
-          "title": "Project Id"
+          "title": "Project ID"
         },
         "ICDOSites": {
           "title": "Cancer Origin"
