@@ -22,7 +22,7 @@
           ],
           "fieldsConfig" : {
             "ProjectId": {
-              "label": "Project Id"
+              "label": "Project ID"
             },
             "ICDOSites": {
               "label": "Cancer Origin"
@@ -57,7 +57,7 @@
       ],
       "columns": {
         "ProjectId": {
-          "title": "Project Id"
+          "title": "Project ID"
         },
         "ICDOSites": {
           "title": "Cancer Origin"
@@ -117,7 +117,21 @@
             "data_type",
             "data_format",
             "file_size"
-          ]
+          ], 
+          "fieldsConfig" : {
+            "project_id": {
+              "label": "Project ID"
+            },
+            "data_type": {
+              "label": "Data Type"
+            },
+            "data_format": {
+              "label": "Data Format"
+            },
+            "file_size": {
+              "label": "File Size"
+            }
+          }
         }
       ]
     },
@@ -134,13 +148,33 @@
     "table": {
       "enabled": true,
       "fields": [
-        "submitter_id",
+        "case_submitter_id",
         "data_type",
         "data_format",
         "file_name",
         "file_size",
         "object_id"
-      ]
+      ], 
+      "columns": {
+        "case_submitter_id": {
+          "title": "Case Submitter ID"
+        },
+        "data_type": {
+          "title": "Data Type"
+        },
+        "data_format": {
+          "title": "Data Format"
+        },
+        "file_name": {
+          "title": "File Name"
+        },
+        "file_size": {
+          "title": "File Size"
+        },
+        "object_id": {
+          "title": "File GUID"
+        }
+      }
     },
     "guppyConfig": {
       "dataType": "file",
@@ -150,7 +184,7 @@
         "resourceIndexType": "file",
         "resourceIdField": "object_id",
         "referenceIdFieldInResourceIndex": "object_id",
-        "referenceIdFieldInDataIndex": "Chicago_ID"
+        "referenceIdFieldInDataIndex": "object_id"
       }
     }
   }
