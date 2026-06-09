@@ -17,17 +17,19 @@
           "title": "Oncology Primary",
           "fields": [
             "ProjectId",
-            "ICDOSites",
-            "CancerStages"
+            "Oncology_Primary.ICDOSites",
+            "Oncology_Primary.CancerStages"
           ],
           "fieldsConfig" : {
             "ProjectId": {
               "label": "Project ID"
             },
             "ICDOSites": {
+              "field": "Oncology_Primary.ICDOSites",
               "label": "Cancer Origin"
             },
             "CancerStages": {
+              "field": "Oncology_Primary.CancerStages",
               "label": "Stage"
             }
           }
@@ -51,18 +53,18 @@
         "Race",
         "Ethnicity",
         "Gender",
-        "ICDOSites",
-        "Diagnosis",
-        "CancerStages"
+        "Oncology_Primary.ICDOSites",
+        "Oncology_Primary.Diagnosis",
+        "Oncology_Primary.CancerStages"
       ],
       "columns": {
         "ProjectId": {
           "title": "Project ID"
         },
-        "ICDOSites": {
+        "Oncology_Primary.ICDOSites": {
           "title": "Cancer Origin"
         },
-        "CancerStages": {
+        "Oncology_Primary.CancerStages": {
           "title": "Stage"
         }
       },
@@ -117,7 +119,7 @@
             "data_type",
             "data_format",
             "file_size"
-          ], 
+          ],
           "fieldsConfig" : {
             "project_id": {
               "label": "Project ID"
@@ -154,7 +156,7 @@
         "file_name",
         "file_size",
         "object_id"
-      ], 
+      ],
       "columns": {
         "case_submitter_id": {
           "title": "Case Submitter ID"
