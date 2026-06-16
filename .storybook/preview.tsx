@@ -9,6 +9,7 @@ import '../src/styles/globals.css';
 import '@fontsource/montserrat';
 import '@fontsource/source-sans-pro';
 import '@fontsource/poppins';
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const themeColors: Record<string, TenStringArray> = require(`../config/${GEN3_COMMONS_NAME}/themeColors.json`);
 
 
