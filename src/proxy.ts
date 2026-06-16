@@ -4,8 +4,12 @@ export { proxy } from './proxy-impl';
 
 export const config = {
   matcher: [
+  "/Analysis",
+  "/Explorer",
   "/DataLibrary",
-  "/Workspace",
-  "/Profile"
+  "/Profile",
+  "/Query",
+  "/resource-browser",
+  "/Workspace"
 ],
 };

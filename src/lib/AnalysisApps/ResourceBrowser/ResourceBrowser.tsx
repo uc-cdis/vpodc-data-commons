@@ -46,7 +46,7 @@ const ResourceBrowser = () => {
         <TeamProjectHeader isEditable />
       </div>
 
-      <Grid gutter="lg">
+      <Grid gap="lg">
         {ResourcesData.map((resource, index) => (
           <Grid.Col key={`${resource.title}-${index}`} span={{ base: 12, md: 6, lg: 4 }}>
             <Link href={resource.link} passHref>
