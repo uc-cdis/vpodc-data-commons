@@ -7,7 +7,7 @@ import {
   type MRT_DensityState,
   type MRT_SortingState,
   type MRT_VisibilityState,
-} from 'mantine-react-table';
+} from 'mantine-react-table-open';
 export interface HomeTableStateType {
     columnFilters: MRT_ColumnFiltersState,
     columnVisibility: MRT_VisibilityState,
