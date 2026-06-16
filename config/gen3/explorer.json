@@ -7,68 +7,30 @@
         {
           "title": "Demographic",
           "fields": [
-            "project_id",
-            "Days_To_Birth",
-            "Days_To_Death",
-            "DeceasedFlag",
+            "ProjectId",
             "Ethnicity",
             "Gender",
             "Race"
-          ],
-          "fieldsConfig" : {
-            "DeceasedFlag": {
-              "field": "DeceasedFlag",
-              "label": "Deceasedflag"
-            }
-          }
-        },
-        {
-          "title": "actionable_mutations",
-          "fields": [
-            "project_id",
-            "Lab",
-            "Gene",
-            "DaysFromAnchorDateToBxDate"
           ]
         },
         {
-          "title": "oncology_primaries",
+          "title": "Oncology Primary",
           "fields": [
-            "project_id",
-            "Multiplicitycounter",
-            "ICDOSite",
-            "Radiation",
-            "Chemotherapy",
-            "DaysFromAnchorDateToDiagnosisDate",
-            "Gradedifferentiation",
-            "Laterality",
-            "Stagegroupbest",
-            "RadiationsurgerySequence",
-            "Histologyicdo3X",
-            "Lymphvascularinvasionl",
-            "SeerSummaryStage2000",
-            "PhysiciansStage",
-            "DaysFromAnchorDateToMostdefinitivesurgDate",
-            "ChemotherapyFac",
-            "TumorSize",
-            "SequenceNumber"
+            "ProjectId",
+            "Oncology_Primary.ICDOSites",
+            "Oncology_Primary.CancerStages"
           ],
           "fieldsConfig" : {
-            "ICDOSite": {
-              "field": "ICDOSite",
-              "label": "Icdosite"
+            "ProjectId": {
+              "label": "Project ID"
             },
-            "PhysiciansStage": {
-              "field": "PhysiciansStage",
-              "label": "Physiciansstage"
+            "ICDOSites": {
+              "field": "Oncology_Primary.ICDOSites",
+              "label": "Cancer Origin"
             },
-            "TumorSize": {
-              "field": "TumorSize",
-              "label": "Tumorsize"
-            },
-            "SequenceNumber": {
-              "field": "SequenceNumber",
-              "label": "Sequencenumber"
+            "CancerStages": {
+              "field": "Oncology_Primary.CancerStages",
+              "label": "Stage"
             }
           }
         }
@@ -87,23 +49,23 @@
     "table": {
       "enabled": true,
       "fields": [
-        "project_id",
+        "ProjectId",
         "Race",
         "Ethnicity",
         "Gender",
-        "Lab",
-        "Multiplicitycounter",
-        "ICDOSite"
+        "Oncology_Primary.ICDOSites",
+        "Oncology_Primary.Diagnosis",
+        "Oncology_Primary.CancerStages"
       ],
       "columns": {
-        "Lab": {
-          "title": "Actionablemutations Lab"
+        "ProjectId": {
+          "title": "Project ID"
         },
-        "Multiplicitycounter": {
-          "title": "Oncology Primary Multiplicitycounter"
+        "Oncology_Primary.ICDOSites": {
+          "title": "Cancer Origin"
         },
-        "ICDOSite": {
-          "title": "Oncology Primary Icdosite"
+        "Oncology_Primary.CancerStages": {
+          "title": "Stage"
         }
       },
       "detailsConfig": {
@@ -117,31 +79,31 @@
           "defaultIfEmpty": "NULL",
           "processData": false,
           "fields": [
-            "Multiplicitycounter",
-            "ICDOSite"
+            "CancerStages",
+            "ICDOSites"
           ],
           "columns":{
-            "ICDOSite": {
-              "field": "ICDOSite",
-              "title": "ICDOSite"
+            "ICDOSites": {
+              "field": "ICDOSites",
+              "title": "ICDOSites"
             },
-            "Multiplicitycounter": {
-              "field": "Multiplicitycounter",
-              "title": "Multiplicitycounter"
+            "CancerStages": {
+              "field": "CancerStages",
+              "title": "CancerStages"
             }
           }
         }
       ]
     },
     "guppyConfig": {
-      "dataType": "patients",
+      "dataType": "vpodc_patients",
       "nodeCountTitle": "Patient",
       "fieldMapping": [],
       "manifestMapping": {
         "resourceIndexType": "file",
         "resourceIdField": "object_id",
         "referenceIdFieldInResourceIndex": "case_id",
-        "referenceIdFieldInDataIndex": "Chicago_ID"
+        "referenceIdFieldInDataIndex": "vpodc_id"
       }
     }
   },
@@ -157,7 +119,21 @@
             "data_type",
             "data_format",
             "file_size"
-          ]
+          ],
+          "fieldsConfig" : {
+            "project_id": {
+              "label": "Project ID"
+            },
+            "data_type": {
+              "label": "Data Type"
+            },
+            "data_format": {
+              "label": "Data Format"
+            },
+            "file_size": {
+              "label": "File Size"
+            }
+          }
         }
       ]
     },
@@ -174,13 +150,33 @@
     "table": {
       "enabled": true,
       "fields": [
-        "submitter_id",
+        "case_submitter_id",
         "data_type",
         "data_format",
         "file_name",
         "file_size",
         "object_id"
-      ]
+      ],
+      "columns": {
+        "case_submitter_id": {
+          "title": "Case Submitter ID"
+        },
+        "data_type": {
+          "title": "Data Type"
+        },
+        "data_format": {
+          "title": "Data Format"
+        },
+        "file_name": {
+          "title": "File Name"
+        },
+        "file_size": {
+          "title": "File Size"
+        },
+        "object_id": {
+          "title": "File GUID"
+        }
+      }
     },
     "guppyConfig": {
       "dataType": "file",
@@ -190,7 +186,7 @@
         "resourceIndexType": "file",
         "resourceIdField": "object_id",
         "referenceIdFieldInResourceIndex": "object_id",
-        "referenceIdFieldInDataIndex": "Chicago_ID"
+        "referenceIdFieldInDataIndex": "object_id"
       }
     }
   }
