@@ -6,7 +6,7 @@ import {
   type MRT_ColumnFiltersState,
   type MRT_SortingState,
   type MRT_VisibilityState,
-} from 'mantine-react-table';
+} from 'mantine-react-table-open';
 import duration from '../../../Utils/duration'
 
 import SharedContext from '../../../Utils/SharedContext';

@@ -3,7 +3,7 @@ import {
   MantineReactTable,
   useMantineReactTable,
   type MRT_ColumnDef,
-} from 'mantine-react-table';
+} from 'mantine-react-table-open';
 
 
 interface TableDataItem {
