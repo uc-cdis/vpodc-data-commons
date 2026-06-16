@@ -85,6 +85,14 @@ const nextConfig = {
           destination: `${GEN3_TARGET}/index/:path*`,
         },
         {
+          source: '/cohort-middleware/:path*',
+          destination: `${GEN3_TARGET}/cohort-middleware/:path*`,
+        },
+        {
+          source: '/ga4gh/wes/v2/:path*',
+          destination: `${GEN3_TARGET}/ga4gh/wes/v2/:path*`,
+        },
+        {
           source: '/login',
           destination: `${GEN3_TARGET}/login`,
         },
