@@ -57,6 +57,7 @@
         "Oncology_Primary.Diagnosis",
         "Oncology_Primary.CancerStages"
       ],
+      "defaultIfEmpty": "NULL",
       "columns": {
         "ProjectId": {
           "title": "Project ID"
