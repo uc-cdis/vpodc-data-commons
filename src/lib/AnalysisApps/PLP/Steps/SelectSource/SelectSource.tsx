@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import ACTIONS from '../../Utils/StateManagement/Actions';
 
 import { IconDatabaseOff } from '@tabler/icons-react';
-import { Loader, Table, Pagination, Select } from '@mantine/core';
+import { Loader, Table, Pagination, Select, Tooltip, Radio } from '@mantine/core';
 import { SourcesEndpoint } from '../../../SharedUtils/Endpoints';
 import useSWR from 'swr';
 
 type SelectSourceProps = {
+  team: string;
   dispatch: (action: any) => void;
   selectedSourceId?: number | null;
 };
@@ -14,12 +15,15 @@ type SelectSourceProps = {
 interface source { 
   source_id: number;
   source_name: string;
+  description: string;
+  CurrentTeamProjectAccessible: string;
 }
 
 
 
 
 const SelectSource = ({
+  team,
   selectedSourceId,
   dispatch,
 }: SelectSourceProps) => {
@@ -30,7 +34,7 @@ const SelectSource = ({
     });
   };
 
-  const { data:sourcesFromFetch, error, isLoading } = useSWR(SourcesEndpoint,
+  const { data:sourcesFromFetch, error, isLoading } = useSWR(`${SourcesEndpoint}?team-project=${team}`,
     (...args) => fetch(...args).then((res) => res.json()).then((data) => {
       if (Array.isArray(data?.sources)) {
         return data.sources;
@@ -78,22 +82,29 @@ const SelectSource = ({
                 {pageOfDisplayedSources.map((source: source, i: number) => (
                   <Table.Tr
                     key={i}
-                    className={i % 2 ? 'bg-vadc-alternate_row' : ''}
+                    className={source.CurrentTeamProjectAccessible === 'false' ? 'bg-gen3-lightgray' : (i % 2 ? 'bg-vadc-alternate_row' : '')}
                   >
                     <Table.Td>
-                      <input
+                      <Radio
                         type="radio"
-                        id={`radio-buttion-${i}`}
                         checked={selectedSourceId === source.source_id}
                         onChange={() => {
                           handleSourceSelect(source);
                         }}
+                        disabled={source.CurrentTeamProjectAccessible === 'false'}
+                        aria-label="Select this row"
                       />
-                      <label htmlFor={`radio-buttion-${i}`} className="sr-only">
-                        Select this row
-                      </label>
                     </Table.Td>
-                    <Table.Td>{source.source_name}</Table.Td>
+                    <Table.Td>
+                      <Tooltip 
+                        label={source.description}
+                        disabled={!source.description}
+                        multiline
+                        w="90vh"
+                      >
+                        <div>{source.source_name}</div>
+                      </Tooltip>
+                    </Table.Td>
                     <Table.Td>{source.source_id}</Table.Td>
                   </Table.Tr>
                 ))}
