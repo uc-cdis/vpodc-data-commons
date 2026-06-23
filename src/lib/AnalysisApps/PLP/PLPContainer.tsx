@@ -33,6 +33,7 @@ const PLPContainer = () => {
           </div>
           <br/>
           <SelectSource
+            team={state.selectedTeamProject}
             selectedSourceId={state.sourceId}
             dispatch={dispatch}
           />
