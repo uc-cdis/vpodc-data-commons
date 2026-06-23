@@ -44,6 +44,11 @@ const TestSourcesData = {
       source_name: 'test 2',
       description: "short description",
 			CurrentTeamProjectAccessible: "true"
+    },
+    {
+      source_id: 2,
+      source_name: 'test 3',
+			CurrentTeamProjectAccessible: "true"
     }
   ]
 }

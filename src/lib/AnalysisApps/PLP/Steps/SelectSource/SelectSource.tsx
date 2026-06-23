@@ -98,6 +98,7 @@ const SelectSource = ({
                     <Table.Td>
                       <Tooltip 
                         label={source.description}
+                        disabled={!source.description}
                         multiline
                         w="90vh"
                       >
