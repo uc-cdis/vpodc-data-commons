@@ -7,28 +7,52 @@
         {
           "title": "Demographic",
           "fields": [
-            "ProjectId",
+            "project_id",
             "Ethnicity",
             "Gender",
             "Race"
-          ]
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID"
+            }
+          }
         },
         {
           "title": "Oncology Primary",
           "fields": [
-            "ProjectId",
-            "ICDOSites",
-            "CancerStages"
+            "project_id",
+            "oncology_primaries.ICDOSites",
+            "oncology_primaries.Stagegroupbest"
           ],
-          "fieldsConfig" : {
-            "ProjectId": {
-              "label": "Project Id"
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID"
             },
-            "ICDOSites": {
+            "oncology_primaries.ICDOSites": {
               "label": "Cancer Origin"
             },
-            "CancerStages": {
+            "oncology_primaries.Stagegroupbest": {
               "label": "Stage"
+            }
+          }
+        },
+        {
+          "title": "Somatic Mutations",
+          "fields": [
+            "project_id",
+            "somatic_mutations.Gene",
+            "somatic_mutations.Mutation"
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID"
+            },
+            "somatic_mutations.Gene": {
+              "label": "Gene"
+            },
+            "somatic_mutations.Mutation": {
+              "label": "Mutation"
             }
           }
         }
@@ -80,7 +104,7 @@
             "CancerStages",
             "ICDOSites"
           ],
-          "columns":{
+          "columns": {
             "ICDOSites": {
               "field": "ICDOSites",
               "title": "ICDOSites"
