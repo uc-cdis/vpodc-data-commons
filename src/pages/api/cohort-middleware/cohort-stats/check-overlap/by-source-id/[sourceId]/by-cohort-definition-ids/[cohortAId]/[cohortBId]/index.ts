@@ -1,11 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { CohortOverlap } from '@/lib/AnalysisApps/GWAS/Utils/cohortApi';
 
 interface PathParameters {
   sourceId: string;
   cohortAId: string;
   cohortBId: string;
 }
+
+export interface CohortOverlap {
+  cohort_overlap: {
+    case_control_overlap: number;
+  };
+}
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Get the sourceId from the slug in the path
   const { query } = req;

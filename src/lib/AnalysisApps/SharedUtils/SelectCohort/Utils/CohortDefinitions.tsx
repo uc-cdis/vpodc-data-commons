@@ -2,20 +2,15 @@ import React, { useState } from 'react';
 import { IconDatabaseOff } from '@tabler/icons-react';
 import { Loader, Table, Pagination, Select } from '@mantine/core';
 import { useFilter } from '../../../PLP/Utils/formHooks';
-import { CohortsEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
-import useSWR from 'swr';
+
+import { useSelectCohortQuery, Cohort } from '../../../PLP/Utils/plpSlice';
 
 interface CohortDefinitionsProps {
-  selectedCohort?: cohort | undefined;
-  handleCohortSelect: (arg0: cohort) => void;
+  selectedCohort?: Cohort | undefined;
+  handleCohortSelect: (arg0: Cohort) => void;
   searchTerm: string;
   selectedTeamProject: string;
   sourceId: number;
-}
-interface cohort { // TODO - centralize this interface
-  cohort_definition_id: number;
-  cohort_name: string;
-  size: number;
 }
 
 const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
@@ -27,14 +22,8 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
 }) => {
   const [page, setPage] = useState(1); // Track current page
   const [rowsPerPage, setRowsPerPage] = useState(10); // Number of rows to show per page
-  const { data, error, isLoading } = useSWR(
-    CohortsEndpoint + '/' + sourceId + `/by-team-project?team-project=${selectedTeamProject}`,
-    (...args) => fetch(...args).then((res) => res.json()),
-  );
-  const displayedCohorts: cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
 
-  if (error)
-    return <React.Fragment>Error getting data for table</React.Fragment>;
+  const { data, isLoading, isError } = useSelectCohortQuery({sourceId, selectedTeamProject});
 
   if (isLoading)
     return (
@@ -42,6 +31,11 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
         <Loader size="lg" />
       </div>
     );
+
+  if (isError || !data)
+    return <React.Fragment>Error getting data for table</React.Fragment>;
+
+  const displayedCohorts: Cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
 
   if (displayedCohorts) {
     const pageOfDisplayedCohorts = displayedCohorts.slice(

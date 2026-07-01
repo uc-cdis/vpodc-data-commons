@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ACTIONS from '../../Utils/StateManagement/Actions';
 
 import { IconDatabaseOff } from '@tabler/icons-react';
 import { Loader, Table, Pagination, Select, Tooltip, Radio } from '@mantine/core';
-import { SourcesEndpoint } from '../../../SharedUtils/Endpoints';
-import useSWR from 'swr';
+import { useSelectSourceQuery, SelectSourceResponse } from '../../Utils/plpSlice';
 
 type SelectSourceProps = {
   team: string;
@@ -12,40 +11,19 @@ type SelectSourceProps = {
   selectedSourceId?: number | null;
 };
 
-interface source { 
-  source_id: number;
-  source_name: string;
-  description: string;
-  CurrentTeamProjectAccessible: string;
-}
-
-
-
-
 const SelectSource = ({
   team,
   selectedSourceId,
   dispatch,
 }: SelectSourceProps) => {
-  const handleSourceSelect = (selectedSource: source) => {
+  const handleSourceSelect = (selectedSource: SelectSourceResponse) => {
     dispatch({
       type: ACTIONS.SET_SELECTED_SOURCE_ID,
       payload: selectedSource.source_id,
     });
   };
 
-  const { data:sourcesFromFetch, error, isLoading } = useSWR(`${SourcesEndpoint}?team-project=${team}`,
-    (...args) => fetch(...args).then((res) => res.json()).then((data) => {
-      if (Array.isArray(data?.sources)) {
-        return data.sources;
-      } else {
-        const message = `Data source recieved in an invalid format:
-          ${JSON.stringify(data)}`;
-        new Error(message);
-      }
-    }),
-  );
-
+  const { data: sourcesFromFetch, isLoading, isError } = useSelectSourceQuery(team);
 
   const [page, setPage] = useState(1); // Track current page
   const [rowsPerPage, setRowsPerPage] = useState(10); // Number of rows to show per page
@@ -57,8 +35,9 @@ const SelectSource = ({
       </div>
     );
 
-  if (error || !sourcesFromFetch)
+  if ((isError || !sourcesFromFetch)) {
     return <React.Fragment>Error getting data for table</React.Fragment>;
+  }
 
   const pageOfDisplayedSources = sourcesFromFetch.slice(
     (page - 1) * rowsPerPage,
@@ -79,7 +58,7 @@ const SelectSource = ({
                 </Table.Tr>
               </Table.Thead>
               <Table.Tbody>
-                {pageOfDisplayedSources.map((source: source, i: number) => (
+                {pageOfDisplayedSources.map((source: SelectSourceResponse, i: number) => (
                   <Table.Tr
                     key={i}
                     className={source.CurrentTeamProjectAccessible === 'false' ? 'bg-gen3-lightgray' : (i % 2 ? 'bg-vadc-alternate_row' : '')}
