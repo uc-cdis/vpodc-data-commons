@@ -6,7 +6,7 @@ import showSearchBarMessage from './showSearchBarMessage';
 import { IColumnManagementData, IRowData } from '../../../Interfaces/Interfaces';
 
 interface ISearchBarMessageProps {
-  columnManagementReset: Function;
+  columnManagementReset: () => void;
   searchTerm: string;
   paginatedData: IRowData[];
   columnManagementData: IColumnManagementData ;

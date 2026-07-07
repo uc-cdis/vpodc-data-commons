@@ -4,11 +4,11 @@ import { ISortConfig } from '../../Interfaces/Interfaces';
 //import CaretDown from '../Icons/CaretDown';
 
 interface IHeaderProps {
-  handleSort: Function;
+  handleSort: () => void;
   headerJSX: React.ReactNode;
   headerKey: string;
   sortConfig: ISortConfig;
-  sortable: Boolean;
+  sortable: boolean;
 }
 
 const Header = ({

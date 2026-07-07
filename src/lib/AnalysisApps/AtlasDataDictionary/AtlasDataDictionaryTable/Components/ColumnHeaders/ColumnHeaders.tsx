@@ -7,7 +7,7 @@ import {
 } from '../../Interfaces/Interfaces';
 
 interface ITableHeadersProps {
-  handleSort: Function;
+  handleSort: () => void;
   sortConfig: ISortConfig;
   columnManagementData: IColumnManagementData;
 }

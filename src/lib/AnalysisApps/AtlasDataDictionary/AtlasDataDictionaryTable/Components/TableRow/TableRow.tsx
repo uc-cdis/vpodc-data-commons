@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@mantine/core';
 import {
-  IValueSummary,
+  //IValueSummary,
   IRowData,
   IColumnManagementData,
 } from '../../Interfaces/Interfaces';
@@ -16,7 +16,7 @@ import TableRowDropdown from './TableRowDropdown/TableRowDropdown';
 
 interface ITableRowProps {
   rowObject: IRowData;
-  handleTableChange: Function;
+  handleTableChange: () => void;
   openDropdowns: number[];
   columnsShown: number;
   searchTerm: string;

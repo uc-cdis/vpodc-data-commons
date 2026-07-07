@@ -2,9 +2,9 @@ import React from 'react';
 import { Table } from '@mantine/core';
 
 interface IEntriesHeaderProps {
-  start: Number;
-  stop: Number;
-  total: Number;
+  start: number;
+  stop: number;
+  total: number;
 }
 const EntriesHeader = ({
   start,

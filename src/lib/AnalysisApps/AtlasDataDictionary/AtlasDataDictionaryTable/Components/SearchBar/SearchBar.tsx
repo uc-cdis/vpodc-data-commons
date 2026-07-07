@@ -10,11 +10,11 @@ interface ISearchBarProps {
   columnsShown: number;
   TableData: IRowData[];
   paginatedData: IRowData[];
-  setDisplayedData: Function;
+  setDisplayedData: () => void;
   columnManagementData: IColumnManagementData ;
   searchTerm: string;
-  handleTableChange: Function;
-  columnManagementReset: Function
+  handleTableChange: () => void;
+  columnManagementReset: () => void;
 }
 
 const SearchBar = ({

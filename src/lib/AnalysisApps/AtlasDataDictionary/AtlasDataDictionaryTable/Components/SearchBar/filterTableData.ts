@@ -1,7 +1,7 @@
 import { IRowData } from '../../Interfaces/Interfaces';
 import { formatForSearchComparison } from '../../Utils/CheckSearchTermUtils';
 
-const filterTableData = (TableData:IRowData[], searchTerm:string, setDisplayedData:Function) => {
+const filterTableData = (TableData:IRowData[], searchTerm:string, setDisplayedData: () => void) => {
   const filteredData = TableData.filter((item) => {
     const searchQuery = formatForSearchComparison(searchTerm);
     return Object.values(item).some((value) => {

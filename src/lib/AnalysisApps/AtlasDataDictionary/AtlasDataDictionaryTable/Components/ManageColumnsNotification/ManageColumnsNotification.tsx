@@ -3,7 +3,7 @@ import { Notification } from '@mantine/core';
 
 interface IManageColumnsNotification {
   showNotification: boolean;
-  setShowNotification: Function;
+  setShowNotification: () => void;
 }
 
 const ManageColumnsNotification = ({ showNotification, setShowNotification }:

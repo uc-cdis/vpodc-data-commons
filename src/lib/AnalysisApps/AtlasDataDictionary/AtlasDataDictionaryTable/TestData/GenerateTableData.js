@@ -1,4 +1,4 @@
-// Generates test data for AtlasDataDictionary
+/*// Generates test data for AtlasDataDictionary
 // Run in terminal like so:
 // Node GenerateTableData.js
 // Change variable numberOfEntries to create
@@ -107,4 +107,4 @@ const output = `const TableData = {
 export default TableData;
 `;
 fs.writeFileSync(fileName, output);
-console.info('Created test data!');
+console.info('Created test data!');*/

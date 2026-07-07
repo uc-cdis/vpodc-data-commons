@@ -3,7 +3,7 @@ import { Pagination, SimpleGrid } from '@mantine/core';
 
 interface IPaginationControlsProps {
   entriesShown: number;
-  handleTableChange: Function;
+  handleTableChange: () => void;
   currentPage: number;
   totalEntriesAvailable: number;
 }

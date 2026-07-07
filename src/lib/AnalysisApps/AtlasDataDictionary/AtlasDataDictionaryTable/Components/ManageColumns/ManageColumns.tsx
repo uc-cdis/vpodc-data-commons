@@ -16,7 +16,7 @@ import './ManageColumns.css';
 import ColumnsItems from '../../Utils/ColumnItems';
 
 interface IManageColumns {
-  handleTableChange: Function;
+  handleTableChange: () => void;
   columnManagementData: IColumnManagementData;
   columnManagementReset: () => void;
 }
