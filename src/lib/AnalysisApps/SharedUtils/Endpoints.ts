@@ -11,6 +11,7 @@ export const DefaultHeaders = {
 };
 
 const COHORT_MIDDLEWARE_PATH = `${GEN3_API}/cohort-middleware`;
+export const dataDictionaryEndpoint = `${COHORT_MIDDLEWARE_PATH}/data-dictionary`;
 export const SourcesEndpoint = `${COHORT_MIDDLEWARE_PATH}/sources`;
 export const CohortsEndpoint = `${COHORT_MIDDLEWARE_PATH}/cohortdefinition-stats/by-source-id`;
 export const CohortsOverlapEndpoint = `${COHORT_MIDDLEWARE_PATH}/cohort-stats/check-overlap/by-source-id/`;

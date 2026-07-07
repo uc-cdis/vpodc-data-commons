@@ -35,7 +35,7 @@ const SelectSource = ({
       </div>
     );
 
-  if ((isError || !sourcesFromFetch)) {
+  if (isError || !sourcesFromFetch) {
     return <React.Fragment>Error getting data for table</React.Fragment>;
   }
 
