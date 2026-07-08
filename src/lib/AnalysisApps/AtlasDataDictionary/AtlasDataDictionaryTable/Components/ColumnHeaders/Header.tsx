@@ -4,7 +4,7 @@ import { ISortConfig } from '../../Interfaces/Interfaces';
 //import CaretDown from '../Icons/CaretDown';
 
 interface IHeaderProps {
-  handleSort: () => void;
+  handleSort: (sortKey: string) => void;
   headerJSX: React.ReactNode;
   headerKey: string;
   sortConfig: ISortConfig;

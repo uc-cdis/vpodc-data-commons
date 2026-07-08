@@ -1,9 +1,10 @@
 import React from 'react';
 import { Pagination, SimpleGrid } from '@mantine/core';
+import { handleTableChangeFuncProps } from '../../AtlasDataDictionaryTable';
 
 interface IPaginationControlsProps {
   entriesShown: number;
-  handleTableChange: () => void;
+  handleTableChange: handleTableChangeFuncProps;
   currentPage: number;
   totalEntriesAvailable: number;
 }

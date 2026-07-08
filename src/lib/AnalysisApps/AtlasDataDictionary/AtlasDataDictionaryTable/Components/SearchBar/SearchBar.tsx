@@ -5,15 +5,16 @@ import { debounce } from 'lodash';
 import { IColumnManagementData, IRowData } from '../../Interfaces/Interfaces';
 import SearchBarMessage from './SearchBarMessage/SearchBarMessage';
 import filterTableData from './filterTableData';
+import { handleTableChangeFuncProps } from '../../AtlasDataDictionaryTable';
 
 interface ISearchBarProps {
   columnsShown: number;
   TableData: IRowData[];
   paginatedData: IRowData[];
-  setDisplayedData: () => void;
+  setDisplayedData: (input: IRowData[]) => void;
   columnManagementData: IColumnManagementData ;
   searchTerm: string;
-  handleTableChange: () => void;
+  handleTableChange: handleTableChangeFuncProps;
   columnManagementReset: () => void;
 }
 

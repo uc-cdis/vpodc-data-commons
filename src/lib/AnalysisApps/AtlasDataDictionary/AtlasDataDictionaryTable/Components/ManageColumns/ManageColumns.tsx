@@ -14,9 +14,10 @@ import {
 import { IColumnManagementData } from '../../Interfaces/Interfaces';
 import './ManageColumns.css';
 import ColumnsItems from '../../Utils/ColumnItems';
+import { handleTableChangeFuncProps } from '../../AtlasDataDictionaryTable';
 
 interface IManageColumns {
-  handleTableChange: () => void;
+  handleTableChange: handleTableChangeFuncProps;
   columnManagementData: IColumnManagementData;
   columnManagementReset: () => void;
 }

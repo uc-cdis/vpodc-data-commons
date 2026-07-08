@@ -17,6 +17,21 @@ import DefaultAtlasColumnManagement from './Utils/DefaultAtlasColumnManagement';
 import ManageColumnsNotification from './Components/ManageColumnsNotification/ManageColumnsNotification';
 import { IRowData } from './Interfaces/Interfaces';
 
+export interface handleTableChangeFuncProps {
+  (
+    event: 
+    | 'openDropdown'
+    | 'closeDropdown'
+    | 'currentPage'
+    | 'entriesShown'
+    | 'searchTerm'
+    | 'sortConfig'
+    | 'columnManagementUpdateOne'
+    | 'columnManagementReset',
+    eventData: any
+  ): void;
+};
+
 const AtlasDataDictionaryTable = ({ TableData }: {TableData: any}) => {
   const preprocessedTableData = PreprocessTableData(TableData);
   const [displayedData, setDisplayedData] = useState(preprocessedTableData);
@@ -47,17 +62,10 @@ const AtlasDataDictionaryTable = ({ TableData }: {TableData: any}) => {
     entriesShown * currentPage - entriesShown,
     entriesShown * currentPage,
   );
-  const handleTableChange = (
-    event:
-      | 'openDropdown'
-      | 'closeDropdown'
-      | 'currentPage'
-      | 'entriesShown'
-      | 'searchTerm'
-      | 'sortConfig'
-      | 'columnManagementUpdateOne'
-      | 'columnManagementReset',
-    eventData: any,
+  
+  const handleTableChange: handleTableChangeFuncProps = (
+    event,
+    eventData,
   ) => {
     if (event === 'openDropdown') {
       setDataDictionaryTableState({
@@ -106,12 +114,12 @@ const AtlasDataDictionaryTable = ({ TableData }: {TableData: any}) => {
     }
   };
 
-  const handleSort = (sortKey: keyof IRowData) => {
+  const handleSort = (sortKey: string) => {
     const newDirection: ISortConfig['direction'] = DetermineNextSortDirection(
       sortConfig as ISortConfig,
       sortKey,
     );
-    const sortedData = SortDataWithDirection(displayedData, newDirection, sortKey);
+    const sortedData = SortDataWithDirection(displayedData, newDirection, sortKey as keyof IRowData);
     // if column is set to off reset to initial sort
     if (newDirection === 'off') {
       setDisplayedData(preprocessedTableData);

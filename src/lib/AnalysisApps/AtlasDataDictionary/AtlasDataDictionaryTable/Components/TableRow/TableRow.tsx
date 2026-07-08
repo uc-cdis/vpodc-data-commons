@@ -13,10 +13,11 @@ import {
 } from '../../Utils/CheckSearchTermUtils';
 //import ValueSummaryChart from './ValueSummaryChart/ValueSummaryChart';
 import TableRowDropdown from './TableRowDropdown/TableRowDropdown';
+import { handleTableChangeFuncProps } from '../../AtlasDataDictionaryTable';
 
 interface ITableRowProps {
   rowObject: IRowData;
-  handleTableChange: () => void;
+  handleTableChange: handleTableChangeFuncProps;
   openDropdowns: number[];
   columnsShown: number;
   searchTerm: string;
