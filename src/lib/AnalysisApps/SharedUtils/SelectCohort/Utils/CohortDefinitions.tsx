@@ -25,6 +25,8 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
 
   const { data, isLoading, isError } = useSelectCohortQuery({sourceId, selectedTeamProject});
 
+  const displayedCohorts: Cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
+
   if (isLoading)
     return (
       <div className="flex justify-center pt-8 min-h-[300px]">
@@ -34,8 +36,6 @@ const CohortDefinitions: React.FC<CohortDefinitionsProps> = ({
 
   if (isError || !data)
     return <React.Fragment>Error getting data for table</React.Fragment>;
-
-  const displayedCohorts: Cohort[] = useFilter(data?.['cohort_definitions_and_stats'], searchTerm, 'cohort_name');
 
   if (displayedCohorts) {
     const pageOfDisplayedCohorts = displayedCohorts.slice(
