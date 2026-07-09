@@ -2,17 +2,11 @@ import React from 'react';
 import { AttritionTable } from './AttritionTable/AttritionTable';
 import { IconChevronUp, IconChevronDown } from '@tabler/icons-react';
 import ACTIONS from '../../Utils/StateManagement/Actions';
+import { State } from '../../Utils/StateManagement/reducer';
 
 interface AttritionTableWrapperProps {
   dispatch: (action: any) => void;
-  selectedStudyPopulationCohort: cohort;
-  datasetObservationWindow: number;
-  selectedOutcomeCohort: cohort;
-  outcomeObservationWindow: number;
-  removeIndividualsWithPriorOutcome: boolean;
-  percentageOfDataToUseAsTest: number | null;
-  sourceId: number | null;
-  isOpen: boolean;
+  state: State;
 }
 
 interface cohort { // TODO - centralize this interface
@@ -23,15 +17,9 @@ interface cohort { // TODO - centralize this interface
 
 const AttritionTableWrapper: React.FC<AttritionTableWrapperProps> = ({
   dispatch,
-  selectedStudyPopulationCohort,
-  datasetObservationWindow,
-  selectedOutcomeCohort,
-  outcomeObservationWindow,
-  removeIndividualsWithPriorOutcome,
-  percentageOfDataToUseAsTest,
-  sourceId,
-  isOpen,
+  state,
 }) => {
+  const { showExpandedAttritionTable: isOpen, sourceId } = state;
   const toggleArrow = () =>
     dispatch({
       type: ACTIONS.SET_ATTRITION_TABLE_OPEN,
@@ -63,13 +51,7 @@ const AttritionTableWrapper: React.FC<AttritionTableWrapperProps> = ({
             {sourceId ?
             <AttritionTable
               dispatch={dispatch}
-              selectedStudyPopulationCohort={selectedStudyPopulationCohort}
-              datasetObservationWindow={datasetObservationWindow}
-              selectedOutcomeCohort={selectedOutcomeCohort}
-              outcomeObservationWindow={outcomeObservationWindow}
-              removeIndividualsWithPriorOutcome={removeIndividualsWithPriorOutcome}
-              percentageOfDataToUseAsTest={percentageOfDataToUseAsTest}
-              sourceId={sourceId}
+              state={state}
               />
               :<h2>Select Source</h2>}
           </div> : null}

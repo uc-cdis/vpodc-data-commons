@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Table, Loader } from '@mantine/core';
 import { CohortsEndpoint, CohortsOverlapEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
 import ACTIONS from '../../../Utils/StateManagement/Actions';
+import { State } from '../../../Utils/StateManagement/reducer';
+import { debounce } from 'lodash';
 
 interface AttritionTableProps {
   dispatch: (action: any) => void;
-  selectedStudyPopulationCohort: cohort;
-  datasetObservationWindow: number;
-  selectedOutcomeCohort: cohort;
-  outcomeObservationWindow: number;
-  removeIndividualsWithPriorOutcome: boolean;
-  percentageOfDataToUseAsTest: number | null;
-  sourceId: number;
+  state: State;
 }
 
 interface cohort { // TODO - centralize this interface
@@ -35,14 +31,23 @@ const cellKeys: Key[][] = [
 
 export const AttritionTable: React.FC<AttritionTableProps> = ({
   dispatch,
-  selectedStudyPopulationCohort,
-  datasetObservationWindow,
-  selectedOutcomeCohort,
-  outcomeObservationWindow,
-  removeIndividualsWithPriorOutcome,
-  percentageOfDataToUseAsTest,
-  sourceId,
+  state,
 }) => {
+  const {
+    selectedStudyPopulationCohort,
+    datasetObservationWindow,
+    selectedOutcomeCohort,
+    outcomeObservationWindow,
+    removeIndividualsWithPriorOutcome,
+    percentageOfDataToUseAsTest,
+    sourceId,
+    currentStep
+  } = useMemo(() => {
+      return state;
+    },
+    [state] 
+  );
+  console.log('top', selectedStudyPopulationCohort, datasetObservationWindow);
   const steps = [ 2, 3, '5a', '5b', 7 ]; // the workflow step related to each description below
   const descriptions = [
     'Initial data cohort',
@@ -89,6 +94,7 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
   };
 
   const getInObservationWindow = async () => {
+    console.log('selectedStudyPopulationCohort', selectedStudyPopulationCohort, datasetObservationWindow);
     if (! (selectedStudyPopulationCohort && datasetObservationWindow) ) {
       return null;
     }
@@ -200,22 +206,22 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
     ],
   ];
 
-  useEffect(() => {
+  const calculateAndSetValues = () => {
     const compute = async (initialValues: ValueMap, recalculateAll: boolean) => {
       const result: ValueMap = { ...initialValues };
       for (let row = 0; row < 5; row++) {
-        for (let col = 0; col < 5; col++) {
+        for (let col = 0; col < 4; col++) {
           const key = cellKeys[row][col];
           const fn = valueFns[row][col];
           // only compute if (still) null:
           try {
-            if (result[key] == null || recalculateAll) {
+            if (recalculateAll || result[key] == null) {
               setLoading((prev) => ({ ...prev, [key]: true }));
               result[key] = await fn(result);
               setLoading((prev) => ({ ...prev, [key]: false }));
             }
           } catch (e) {
-            console.log(`Error while computing attrition table cell value: ${e}`);
+            console.log(`Error while computing attrition table cell value: ${e}`, `row: ${row} col: ${col}`);
             errors[key] = ComputeError;
             setLoading((prev) => ({ ...prev, [key]: false }));
           }
@@ -223,20 +229,58 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
       }
       return result;
     };
-
+    compute(values, true)// First pass
+      .then((firstPassValues)=> {
+        return compute(firstPassValues, false);
+      })
+      .then((secondPassValues)=>{// Second pass using updated values
+        setValues(secondPassValues);// Update state with final result
+      })
+      .catch((err)=>{
+        console.error('compute error', err);
+      });
+    /*OLD
     (async () => {
         const firstPassValues = await compute(values, true); // First pass
         const secondPassValues = await compute(firstPassValues, false); // Second pass using updated values
         setValues(secondPassValues); // Update state with final result
     })();
+    */
+  };
 
-  }, [
+  const calculateAndSetValuesDebounced = useMemo(
+    () => {
+      return debounce(calculateAndSetValues, 1000);
+    },
+    [] 
+  );
+
+  useEffect(() => {
+    // set to loading
+    for (let row = 0; row < 5; row++) {
+      for (let col = 0; col < 4; col++) {
+        const key = cellKeys[row][col];
+        // only compute if (still) null:
+        setLoading((prev) => ({ ...prev, [key]: true }));
+      }
+    }
+    calculateAndSetValuesDebounced()
+  },
+  [
     selectedStudyPopulationCohort,
     datasetObservationWindow,
     selectedOutcomeCohort,
     outcomeObservationWindow,
     removeIndividualsWithPriorOutcome,
     percentageOfDataToUseAsTest,
+  ]);
+
+  useEffect(() => {
+    calculateAndSetValuesDebounced.cancel();
+    calculateAndSetValues();
+  },
+  [
+    currentStep
   ]);
 
   const getValueForKey = (key: Key) => {
