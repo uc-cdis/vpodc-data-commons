@@ -226,14 +226,7 @@ const PLPContainer = () => {
       />
       <AttritionTableWrapper
         dispatch={dispatch}
-        selectedStudyPopulationCohort={state.selectedStudyPopulationCohort}
-        datasetObservationWindow={state.datasetObservationWindow}
-        selectedOutcomeCohort={state.selectedOutcomeCohort}
-        outcomeObservationWindow={state.outcomeObservationWindow}
-        removeIndividualsWithPriorOutcome={state.removeIndividualsWithPriorOutcome}
-        percentageOfDataToUseAsTest={state.percentageOfDataToUseAsTest}
-        sourceId={state.sourceId}
-        isOpen={state.showExpandedAttritionTable}
+        state={state}
       />
       <div data-testid="GWASApp" className="p-4">
         <div className="steps-wrapper">
