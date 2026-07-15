@@ -61,7 +61,7 @@ const SelectSource = ({
                 {pageOfDisplayedSources.map((source: SelectSourceResponse, i: number) => (
                   <Table.Tr
                     key={i}
-                    className={source.CurrentTeamProjectAccessible === 'false' ? 'bg-gen3-lightgray' : (i % 2 ? 'bg-vadc-alternate_row' : '')}
+                    className={!source.CurrentTeamProjectAccessible ? 'bg-gen3-lightgray' : (i % 2 ? 'bg-vadc-alternate_row' : '')}
                   >
                     <Table.Td>
                       <Radio
@@ -70,7 +70,7 @@ const SelectSource = ({
                         onChange={() => {
                           handleSourceSelect(source);
                         }}
-                        disabled={source.CurrentTeamProjectAccessible === 'false'}
+                        disabled={!source.CurrentTeamProjectAccessible}
                         aria-label="Select this row"
                       />
                     </Table.Td>

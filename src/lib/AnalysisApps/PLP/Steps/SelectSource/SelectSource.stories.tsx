@@ -31,24 +31,29 @@ const TestSourcesData = {
       source_id: 0,
       source_name: 'test 0',
       description: "Synthea version:  3.3.0   SyntheaTM is a Synthetic Patient Population Simulator. The goal is to output synthetic, realistic (but not real), patient data and associated health records in a variety of formats.",
-			CurrentTeamProjectAccessible: "false"
+			CurrentTeamProjectAccessible: false
     },
     {
       source_id: 1,
       source_name: 'test 1',
       description: "Synthea version:  3.3.0   SyntheaTM is a Synthetic Patient Population Simulator. The goal is to output synthetic, realistic (but not real), patient data and associated health records in a variety of formats.",
-			CurrentTeamProjectAccessible: "true"
+			CurrentTeamProjectAccessible: true
     },
     {
       source_id: 2,
       source_name: 'test 2',
       description: "short description",
-			CurrentTeamProjectAccessible: "true"
+			CurrentTeamProjectAccessible: true
     },
     {
       source_id: 2,
       source_name: 'test 3',
-			CurrentTeamProjectAccessible: "true"
+			CurrentTeamProjectAccessible: true
+    },
+    {
+      source_id: 3,
+      source_name: 'test 4'
+			//no CurrentTeamProjectAccessible -> should work the same as CurrentTeamProjectAccessible: false
     }
   ]
 }

@@ -9,7 +9,7 @@ export interface SelectSourceResponse {
     source_id: number;
     source_name: string;
     description: string;
-    CurrentTeamProjectAccessible: "true" | "false";
+    CurrentTeamProjectAccessible?: boolean;
 };
 
 export interface Cohort {

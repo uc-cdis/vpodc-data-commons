@@ -1,6 +1,7 @@
 import { gen3Api } from '@gen3/core';
 import { dataDictionaryEndpoint } from '../SharedUtils/Endpoints';
 
+// TODO - do we need this file if we already have /src/lib/AnalysisApps/PLP/Utils/plpSlice.ts ?
 export interface SelectSourceAPIResponse {
     sources: SelectSourceResponse[];
 }
@@ -9,7 +10,7 @@ export interface SelectSourceResponse {
     source_id: number;
     source_name: string;
     description: string;
-    CurrentTeamProjectAccessible: "true" | "false";
+    CurrentTeamProjectAccessible?: boolean
 };
 
 export interface Cohort {
