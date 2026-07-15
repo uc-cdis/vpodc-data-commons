@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { Table, Loader } from '@mantine/core';
 import { CohortsEndpoint, CohortsOverlapEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
 import ACTIONS from '../../../Utils/StateManagement/Actions';
@@ -42,12 +42,13 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
     percentageOfDataToUseAsTest,
     sourceId,
     currentStep
-  } = useMemo(() => {
-      return state;
-    },
-    [state] 
-  );
-  console.log('top', selectedStudyPopulationCohort, datasetObservationWindow);
+  } = state;
+
+  const stateRef = useRef(state);
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
+
   const steps = [ 2, 3, '5a', '5b', 7 ]; // the workflow step related to each description below
   const descriptions = [
     'Initial data cohort',
@@ -79,6 +80,11 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
   }
 
   const getOverlapWithOutcome = async () => {
+    const {
+      selectedStudyPopulationCohort,
+      selectedOutcomeCohort,
+      sourceId,
+    } = stateRef.current;
     if (! (selectedStudyPopulationCohort && selectedOutcomeCohort) ) {
       return null;
     }
@@ -94,7 +100,11 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
   };
 
   const getInObservationWindow = async () => {
-    console.log('selectedStudyPopulationCohort', selectedStudyPopulationCohort, datasetObservationWindow);
+    const {
+      selectedStudyPopulationCohort,
+      datasetObservationWindow,
+      sourceId,
+    } = stateRef.current;
     if (! (selectedStudyPopulationCohort && datasetObservationWindow) ) {
       return null;
     }
@@ -109,6 +119,12 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
     return responseData.cohort_definition_and_stats?.size;
   };
   const getInObservationWindowAndOverlapWithOutcome = async (outcomeCohortEntryFirst: boolean = false) => {
+    const {
+      selectedStudyPopulationCohort,
+      datasetObservationWindow,
+      selectedOutcomeCohort,
+      sourceId,
+    } = stateRef.current;
     if (! (selectedStudyPopulationCohort && selectedOutcomeCohort && datasetObservationWindow) ) {
       return null;
     }
@@ -127,6 +143,13 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
   };
 
   const getInObservationWindowAndOverlapWithOutcomeAndInOutcomeWindow = async () => {
+    const {
+      selectedStudyPopulationCohort,
+      datasetObservationWindow,
+      selectedOutcomeCohort,
+      outcomeObservationWindow,
+      sourceId,
+    } = stateRef.current;
     if (! (selectedStudyPopulationCohort && selectedOutcomeCohort && datasetObservationWindow && outcomeObservationWindow) ) {
       return null;
     }
@@ -264,7 +287,7 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
         setLoading((prev) => ({ ...prev, [key]: true }));
       }
     }
-    calculateAndSetValuesDebounced()
+    calculateAndSetValuesDebounced();
   },
   [
     selectedStudyPopulationCohort,
