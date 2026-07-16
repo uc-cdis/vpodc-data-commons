@@ -65,7 +65,7 @@
         "clinical_demographics.Ethnicity",
         "clinical_demographics.Gender",
         "oncology_primaries.ICDOSite",
-        "oncology_primaries.PrimarySiteX",
+        "oncology_primaries.PrimarysiteX",
         "oncology_primaries.Stagegroupclinical"
       ],
       "defaultIfEmpty": "NULL",
@@ -76,7 +76,7 @@
         "oncology_primaries.ICDOSite": {
           "title": "Cancer Origin"
         },
-        "oncology_primaries.PrimarySiteX": {
+        "oncology_primaries.PrimarysiteX": {
           "title": "Diagnosis"
         },
         "oncology_primaries.Stagegroupclinical": {
