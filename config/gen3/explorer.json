@@ -37,11 +37,11 @@
         {
           "title": "Somatic Mutations",
           "fields": [
-            "somatic_mutations.Mutation"
+            "somatic_mutations.Gene"
           ],
           "fieldsConfig" : {
-            "somatic_mutations.Mutation": {
-              "label": "Annotated Somatic Mutations"
+            "somatic_mutations.Gene": {
+              "label": "Gene"
             }
           }
         }
