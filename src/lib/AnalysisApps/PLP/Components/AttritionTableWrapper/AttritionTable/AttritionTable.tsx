@@ -40,7 +40,6 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
     outcomeObservationWindow,
     removeIndividualsWithPriorOutcome,
     percentageOfDataToUseAsTest,
-    sourceId,
     currentStep
   } = state;
 
@@ -198,7 +197,7 @@ export const AttritionTable: React.FC<AttritionTableProps> = ({
 
   const valueFns: ((vals: ValueMap) => Promise<number | null>)[][] = [
     [
-      async () => selectedStudyPopulationCohort?.size,                    // A1
+      async () => stateRef.current?.selectedStudyPopulationCohort?.size,                    // A1
       async (v) => null,                                                  // B1
       async () => getOverlapWithOutcome(),                                // C1
       async (v) => (v.A1 == null || v.C1 == null ? null : (v.A1 - v.C1)), // D1
