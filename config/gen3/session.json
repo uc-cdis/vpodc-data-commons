@@ -1,8 +1,9 @@
 {
   "sessionConfig" : {
-    "updateSessionTime": 5,
+    "updateSessionTime": 4,
     "inactiveTimeLimit": 20,
     "logoutInactiveUsers": true,
-    "monitorWorkspace": true
+    "monitorWorkspace": true,
+    "expireWarningMinutes": 0
   }
 }
