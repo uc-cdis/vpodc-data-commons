@@ -41,7 +41,8 @@
           ],
           "fieldsConfig" : {
             "somatic_mutations.Gene": {
-              "label": "Gene"
+              "label": "Gene",
+              "valueLabel" : "Somatic Mutations"
             }
           }
         }
