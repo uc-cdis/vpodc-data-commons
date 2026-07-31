@@ -6,6 +6,9 @@
     "/Explorer": {
       "loginRequired": true
     },
+    "/DataConnections": {
+      "loginRequired": true
+    },
     "/DataLibrary": {
       "loginRequired": true
     },

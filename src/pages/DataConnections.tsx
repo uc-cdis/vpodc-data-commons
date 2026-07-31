@@ -1,0 +1,205 @@
+import React from 'react';
+import { Title, Table, Mark, Spoiler } from '@mantine/core';
+import {
+  NavPageLayout,
+  NavPageLayoutProps,
+  getNavPageLayoutPropsFromConfig,
+} from '@gen3/frontend';
+import { GetServerSideProps } from 'next';
+
+const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
+  const elements = [
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort A (RePOP)",
+      "datatype": "Clinical OMOP CDM",
+      "description": "Clinical OMOP CDM data from Veterans with lung, prostate and other cancers",
+      "type": "ATLAS, PLP apps (VPODC)",
+      "status": "Established, Real Data",
+      "patients": "819 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort A (RePOP)",
+      "datatype": "Primary Oncology",
+      "description": "Primary oncology data from Veterans with lung, prostate and other cancers",
+      "type": "API (VPODC/MC2DP explorer, select variables)",
+      "status": "Established, Real Data",
+      "patients": "784 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort A (RePOP)",
+      "datatype": "Genomics",
+      "description": "Genomics (Annotated DNA somatic mutation VCFs)",
+      "type": "API",
+      "status": "Established, Real Data",
+      "patients": "142 VCFs"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort A (RePOP)",
+      "datatype": "Imaging",
+      "description": "Imaging (JPEG, DICOM)",
+      "type": "API",
+      "status": "Established, Real Data",
+      "patients": "211,244 Imaging Files / 41 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort B",
+      "datatype": "Clinical OMOP CDM",
+      "description": "Clinical OMOP CDM data from deceased Veterans with primarily prostate and respiratory cancers (bronchus and lung)",
+      "type": "ATLAS, PLP apps (VPODC)",
+      "status": "Established, Real Data",
+      "patients": "163,474 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort B",
+      "datatype": "Genomics",
+      "description": "Genomics (Annotated DNA somatic mutation VCFs)",
+      "type": "API",
+      "status": "Established, Real Data",
+      "patients": "869 VCFs"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort B",
+      "datatype": "Imaging",
+      "description": "Imaging (MRI, JPEG)",
+      "type": "API",
+      "status": "Established, Real Data",
+      "patients": "24,133 Imaging Files / 6 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
+      "datatype": "Clinical OMOP CDM",
+      "description": "Clinical OMOP CDM data from Veterans with kidney, prostate and other carcinomas. A subset of individuals are in the RCC pilot.",
+      "type": "ATLAS, PLP apps (VPODC)",
+      "status": "Established, Real Data",
+      "patients": "348 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
+      "datatype": "Primary Oncology",
+      "description": "Primary oncology data from Veterans with kidney, prostate and other carcinomas.",
+      "type": "API (VPODC/MC2DP explorer, select variables)",
+      "status": "Established, Real Data",
+      "patients": "314 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
+      "datatype": "Genomics",
+      "description": "Genomics (Annotated DNA somatic mutation VCFs, Copy number variants, RNA expression, Germline VCFs)",
+      "type": "Secure workspace",
+      "status": "Established, Real Data",
+      "patients": "49 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
+      "datatype": "Epidemiology",
+      "description": "Epidemiology/Questionnaire",
+      "type": "Secure workspace (select variables)",
+      "status": "Established, Real Data",
+      "patients": "534 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
+      "datatype": "Imaging",
+      "description": "Imaging (DICOM)",
+      "type": "API",
+      "status": "Established, Real Data",
+      "patients": "148,644 Imaging Files / 35 patients"
+    },
+    {
+      "source": "VPODC",
+      "cohortStudy": "Cohort F, Renal Cell Carcinoma (RCC) pilot",
+      "datatype": "See rcc tab",
+      "description": "See rcc tab",
+      "type": "See rcc tab",
+      "status": "Established, Real Data",
+      "patients": "23 patients"
+    }
+  ]
+  type BgColorsType = {[key: string]: string};
+  const bgColors: BgColorsType = {
+    '[Established - Real Data]': 'bg-green-100',
+    '[Established - Real Data Pending]': 'bg-orange-100',
+    '[Synthetic Data]': 'bg-orange-100',
+    '[Connection Pending]': 'bg-red-100',
+    '[Data Pending]': 'bg-red-100',
+    '[No Clinical Data, Imaging Data Received - Connection Pending]': 'bg-red-100',
+  };
+  const rows = elements.map((element, index) => (
+    <Table.Tr key={index}>
+      <Table.Td>{element.source}</Table.Td>
+      <Table.Td>{element.cohortStudy}</Table.Td>
+      <Table.Td>{element.datatype}</Table.Td>
+      <Table.Td>
+        <Spoiler 
+          maxHeight={90}
+          showLabel="Show full description"
+          hideLabel="Hide full description"
+          className='w-96'
+        >
+          {element.description}
+        </Spoiler>
+      </Table.Td>
+      <Table.Td className={bgColors[element.status]}>{element.status}</Table.Td>
+      <Table.Td>{element.patients}</Table.Td>
+    </Table.Tr>
+  ));
+  return (
+    <NavPageLayout
+      {...{ headerProps, footerProps }}
+      headerMetadata={{
+        title: 'Data Connections',
+        content: 'Data Connections',
+        key: 'gen3-DataConnections-page',
+      }}
+    >
+      <div className="w-full m-10">
+        <Title order={1}>Data Connections</Title>
+        <Table 
+          striped
+          tabularNums
+          withTableBorder
+          withColumnBorders
+        >
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>Source</Table.Th>
+              <Table.Th>Cohort / Study</Table.Th>
+              <Table.Th>Data Type</Table.Th>
+              <Table.Th>Data Description</Table.Th>
+              <Table.Th>Connection Type</Table.Th>
+              <Table.Th>Connection Status</Table.Th>
+              <Table.Th># Patients Available/Expected</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{rows}</Table.Tbody>
+        </Table>
+        <p><Mark className={bgColors['[Established - Real Data]']}>Green color</Mark>: connection established with real data</p>
+      </div>
+    </NavPageLayout>
+  );
+};
+
+// TODO: replace this with a custom getServerSideProps function
+export const getServerSideProps: GetServerSideProps<
+  NavPageLayoutProps
+> = async () => {
+  return {
+    props: {
+      ...(await getNavPageLayoutPropsFromConfig()),
+    },
+  };
+};
+
+export default StatsPage;
