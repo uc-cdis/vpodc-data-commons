@@ -14,7 +14,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort A (RePOP)",
       "datatype": "Clinical OMOP CDM",
       "description": "Clinical OMOP CDM data from Veterans with lung, prostate and other cancers",
-      "type": "ATLAS, PLP apps (VPODC)",
+      "connectiontype": "ATLAS, PLP apps (VPODC)",
       "status": "Established, Real Data",
       "patients": "819 patients"
     },
@@ -23,7 +23,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort A (RePOP)",
       "datatype": "Primary Oncology",
       "description": "Primary oncology data from Veterans with lung, prostate and other cancers",
-      "type": "API (VPODC/MC2DP explorer, select variables)",
+      "connectiontype": "API (VPODC/MC2DP explorer, select variables)",
       "status": "Established, Real Data",
       "patients": "784 patients"
     },
@@ -32,7 +32,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort A (RePOP)",
       "datatype": "Genomics",
       "description": "Genomics (Annotated DNA somatic mutation VCFs)",
-      "type": "API",
+      "connectiontype": "API",
       "status": "Established, Real Data",
       "patients": "142 VCFs"
     },
@@ -41,7 +41,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort A (RePOP)",
       "datatype": "Imaging",
       "description": "Imaging (JPEG, DICOM)",
-      "type": "API",
+      "connectiontype": "API",
       "status": "Established, Real Data",
       "patients": "211,244 Imaging Files / 41 patients"
     },
@@ -50,7 +50,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort B",
       "datatype": "Clinical OMOP CDM",
       "description": "Clinical OMOP CDM data from deceased Veterans with primarily prostate and respiratory cancers (bronchus and lung)",
-      "type": "ATLAS, PLP apps (VPODC)",
+      "connectiontype": "ATLAS, PLP apps (VPODC)",
       "status": "Established, Real Data",
       "patients": "163,474 patients"
     },
@@ -59,7 +59,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort B",
       "datatype": "Genomics",
       "description": "Genomics (Annotated DNA somatic mutation VCFs)",
-      "type": "API",
+      "connectiontype": "API",
       "status": "Established, Real Data",
       "patients": "869 VCFs"
     },
@@ -68,7 +68,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort B",
       "datatype": "Imaging",
       "description": "Imaging (MRI, JPEG)",
-      "type": "API",
+      "connectiontype": "API",
       "status": "Established, Real Data",
       "patients": "24,133 Imaging Files / 6 patients"
     },
@@ -77,7 +77,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
       "datatype": "Clinical OMOP CDM",
       "description": "Clinical OMOP CDM data from Veterans with kidney, prostate and other carcinomas. A subset of individuals are in the RCC pilot.",
-      "type": "ATLAS, PLP apps (VPODC)",
+      "connectiontype": "ATLAS, PLP apps (VPODC)",
       "status": "Established, Real Data",
       "patients": "348 patients"
     },
@@ -86,7 +86,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
       "datatype": "Primary Oncology",
       "description": "Primary oncology data from Veterans with kidney, prostate and other carcinomas.",
-      "type": "API (VPODC/MC2DP explorer, select variables)",
+      "connectiontype": "API (VPODC/MC2DP explorer, select variables)",
       "status": "Established, Real Data",
       "patients": "314 patients"
     },
@@ -95,7 +95,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
       "datatype": "Genomics",
       "description": "Genomics (Annotated DNA somatic mutation VCFs, Copy number variants, RNA expression, Germline VCFs)",
-      "type": "Secure workspace",
+      "connectiontype": "Secure workspace",
       "status": "Established, Real Data",
       "patients": "49 patients"
     },
@@ -104,7 +104,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
       "datatype": "Epidemiology",
       "description": "Epidemiology/Questionnaire",
-      "type": "Secure workspace (select variables)",
+      "connectiontype": "Secure workspace (select variables)",
       "status": "Established, Real Data",
       "patients": "534 patients"
     },
@@ -113,7 +113,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort F (VABio Legacy/APOLLO 5 cohort)",
       "datatype": "Imaging",
       "description": "Imaging (DICOM)",
-      "type": "API",
+      "connectiontype": "API",
       "status": "Established, Real Data",
       "patients": "148,644 Imaging Files / 35 patients"
     },
@@ -122,7 +122,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "cohortStudy": "Cohort F, Renal Cell Carcinoma (RCC) pilot",
       "datatype": "See rcc tab",
       "description": "See rcc tab",
-      "type": "See rcc tab",
+      "connectiontype": "See rcc tab",
       "status": "Established, Real Data",
       "patients": "23 patients"
     }
@@ -151,6 +151,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
           {element.description}
         </Spoiler>
       </Table.Td>
+      <Table.Td>{element.connectiontype}</Table.Td>
       <Table.Td className={bgColors[element.status]}>{element.status}</Table.Td>
       <Table.Td>{element.patients}</Table.Td>
     </Table.Tr>
@@ -176,7 +177,6 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
             <Table.Tr>
               <Table.Th>Source</Table.Th>
               <Table.Th>Cohort / Study</Table.Th>
-              <Table.Th>Data Type</Table.Th>
               <Table.Th>Data Description</Table.Th>
               <Table.Th>Connection Type</Table.Th>
               <Table.Th>Connection Status</Table.Th>
