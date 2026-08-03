@@ -15,7 +15,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Clinical OMOP CDM",
       "description": "Clinical OMOP CDM data from Veterans with lung, prostate and other cancers",
       "connectiontype": "ATLAS, PLP apps (VPODC)",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "819 patients"
     },
     {
@@ -24,7 +24,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Primary Oncology",
       "description": "Primary oncology data from Veterans with lung, prostate and other cancers",
       "connectiontype": "API (VPODC/MC2DP explorer, select variables)",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "784 patients"
     },
     {
@@ -33,7 +33,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Genomics",
       "description": "Genomics (Annotated DNA somatic mutation VCFs)",
       "connectiontype": "API",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "142 VCFs"
     },
     {
@@ -42,7 +42,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Imaging",
       "description": "Imaging (JPEG, DICOM)",
       "connectiontype": "API",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "211,244 Imaging Files / 41 patients"
     },
     {
@@ -51,7 +51,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Clinical OMOP CDM",
       "description": "Clinical OMOP CDM data from deceased Veterans with primarily prostate and respiratory cancers (bronchus and lung)",
       "connectiontype": "ATLAS, PLP apps (VPODC)",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "163,474 patients"
     },
     {
@@ -60,7 +60,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Genomics",
       "description": "Genomics (Annotated DNA somatic mutation VCFs)",
       "connectiontype": "API",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "869 VCFs"
     },
     {
@@ -69,7 +69,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Imaging",
       "description": "Imaging (MRI, JPEG)",
       "connectiontype": "API",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "24,133 Imaging Files / 6 patients"
     },
     {
@@ -78,7 +78,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Clinical OMOP CDM",
       "description": "Clinical OMOP CDM data from Veterans with kidney, prostate and other carcinomas. A subset of individuals are in the RCC pilot.",
       "connectiontype": "ATLAS, PLP apps (VPODC)",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "348 patients"
     },
     {
@@ -87,7 +87,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Primary Oncology",
       "description": "Primary oncology data from Veterans with kidney, prostate and other carcinomas.",
       "connectiontype": "API (VPODC/MC2DP explorer, select variables)",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "314 patients"
     },
     {
@@ -96,7 +96,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Genomics",
       "description": "Genomics (Annotated DNA somatic mutation VCFs, Copy number variants, RNA expression, Germline VCFs)",
       "connectiontype": "Secure workspace",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "49 patients"
     },
     {
@@ -105,7 +105,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Epidemiology",
       "description": "Epidemiology/Questionnaire",
       "connectiontype": "Secure workspace (select variables)",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "534 patients"
     },
     {
@@ -114,16 +114,16 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
       "datatype": "Imaging",
       "description": "Imaging (DICOM)",
       "connectiontype": "API",
-      "status": "Established, Real Data",
+      "status": "Established - Real Data",
       "patients": "148,644 Imaging Files / 35 patients"
     },
     {
       "source": "VPODC",
       "cohortStudy": "Cohort F, Renal Cell Carcinoma (RCC) pilot",
-      "datatype": "See rcc tab",
-      "description": "See rcc tab",
-      "connectiontype": "See rcc tab",
-      "status": "Established, Real Data",
+      "datatype": "See RCC tab",
+      "description": "See RCC tab",
+      "connectiontype": "See RCC tab",
+      "status": "Established - Real Data",
       "patients": "23 patients"
     }
   ]
