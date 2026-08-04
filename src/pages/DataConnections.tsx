@@ -177,6 +177,7 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
             <Table.Tr>
               <Table.Th>Source</Table.Th>
               <Table.Th>Cohort / Study</Table.Th>
+              <Table.Th>Data Type</Table.Th>
               <Table.Th>Data Description</Table.Th>
               <Table.Th>Connection Type</Table.Th>
               <Table.Th>Connection Status</Table.Th>
