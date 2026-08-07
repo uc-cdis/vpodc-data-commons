@@ -120,9 +120,9 @@ const StatsPage = ({ headerProps, footerProps }: NavPageLayoutProps) => {
     {
       "source": "VPODC",
       "cohortStudy": "Cohort F, Renal Cell Carcinoma (RCC) pilot",
-      "datatype": "See RCC tab",
-      "description": "See RCC tab",
-      "connectiontype": "See RCC tab",
+      "datatype": "Entire Cohort F contains: Clinical OMOP CDM (n=348), Primary Oncology (n = 314), Epidemiology (n = 534), Genomics (n = 49),RCC cohort (n = 23)",
+      "description": "Longitudinal clinical EHR data in the OMOP CDM format for all Veterans in Cohort F. This includes RCC and non-RCC cases. For RCC,  clear cell kidney adenocarcinomas, papillary or mixed cell kidney adenocarcinomas, and kidney renal cell carcinomas including chromophobe type are represented, Primary Oncology data for all Veterans in cohort F, including RCC and non-RCC cases. This dataset contains specific Histology diagnosis based on ICDO3X, Primary site, Date of Diagnosis, tumor morphology, surgery and treatment details among others. Targeted variables based on HistologyICDO3X, Primary site and Date of Diagnosis used for RCC pilot analysis, focusing only on the cohort with RCC, Epidemiology questionnaire data for all Veterans in cohort F, including RCC and non-RCC cases.  Exposure information on smoking, alcohol, military exposures and miliary branch association used for RCC pilot analysis, focusing on epidemiology data specific to RCC cohort, Genomics data is whole genome sequencing data, processed using DRAGEN pipeline. Data consists of somatic DNA mutations (MAF), somatic copy number mutations, tumor gene expression and germline VCFs from 49 individuals. RCC pilot analysis conducted on genomic data specific to RCC cohort",
+      "connectiontype": "Clinical OMOP CDM data for cohort F connected to ATLAS and PLP apps (VPODC). Primary Oncology, epidemiology and Genomics connected to secure workspaces in VPODC/MC2DP",
       "status": "[Established - Real Data]",
       "patients": "23 patients"
     }
