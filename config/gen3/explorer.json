@@ -18,9 +18,11 @@
           "fields": [
             "project_id",
             "oncology_primaries.ICDOSite",
-            "oncology_primaries.Stagegroupclinical"
+            "oncology_primaries.Stagegroupclinical",
+            "oncology_primaries.PrimarysiteX",
+            "oncology_primaries.Histologyicdo3X"
           ],
-          "fieldsConfig" : {
+          "fieldsConfig": {
             "project_id": {
               "label": "Project ID"
             },
@@ -31,6 +33,14 @@
             "oncology_primaries.Stagegroupclinical": {
               "field": "oncology_primaries.Stagegroupclinical",
               "label": "Stage"
+            },
+            "oncology_primaries.PrimarysiteX": {
+              "field": "oncology_primaries.PrimarysiteX",
+              "label": "Primary Site"
+            },
+            "oncology_primaries.Histologyicdo3X": {
+              "field": "oncology_primaries.Histologyicdo3X",
+              "label": "Histologyicd03X"
             }
           }
         },
@@ -39,10 +49,10 @@
           "fields": [
             "somatic_mutations.Gene"
           ],
-          "fieldsConfig" : {
+          "fieldsConfig": {
             "somatic_mutations.Gene": {
               "label": "Gene",
-              "valueLabel" : "Somatic Mutations"
+              "valueLabel": "Somatic Mutations"
             }
           }
         }
@@ -67,7 +77,7 @@
         "clinical_demographics.Gender",
         "oncology_primaries.ICDOSite",
         "oncology_primaries.PrimarysiteX",
-        "oncology_primaries.Stagegroupclinical"
+        "oncology_primaries.Histologyicdo3X"
       ],
       "defaultIfEmpty": "NULL",
       "columns": {
@@ -82,6 +92,9 @@
         },
         "oncology_primaries.Stagegroupclinical": {
           "title": "Stage"
+        },
+        "oncology_primaries.Histologyicdo3X": {
+          "title": "Histologyicd03X"
         }
       },
       "detailsConfig": {
@@ -98,7 +111,7 @@
             "Stagegroupclinical",
             "ICDOSite"
           ],
-          "columns":{
+          "columns": {
             "ICDOSite": {
               "field": "ICDOSite",
               "title": "ICDO Sites"
@@ -136,7 +149,7 @@
             "data_format",
             "file_size"
           ],
-          "fieldsConfig" : {
+          "fieldsConfig": {
             "project_id": {
               "label": "Project ID"
             },
