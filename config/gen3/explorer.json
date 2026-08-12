@@ -77,8 +77,7 @@
         "clinical_demographics.Gender",
         "oncology_primaries.ICDOSite",
         "oncology_primaries.Stagegroupclinical",
-        "oncology_primaries.PrimarysiteX",
-        "oncology_primaries.Histologyicdo3X"
+        "oncology_primaries.PrimarysiteX"
       ],
       "defaultIfEmpty": "NULL",
       "columns": {
@@ -93,9 +92,6 @@
         },
         "oncology_primaries.Stagegroupclinical": {
           "title": "Stage"
-        },
-        "oncology_primaries.Histologyicdo3X": {
-          "title": "Histology ICDO 3X"
         }
       },
       "detailsConfig": {
@@ -110,8 +106,7 @@
           "processData": false,
           "fields": [
             "Stagegroupclinical",
-            "ICDOSite",
-            "Histologyicdo3X"
+            "ICDOSite"
           ],
           "columns": {
             "ICDOSite": {
@@ -121,11 +116,7 @@
             "Stagegroupclinical": {
               "field": "Stagegroupclinical",
               "title": "Cancer Stages"
-            },
-            "Histologyicdo3X": {
-              "field": "Histologyicdo3X",
-              "title": "Histology ICDO 3X"
-            },
+            }
           }
         }
       ]
