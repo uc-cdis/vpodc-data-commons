@@ -233,7 +233,7 @@
             },
             "exposures.XP_RESP": {
               "field": "exposures.XP_RESP",
-              "label": "Petroleum"
+              "label": "XP_RESP"
             },
             "exposures.XP_URANIUM": {
               "field": "exposures.XP_URANIUM",
