@@ -45,6 +45,230 @@
           }
         },
         {
+          "title": "Smoking History",
+          "fields": [
+            "project_id",
+            "exposures.SMOKE_CURRENT",
+            "exposures.SMOKE_MIN_100",
+            "exposures.SMOKE_DAILY_AMT",
+            "exposures.SMOKE_CIGAR_PIPE",
+            "exposures.SMOKE_SMOKELESS",
+            "exposures.SMOKE_START_AGE",
+            "exposures.SMOKE_STOP_AGE",
+            "exposures.SMOKE_TOTAL_YEARS"
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID"
+            },
+            "exposures.SMOKE_CURRENT": {
+              "field": "exposures.SMOKE_CURRENT",
+              "label": "Current Smoker"
+            },
+            "exposures.SMOKE_MIN_100": {
+              "field": "exposures.SMOKE_MIN_100",
+              "label": "SMOKE_MIN_100"
+            },
+            "exposures.SMOKE_DAILY_AMT": {
+              "field": "exposures.SMOKE_DAILY_AMT",
+              "label": "Daily Amount"
+            },
+            "exposures.SMOKE_CIGAR_PIPE": {
+              "field": "exposures.SMOKE_CIGAR_PIPE",
+              "label": "Cigar or Pipe Use"
+            },
+            "exposures.SMOKE_SMOKELESS": {
+              "field": "exposures.SMOKE_SMOKELESS",
+              "label": "Smokeless Tobacco Use"
+            },
+            "exposures.SMOKE_START_AGE": {
+              "field": "exposures.SMOKE_START_AGE",
+              "label": "Age Start Smoking"
+            },
+            "exposures.SMOKE_STOP_AGE": {
+              "field": "exposures.SMOKE_STOP_AGE",
+              "label": "Age Stop Smoking"
+            },
+            "exposures.SMOKE_TOTAL_YEARS": {
+              "field": "exposures.SMOKE_TOTAL_YEARS",
+              "label": "Total Years Smoking"
+            }
+          }
+        },
+        {
+          "title": "Alcohol Consumption",
+          "fields": [
+            "project_id",
+            "exposures.DRINK_CURRENT",
+            "exposures.DRINK_MIN_12",
+            "exposures.DRINK_BEER_FREQ",
+            "exposures.DRINK_WINE_FREQ",
+            "exposures.DRINK_LIQUOR_FREQ",
+            "exposures.DRINK_START_AGE",
+            "exposures.DRINK_STOP_AGE",
+            "exposures.DRINK_TOTAL_YEARS"
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID"
+            },
+            "exposures.DRINK_CURRENT": {
+              "field": "exposures.DRINK_CURRENT",
+              "label": "Current Drinker"
+            },
+            "exposures.DRINK_MIN_12": {
+              "field": "exposures.DRINK_MIN_12",
+              "label": "DRINK_MIN_12"
+            },
+            "exposures.DRINK_BEER_FREQ": {
+              "field": "exposures.DRINK_BEER_FREQ",
+              "label": "Beer Frequency"
+            },
+            "exposures.DRINK_WINE_FREQ": {
+              "field": "exposures.DRINK_WINE_FREQ",
+              "label": "Wine Frequency"
+            },
+            "exposures.DRINK_LIQUOR_FREQ": {
+              "field": "exposures.DRINK_LIQUOR_FREQ",
+              "label": "Liquor Frequency"
+            },
+            "exposures.DRINK_START_AGE": {
+              "field": "exposures.DRINK_START_AGE",
+              "label": "Age Start Drinking"
+            },
+            "exposures.DRINK_STOP_AGE": {
+              "field": "exposures.DRINK_STOP_AGE",
+              "label": "Age Stop Drinking"
+            },
+            "exposures.DRINK_TOTAL_YEARS": {
+              "field": "exposures.DRINK_TOTAL_YEARS",
+              "label": "Total Years Drinking"
+            }
+          }
+        },
+        {
+          "title": "Exposure",
+          "fields": [
+            "project_id",
+            "exposures.XP_AGENTORANGE",
+            "exposures.XP_ANTHRAX",
+            "exposures.XP_ASBESTOS",
+            "exposures.XP_BURNPIT",
+            "exposures.XP_CHROMIUM",
+            "exposures.XP_CONSTRUCT",
+            "exposures.XP_MICROWAVE",
+            "exposures.XP_MUSTARD",
+            "exposures.XP_NUCLEAR",
+            "exposures.XP_PAINT",
+            "exposures.XP_PERCHLORATE",
+            "exposures.XP_PESTICIDE",
+            "exposures.XP_PETROLEUM",
+            "exposures.XP_RADIATION",
+            "exposures.XP_RESP",
+            "exposures.XP_URANIUM",
+            "exposures.XP_WARFARE",
+            "exposures.XP_WOUNDS",
+            "exposures.XP_XRAY",
+            "exposures.XP_OTHER"
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID"
+            },
+            "exposures.XP_AGENTORANGE": {
+              "field": "exposures.XP_AGENTORANGE",
+              "label": "Agent Orange"
+            },
+            "exposures.XP_ANTHRAX": {
+              "field": "exposures.XP_ANTHRAX",
+              "label": "Anthrax"
+            },
+            "exposures.XP_ASBESTOS": {
+              "field": "exposures.XP_ASBESTOS",
+              "label": "Asbestos"
+            },
+            "exposures.XP_BURNPIT": {
+              "field": "exposures.XP_BURNPIT",
+              "label": "Burn Pit"
+            },
+            "exposures.XP_CHROMIUM": {
+              "field": "exposures.XP_CHROMIUM",
+              "label": "Chromium"
+            },
+            "exposures.XP_CONSTRUCT": {
+              "field": "exposures.XP_CONSTRUCT",
+              "label": "Construction"
+            },
+            "exposures.XP_MICROWAVE": {
+              "field": "exposures.XP_MICROWAVE",
+              "label": "Microwave"
+            },
+            "exposures.XP_MUSTARD": {
+              "field": "exposures.XP_MUSTARD",
+              "label": "Mustard Gas"
+            },
+            "exposures.XP_NUCLEAR": {
+              "field": "exposures.XP_NUCLEAR",
+              "label": "Nuclear"
+            },
+            "exposures.XP_PAINT": {
+              "field": "exposures.XP_PAINT",
+              "label": "Lead Paint"
+            },
+            "exposures.XP_PERCHLORATE": {
+              "field": "exposures.XP_PERCHLORATE",
+              "label": "Perchlorate"
+            },
+            "exposures.XP_PESTICIDE": {
+              "field": "exposures.XP_PESTICIDE",
+              "label": "Pesticide"
+            },
+            "exposures.XP_PETROLEUM": {
+              "field": "exposures.XP_PETROLEUM",
+              "label": "Petroleum"
+            },
+            "exposures.XP_RADIATION": {
+              "field": "exposures.XP_RADIATION",
+              "label": "Radiation"
+            },
+            "exposures.XP_RESP": {
+              "field": "exposures.XP_RESP",
+              "label": "Petroleum"
+            },
+            "exposures.XP_URANIUM": {
+              "field": "exposures.XP_URANIUM",
+              "label": "Uranium"
+            },
+            "exposures.XP_WARFARE": {
+              "field": "exposures.XP_WARFARE",
+              "label": "Warfare"
+            },
+            "exposures.XP_WOUNDS": {
+              "field": "exposures.XP_WOUNDS",
+              "label": "Wounds"
+            },
+            "exposures.XP_XRAY": {
+              "field": "exposures.XP_XRAY",
+              "label": "XRay"
+            },
+            "exposures.XP_OTHER": {
+              "field": "exposures.XP_OTHER",
+              "label": "Other"
+            }
+          }
+        },
+        {
+          "title": "Military History",
+          "fields": [
+            "exposures.MILITARY_ASSOCIATION"
+          ],
+          "fieldsConfig": {
+            "exposures.MILITARY_ASSOCIATION": {
+              "label": "Military Association"
+            }
+          }
+        },
+        {
           "title": "Somatic Mutations",
           "fields": [
             "somatic_mutations.Gene"
