@@ -249,7 +249,7 @@
             },
             "exposures.XP_XRAY": {
               "field": "exposures.XP_XRAY",
-              "label": "XRay"
+              "label": "X-ray"
             },
             "exposures.XP_OTHER": {
               "field": "exposures.XP_OTHER",
