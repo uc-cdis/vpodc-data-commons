@@ -4,7 +4,7 @@ import AtlasDataDictionaryTable from './AtlasDataDictionaryTable';
 import { dataDictionaryEndpoint } from '../../SharedUtils/Endpoints';
 import { useRetrieveDDQuery } from '../addSlice';
 
-const AtlasDataDictionaryLoading = () => { 
+const AtlasDataDictionaryLoading = ({ sourceid }: { sourceid: number }) => {
   const [TableData, setTableData] = useState([{}]);
   const endpoint = `${dataDictionaryEndpoint}/Retrieve`;
 
@@ -32,7 +32,7 @@ const AtlasDataDictionaryLoading = () => {
   }, [endpoint]);
    */
   // TODO start here where should the API endpoint be going? is this a backend servace? can ask Pieter Lukasse he set this up originallly
-  const { data, isLoading, isError } = useRetrieveDDQuery();
+  const { data, isLoading, isError } = useRetrieveDDQuery(sourceid);
 
   console.log('data', data);
 

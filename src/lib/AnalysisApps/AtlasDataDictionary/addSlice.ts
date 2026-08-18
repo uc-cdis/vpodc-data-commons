@@ -36,8 +36,8 @@ export interface SelectCohortRequestParams {
 
 export const plpApi = gen3Api.injectEndpoints({
   endpoints: (builder) => ({
-    retrieveDD: builder.query<SelectSourceResponse[], void>({
-      query: () => `${dataDictionaryEndpoint}/Retrieve`,
+    retrieveDD: builder.query<SelectSourceResponse[], number>({
+      query: (sourceid) => `${dataDictionaryEndpoint}/Retrieve/by-source-id/${sourceid}`,
       /*transformResponse: (response: SelectSourceAPIResponse) => {
         return response?.sources;
       },*/
