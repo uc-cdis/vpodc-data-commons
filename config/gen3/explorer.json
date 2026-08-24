@@ -67,7 +67,7 @@
             },
             "exposures.SMOKE_MIN_100": {
               "field": "exposures.SMOKE_MIN_100",
-              "label": "At least 100 cigarettes in lifetime"
+              "label": ">= 100 cigarettes in lifetime"
             },
             "exposures.SMOKE_DAILY_AMT": {
               "field": "exposures.SMOKE_DAILY_AMT",
@@ -118,7 +118,7 @@
             },
             "exposures.DRINK_MIN_12": {
               "field": "exposures.DRINK_MIN_12",
-              "label": "At least 12 drinks in lifetime"
+              "label": ">= 12 drinks in lifetime"
             },
             "exposures.DRINK_BEER_FREQ": {
               "field": "exposures.DRINK_BEER_FREQ",
