@@ -45,7 +45,7 @@
           }
         },
         {
-          "title": "Smoking History",
+          "title": "Tobacco Products",
           "fields": [
             "project_id",
             "exposures.SMOKE_CURRENT",
@@ -67,11 +67,11 @@
             },
             "exposures.SMOKE_MIN_100": {
               "field": "exposures.SMOKE_MIN_100",
-              "label": "SMOKE_MIN_100"
+              "label": "At least 100 cigarettes in lifetime"
             },
             "exposures.SMOKE_DAILY_AMT": {
               "field": "exposures.SMOKE_DAILY_AMT",
-              "label": "Daily Amount"
+              "label": "Daily Amount (packs)"
             },
             "exposures.SMOKE_CIGAR_PIPE": {
               "field": "exposures.SMOKE_CIGAR_PIPE",
@@ -96,7 +96,7 @@
           }
         },
         {
-          "title": "Alcohol Consumption",
+          "title": "Alcohol History",
           "fields": [
             "project_id",
             "exposures.DRINK_CURRENT",
@@ -118,7 +118,7 @@
             },
             "exposures.DRINK_MIN_12": {
               "field": "exposures.DRINK_MIN_12",
-              "label": "DRINK_MIN_12"
+              "label": "At least 12 drinks in lifetime"
             },
             "exposures.DRINK_BEER_FREQ": {
               "field": "exposures.DRINK_BEER_FREQ",
@@ -147,7 +147,7 @@
           }
         },
         {
-          "title": "Exposure",
+          "title": "Work Environment",
           "fields": [
             "project_id",
             "exposures.XP_AGENTORANGE",
@@ -193,7 +193,7 @@
             },
             "exposures.XP_CHROMIUM": {
               "field": "exposures.XP_CHROMIUM",
-              "label": "Chromium"
+              "label": "Hexavalent Chromium"
             },
             "exposures.XP_CONSTRUCT": {
               "field": "exposures.XP_CONSTRUCT",
@@ -213,7 +213,7 @@
             },
             "exposures.XP_PAINT": {
               "field": "exposures.XP_PAINT",
-              "label": "Lead Paint"
+              "label": "Paint"
             },
             "exposures.XP_PERCHLORATE": {
               "field": "exposures.XP_PERCHLORATE",
@@ -233,15 +233,15 @@
             },
             "exposures.XP_RESP": {
               "field": "exposures.XP_RESP",
-              "label": "XP_RESP"
+              "label": "Occupational hazards requiring protective equipment"
             },
             "exposures.XP_URANIUM": {
               "field": "exposures.XP_URANIUM",
-              "label": "Uranium"
+              "label": "Depleted Uranium"
             },
             "exposures.XP_WARFARE": {
               "field": "exposures.XP_WARFARE",
-              "label": "Warfare"
+              "label": "Chemical or biological warfare agents"
             },
             "exposures.XP_WOUNDS": {
               "field": "exposures.XP_WOUNDS",
