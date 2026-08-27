@@ -49,8 +49,6 @@ COPY ./public ./public
 COPY ./config ./config
 COPY ./start.sh ./
 
-# Build gen3sdk wheels first
-RUN bash build-gen3sdk-lite.sh
 
 # Build JupyterLite static assets (outputs to public/ before Next.js build)
 RUN npm run build:jupyterlite
