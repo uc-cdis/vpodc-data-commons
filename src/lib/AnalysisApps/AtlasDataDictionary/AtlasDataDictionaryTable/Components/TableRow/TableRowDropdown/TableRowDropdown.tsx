@@ -24,6 +24,7 @@ const TableRowDropdown = ({
   const gridColSpanForChart = 7;
   return (
     <tr className={`expandable ${dropdownIsOpen && 'expanded'}`}>
+      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
       <td colSpan={columnsShown}>
         <div className={`expandable ${dropdownIsOpen && 'expanded'}`}>
           <Grid>

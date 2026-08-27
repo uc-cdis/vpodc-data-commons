@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Modal, Spin } from 'antd';
 import QQPlot from '../../../../Components/Diagrams/QQPlot/QQPlot';
 import SharedContext from '../../../../Utils/SharedContext';
-import { getDataForWorkflowArtifact } from '../../../../Utils/gwasWorkflowApi';
+import { useDataForWorkflowArtifact } from '../../../../Utils/gwasWorkflowApi';
 import queryConfig from '../../../../../SharedUtils/QueryConfig';
 import LoadingErrorMessage from '../../../../../SharedUtils/LoadingErrorMessage/LoadingErrorMessage';
 
@@ -14,8 +14,8 @@ const QQPlotModal = ({ modalOpen, setModalOpen }) => {
   const { name, uid } = selectedRowData;
 
   const { data, status } = useQuery(
-    ['getDataForWorkflowArtifact', name, uid, 'pheweb_qq_json_index'],
-    () => getDataForWorkflowArtifact(name, uid, 'pheweb_qq_json_index'),
+    ['useDataForWorkflowArtifact', name, uid, 'pheweb_qq_json_index'],
+    () => useDataForWorkflowArtifact(name, uid, 'pheweb_qq_json_index'),
     queryConfig,
   );
 

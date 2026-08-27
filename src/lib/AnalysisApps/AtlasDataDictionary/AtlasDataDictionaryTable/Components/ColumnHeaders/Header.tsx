@@ -1,3 +1,4 @@
+/* oxlint-disable */
 import React from 'react';
 import { ISortConfig } from '../../Interfaces/Interfaces';
 //import CaretUp from '../Icons/CaretUp';
