@@ -6,6 +6,7 @@ export const config = {
   matcher: [
   "/Analysis",
   "/Explorer",
+  "/DataConnections",
   "/DataLibrary",
   "/Profile",
   "/Query",

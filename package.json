@@ -1,5 +1,5 @@
 {
-  "name": "@gen3/commons-portal-app-base",
+  "name": "@gen3/vpodc-data-commons",
   "version": "0.12.64",
   "private": "true",
   "engines": {
@@ -48,6 +48,8 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.3.0",
+    "@tabler/icons-react": "^3.33.0",
+    "dayjs": "^1.11.13",
     "idb": "^8.0.3",
     "jsonpath-plus": "^10.3.0",
     "lodash": "^4.17.23",
@@ -63,7 +65,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "^4.10.2",
-    "@chromatic-com/storybook": "^5.1.2",
+    "@chromatic-com/storybook": "^5.2.1",
     "@gen3/toolsff": "^0.12.64",
     "@graphiql/react": "^0.37.7",
     "@storybook/addon-a11y": "^10.5.8",
