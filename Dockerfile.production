@@ -19,7 +19,7 @@ RUN npm config set fetch-retries 5 && \
     npm cache clean --force
 
 # Install Python for JupyterLite build
-RUN apk add --no-cache python3 py3-pip bash curl bzip2 uv gcc musl-dev python3-dev
+RUN apk add --no-cache python3 py3-pip bash curl bzip2
 
 COPY docker/micromamba-stub.py /usr/local/bin/micromamba
 RUN chmod +x /usr/local/bin/micromamba
@@ -49,9 +49,6 @@ COPY ./public ./public
 COPY ./config ./config
 COPY ./start.sh ./
 
-# Copy and run build script for gen3sdk lite wheels
-COPY build-gen3sdk-lite.sh ./
-RUN bash build-gen3sdk-lite.sh
 
 # Build JupyterLite static assets (outputs to public/ before Next.js build)
 RUN npm run build:jupyterlite
