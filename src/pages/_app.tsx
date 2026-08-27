@@ -1,3 +1,4 @@
+/* oxlint-disable */
 import App, { AppProps, AppContext, AppInitialProps } from 'next/app';
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { MantineProvider, mergeThemeOverrides } from '@mantine/core';

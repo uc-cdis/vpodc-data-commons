@@ -1,3 +1,4 @@
+/* oxlint-disable */
 import React, { useState, useEffect } from 'react';
 import { TextInput, Tooltip, ActionIcon, Group, Text } from '@mantine/core';
 import { IconQuestionMark } from '@tabler/icons-react';

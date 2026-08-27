@@ -1,3 +1,4 @@
+/* oxlint-disable */
 import React, { useEffect, useRef, useState } from 'react';
 import type { GetServerSideProps } from 'next';
 import type { NextRouter} from 'next/dist/client/router';

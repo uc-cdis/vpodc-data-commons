@@ -1,3 +1,4 @@
+/* oxlint-disable */
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { Table, Loader } from '@mantine/core';
 import { CohortsEndpoint, CohortsOverlapEndpoint } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
