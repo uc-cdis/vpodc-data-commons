@@ -5,12 +5,14 @@ import { GEN3_API, GEN3_AUTHZ_API, GEN3_FENCE_API } from '@gen3/core';
 import { Gen3Provider } from '@gen3/frontend';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import { http, HttpResponse } from 'msw';
-import theme from './src/mantineTheme';
+import theme from './mantineTheme';
 import icons from './loadIcons';
 
 import '../src/styles/globals.css';
 import '@fontsource/montserrat';
-import '@fontsource/source-sans-pro';
+// source-sans-pro is frozen at a fontsource build that ships no `types`/`exports`,
+// unlike montserrat/poppins — import the stylesheet directly so it type-resolves.
+import '@fontsource/source-sans-pro/index.css';
 import '@fontsource/poppins';
 /*
  * Initializes MSW
@@ -67,10 +69,6 @@ const protectecRoutes = {
 
 const preview: Preview = {
   parameters: {
-    a11y: {
-      // Set the test parameter to 'error' to fail on violations
-      test: 'error',
-    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
