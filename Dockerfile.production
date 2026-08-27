@@ -11,9 +11,6 @@ WORKDIR /gen3
 # Copy dependency files first for better caching
 COPY package.json package-lock.json ./
 
-# Install Python for JupyterLite build
-RUN apk add --no-cache python3 py3-pip bash curl bzip2
-
 # Install ALL dependencies once (including dev deps for build)
 RUN npm config set fetch-retries 5 && \
     npm config set fetch-retry-mintimeout 20000 && \
@@ -21,6 +18,8 @@ RUN npm config set fetch-retries 5 && \
     npm ci && \
     npm cache clean --force
 
+# Install Python for JupyterLite build
+RUN apk add --no-cache python3 py3-pip bash curl bzip2
 
 COPY docker/micromamba-stub.py /usr/local/bin/micromamba
 RUN chmod +x /usr/local/bin/micromamba
