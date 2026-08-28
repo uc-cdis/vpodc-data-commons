@@ -13,10 +13,10 @@
       }
     },
     "remote": {
-      "label": "Remote Kernel Runtime",
+      "label": "Trusted Research Environment",
       "tier": "remote",
       "tierLabel": "remote",
-      "description": " Attach to remote compute for longer sessions and larger workloads.",
+      "description": "Remote kernel runtime. Attach to remote compute for longer sessions and larger workloads.",
       "features": [
         "Persistent sessions and gateway routing",
         "Designed for heavier workloads"
@@ -24,7 +24,7 @@
       "buttonLabel": "Launch Remote Workspace",
       "baseColor": "#42f5d422",
       "runningLabel": {
-        "label": "Remote Compute Environment",
+        "label": "Trusted Research Environment",
         "description": "Running via Remote Kernels"
       }
     }
@@ -32,18 +32,24 @@
   "tierConfiguration": {
     "free": {
       "dataAndTools": {
-        "width": 300
+        "width": 340
       },
       "toolbar": {
         "tierLabel": "lite"
       }
     },
     "remote": {
+      "enableOptions": true,
       "dataAndTools": {
         "width": 300
       },
       "toolbar": {
-        "tierLabel": "remote"
+        "tierLabel": "remote",
+        "label": "Trusted Research Environment",
+        "description": "Running with Remote Kernels"
+      },
+      "settings": {
+        "enabled": false
       }
     }
   }

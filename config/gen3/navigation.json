@@ -38,10 +38,14 @@
         "tooltip": "Learn how to use Jupyter Notebooks to explore and visualize data available by running a tutorial notebook, or use one of these examples as a launching point for your own custom analysis."
       },
       {
+        "name": "Workspaces",
+        "href": "/Workspaces",
         "icon": "gen3:workspace",
-        "href": "/Workspace",
-        "name": "Workspace",
-        "tooltip": "Gen3 workspaces are secure data analysis environments in the cloud that can access data from one or more data resources."
+        "tooltip": {
+          "unauthorized": "You don't have access to Workspace. Please make a request to apply for access.",
+          "authorized": "Gen3 workspaces are secure data analysis environments in the cloud that can access data from one or more data resources."
+        },
+        "enabledWithNoAccess": true
       },
       {
         "icon": "gen3:profile",
