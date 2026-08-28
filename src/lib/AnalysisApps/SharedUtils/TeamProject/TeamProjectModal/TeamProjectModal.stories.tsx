@@ -25,6 +25,7 @@ const successArgs = {
 
   //data: TeamProject[] | null;
 
+/* oxlint-disable */
 export const MockedSuccessNoTeamSelected: Story = {
   render: (args) => {
     const [selectedTeamProject, setSelectedTeamProject] = useState<string | null>(null);

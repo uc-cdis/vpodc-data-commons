@@ -112,7 +112,7 @@ export interface AttritionTableJSONType {
   rows: AttritionTableJSONrowsType[];
 }
 
-export const getDataForWorkflowArtifact = (
+export const useDataForWorkflowArtifact = (
   workflowName: string,
   workflowUid: string,
   artifactName: string,

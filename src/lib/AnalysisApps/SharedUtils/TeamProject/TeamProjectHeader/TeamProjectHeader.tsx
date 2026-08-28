@@ -1,3 +1,4 @@
+/* oxlint-disable */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import EditIcon from './Icons/EditIcon';

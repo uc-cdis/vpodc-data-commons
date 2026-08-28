@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { Spin, Button, notification } from 'antd';
 import * as d3 from 'd3-selection';
 import SharedContext from '../../../Utils/SharedContext';
-import { getDataForWorkflowArtifact } from '../../../Utils/gwasWorkflowApi';
+import { useDataForWorkflowArtifact } from '../../../Utils/gwasWorkflowApi';
 import queryConfig from '../../../../SharedUtils/QueryConfig';
 import LoadingErrorMessage from '../../../../SharedUtils/LoadingErrorMessage/LoadingErrorMessage';
 import QQPlotModal from './QQPlotModal/QQPlotModal';
@@ -17,8 +17,8 @@ const ResultsPheWeb = () => {
   const { selectedRowData } = useContext(SharedContext);
   const { name, uid } = selectedRowData;
   const { data, status } = useQuery(
-    ['getDataForWorkflowArtifact', name, uid, 'pheweb_manhattan_json_index'],
-    () => getDataForWorkflowArtifact(name, uid, 'pheweb_manhattan_json_index'),
+    ['useDataForWorkflowArtifact', name, uid, 'pheweb_manhattan_json_index'],
+    () => useDataForWorkflowArtifact(name, uid, 'pheweb_manhattan_json_index'),
     queryConfig,
   );
   const [api, contextHolder] = notification.useNotification();

@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 const GradioApp = ({ app }: { app: string }) => {
   return (<>GradioApp</>);//TODO implement diferently if needed
-  return (
+  /*return (
     <>
       <Script
         type="module"
@@ -12,10 +12,10 @@ const GradioApp = ({ app }: { app: string }) => {
       />
 
       <div className="m-2 w-full">
-        <gradio-app src={`https://${app}.hf.space`}></gradio-app>
+        <gradio-app src={`https://${app}.hf.space`}/>
       </div>
     </>
-  );
+  );*/
 };
 
 export default GradioApp;

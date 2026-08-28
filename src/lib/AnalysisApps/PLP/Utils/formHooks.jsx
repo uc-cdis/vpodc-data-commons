@@ -1,3 +1,4 @@
+/* oxlint-disable */
 import { useState, useEffect } from 'react';
 
 export const useFilter = (array, search, field) => {

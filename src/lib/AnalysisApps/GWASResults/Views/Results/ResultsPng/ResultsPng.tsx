@@ -81,6 +81,7 @@ const ResultsPng: React.FC<ResultsPngProps> = ({ artifactName }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 // snyk-code-ignore
                 // reason: src attribute is validated by isSafeImageSrc; false positive for DOMXSS
