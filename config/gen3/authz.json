@@ -21,7 +21,7 @@
     "/resource-browser": {
       "loginRequired": true
     },
-    "/Workspace": {
+    "/Workspaces": {
       "loginRequired": true,
       "authz": ["/workspace"]
     },
