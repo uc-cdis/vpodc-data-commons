@@ -11,7 +11,7 @@ const jestConfig: JestConfigWithTsJest = {
       '<rootDir>/__mocks__/createWebStorageMock.js',
   },
   testEnvironment: 'jest-fixed-jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  setupFiles: ['<rootDir>/jest.setup.ts'],
   transform: {
     '^.+\\.(ts|tsx)?$': [
       'ts-jest',
