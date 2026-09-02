@@ -69,6 +69,10 @@ const protectecRoutes = {
 
 const preview: Preview = {
   parameters: {
+    a11y: {
+      // Set the test parameter to 'error' to fail on violations
+      test: 'error',
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
