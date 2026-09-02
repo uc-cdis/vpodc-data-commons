@@ -1,4 +1,3 @@
-/* oxlint-disable */
 import React, { useEffect, useRef, useState } from 'react';
 import type { GetServerSideProps } from 'next';
 import type { NextRouter} from 'next/dist/client/router';
@@ -20,36 +19,6 @@ const DashboardContentApp = ({
   );
 
   const iframeRef = useRef<HTMLIFrameElement | null>(null!);
-
-  // Check if the dashboard URL exists
-  useEffect(() => {
-    if (!path) {
-      setUrlStatus('notfound');
-      return;
-    }
-
-    const checkUrl = async () => {
-      try {
-        const response = await fetch(`${router.basePath}/dashboard/${path}`, {
-          method: 'GET',
-          headers: {
-            Range: 'bytes=0-0',
-          },
-        });
-
-        if (response.ok) {
-          setUrlStatus('valid');
-        } else {
-          setUrlStatus('notfound');
-        }
-      } catch (error) {
-        console.error('Failed to check dashboard URL:', error);
-        await router.replace('/404');
-      }
-    };
-
-    checkUrl();
-  }, [path, router]);
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -78,6 +47,34 @@ const DashboardContentApp = ({
       return () => iframe.removeEventListener('load', handleLoad);
     }
   }, []);
+
+  const checkUrl = async () => {
+    try {
+      const response = await fetch(`${router.basePath}/dashboard/${path}`, {
+        method: 'GET',
+        headers: {
+          Range: 'bytes=0-0',
+        },
+      });
+
+      if (response.ok) {
+        setUrlStatus('valid');
+      } else {
+        setUrlStatus('notfound');
+      }
+    } catch (error) {
+      console.error('Failed to check dashboard URL:', error);
+      await router.replace('/404');
+    }
+  };
+
+  // Check if the dashboard URL exists
+  if (!path) {
+    setUrlStatus('notfound');
+  } else {
+    checkUrl();
+  }
+
 
   // Show loading state while checking URL
   if (urlStatus === 'loading') {
