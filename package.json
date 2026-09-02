@@ -112,9 +112,6 @@
     "typescript-eslint": "^8.46.1",
     "eslint-plugin-storybook": "10.6.0"
   },
-  "overrides": {
-    "jest": "30.4.0"
-  },
   "allowScripts": {
     "esbuild": true,
     "core-js-pure": true,
