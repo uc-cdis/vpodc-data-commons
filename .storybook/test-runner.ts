@@ -1,13 +1,3 @@
-import Module from 'module';
-
-// Intercept Jest's restrictive override right as the runner boots up
-if (Module && 'register' in Module) {
-  Object.defineProperty(Module, 'register', {
-    value: () => {},
-    writable: true,
-    configurable: true
-  });
-}
 import type { TestRunnerConfig } from '@storybook/test-runner';
 import { injectAxe, checkA11y } from 'axe-playwright';
 
