@@ -80,39 +80,48 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "exposures.SMOKE_CURRENT": {
               "field": "exposures.SMOKE_CURRENT",
-              "label": "Current Smoker"
+              "label": "Current Smoker",
+              "description": "Does participant currently smoke cigarettes"
             },
             "exposures.SMOKE_MIN_100": {
               "field": "exposures.SMOKE_MIN_100",
-              "label": "At least 100 cigarettes in lifetime"
+              "label": "At least 100 cigarettes in lifetime",
+              "description": "Has participant ever smoked at least 100 cigarettes (which is equal to 5 packs) in their entire life"
             },
             "exposures.SMOKE_DAILY_AMT": {
               "field": "exposures.SMOKE_DAILY_AMT",
-              "label": "Daily Amount (packs)"
+              "label": "Daily Amount (packs)",
+              "description": "Approximate number of packs per day participant smokes or smoked (when smoking). '< 0.5' = 'Less than a half a pack per day'; '0.5 - 1.0' = 'Half to 1 pack per day'; '1.0 - 2.0' = '1 to 2 packs per day'; '> 2.0' = 'More than 2 packs per day'"
             },
             "exposures.SMOKE_CIGAR_PIPE": {
               "field": "exposures.SMOKE_CIGAR_PIPE",
-              "label": "Cigar or Pipe Use"
+              "label": "Cigar or Pipe Use",
+              "description": "Has participant ever smoked at least 1 cigar a month for more than 6 months or smoked a pipe on a daily basis for more than 6 months"
             },
             "exposures.SMOKE_SMOKELESS": {
               "field": "exposures.SMOKE_SMOKELESS",
-              "label": "Smokeless Tobacco Use"
+              "label": "Smokeless Tobacco Use",
+              "description": "Has participant ever used smokeless tobacco (chew, dip, snuff) on a daily basis for more than 6 months"
             },
             "exposures.SMOKE_START_AGE": {
               "field": "exposures.SMOKE_START_AGE",
-              "label": "Age Start Smoking"
+              "label": "Age Start Smoking",
+              "description": "Age at which participant started smoking cigarettes"
             },
             "exposures.SMOKE_STOP_AGE": {
               "field": "exposures.SMOKE_STOP_AGE",
-              "label": "Age Stop Smoking"
+              "label": "Age Stop Smoking",
+              "description": "Age at which participant stopped smoking cigarettes"
             },
             "exposures.SMOKE_TOTAL_YEARS": {
               "field": "exposures.SMOKE_TOTAL_YEARS",
-              "label": "Total Years Smoking"
+              "label": "Total Years Smoking",
+              "description": "Approximately how many years participant smoked cigarettes (not including times when having quit)"
             }
           }
         },
