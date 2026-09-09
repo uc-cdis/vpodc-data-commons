@@ -438,16 +438,20 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "data_type": {
-              "label": "Data Type"
+              "label": "Data Type",
+              "description": "Data type"
             },
             "data_format": {
-              "label": "Data Format"
+              "label": "Data Format",
+              "description": "Data format"
             },
             "file_size": {
-              "label": "File Size"
+              "label": "File Size",
+              "description": "File size"
             }
           }
         }
