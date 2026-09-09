@@ -11,7 +11,28 @@
             "clinical_demographics.Ethnicity",
             "clinical_demographics.Gender",
             "clinical_demographics.Race"
-          ]
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID",
+              "description": "Project identifier"
+            },
+            "clinical_demographics.Ethnicity": {
+              "field": "clinical_demographics.Ethnicity",
+              "label": "Ethnicity",
+              "description": "Ethnicity of participant"
+            },
+            "clinical_demographics.Gender": {
+              "field": "clinical_demographics.Gender",
+              "label": "Gender",
+              "description": "Gender of participant"
+            },
+            "clinical_demographics.Race": {
+              "field": "clinical_demographics.Race",
+              "label": "Race",
+              "description": "Race of participant"
+            }
+          }
         },
         {
           "title": "Oncology Primary",
