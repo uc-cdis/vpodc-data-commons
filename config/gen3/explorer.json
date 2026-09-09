@@ -285,7 +285,9 @@
           ],
           "fieldsConfig": {
             "exposures.MILITARY_ASSOCIATION": {
-              "label": "Military Association"
+              "field": "exposures.MILITARY_ASSOCIATION",
+              "label": "Military Association",
+              "description": "What branch of the military is participant or participant's sponsor associated with?"
             }
           }
         },
