@@ -45,7 +45,8 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "oncology_primaries.ICDOSite": {
               "field": "oncology_primaries.ICDOSite",
@@ -53,15 +54,18 @@
             },
             "oncology_primaries.Stagegroupclinical": {
               "field": "oncology_primaries.Stagegroupclinical",
-              "label": "Stage"
+              "label": "Stage",
+              "description": "Cancer stage"
             },
             "oncology_primaries.PrimarysiteX": {
               "field": "oncology_primaries.PrimarysiteX",
-              "label": "Primary Site"
+              "label": "Primary Site",
+              "description": "Primary site"
             },
             "oncology_primaries.Histologyicdo3X": {
               "field": "oncology_primaries.Histologyicdo3X",
-              "label": "Histology ICDO 3X"
+              "label": "Histology ICDO 3X",
+              "description": "Histology ICDO 3X"
             }
           }
         },
