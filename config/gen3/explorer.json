@@ -194,87 +194,108 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "exposures.XP_AGENTORANGE": {
               "field": "exposures.XP_AGENTORANGE",
-              "label": "Agent Orange"
+              "label": "Agent Orange",
+              "description": "Exposure to Agent Orange (AO)"
             },
             "exposures.XP_ANTHRAX": {
               "field": "exposures.XP_ANTHRAX",
-              "label": "Anthrax"
+              "label": "Anthrax",
+              "description": "Exposure to Anthrax"
             },
             "exposures.XP_ASBESTOS": {
               "field": "exposures.XP_ASBESTOS",
-              "label": "Asbestos"
+              "label": "Asbestos",
+              "description": "Exposure to Asbestos"
             },
             "exposures.XP_BURNPIT": {
               "field": "exposures.XP_BURNPIT",
-              "label": "Burn Pit"
+              "label": "Burn Pit",
+              "description": "Exposure to Burn Pits"
             },
             "exposures.XP_CHROMIUM": {
               "field": "exposures.XP_CHROMIUM",
-              "label": "Hexavalent Chromium"
+              "label": "Hexavalent Chromium",
+              "description": "Exposure to Hexavalent Chromium"
             },
             "exposures.XP_CONSTRUCT": {
               "field": "exposures.XP_CONSTRUCT",
-              "label": "Construction"
+              "label": "Construction",
+              "description": "Exposure to Construction and Demolition"
             },
             "exposures.XP_MICROWAVE": {
               "field": "exposures.XP_MICROWAVE",
-              "label": "Microwave"
+              "label": "Microwave",
+              "description": "Exposure to Microwaves (excluding small microwave ovens)"
             },
             "exposures.XP_MUSTARD": {
               "field": "exposures.XP_MUSTARD",
-              "label": "Mustard Gas"
+              "label": "Mustard Gas",
+              "description": "Exposure to Mustard Gas or Lewisite (MG)"
             },
             "exposures.XP_NUCLEAR": {
               "field": "exposures.XP_NUCLEAR",
-              "label": "Nuclear"
+              "label": "Nuclear",
+              "description": "Exposure to communities near nuclear test sites, nuclear power and weapons plants, and uranium mines and mills"
             },
             "exposures.XP_PAINT": {
               "field": "exposures.XP_PAINT",
-              "label": "Paint"
+              "label": "Paint",
+              "description": "Routine skin contact with paint and/or solvent and/or substances"
             },
             "exposures.XP_PERCHLORATE": {
               "field": "exposures.XP_PERCHLORATE",
-              "label": "Perchlorate"
+              "label": "Perchlorate",
+              "description": "Exposure to Perchlorate (rocket fuel component/missile testing by-product)"
             },
             "exposures.XP_PESTICIDE": {
               "field": "exposures.XP_PESTICIDE",
-              "label": "Pesticide"
+              "label": "Pesticide",
+              "description": "Exposure to Pesticides or herbicides"
             },
             "exposures.XP_PETROLEUM": {
               "field": "exposures.XP_PETROLEUM",
-              "label": "Petroleum"
+              "label": "Petroleum",
+              "description": "Exposure to crude petroleum or refining"
             },
             "exposures.XP_RADIATION": {
               "field": "exposures.XP_RADIATION",
-              "label": "Radiation"
+              "label": "Radiation",
+              "description": "Exposure to Radiation"
             },
             "exposures.XP_RESP": {
               "field": "exposures.XP_RESP",
-              "label": "Occupational hazards requiring protective equipment"
+              "label": "Occupational hazards requiring protective equipment",
+              "description": "Exposure to occupational hazards requiring protective equipment such as respirators"
             },
             "exposures.XP_URANIUM": {
               "field": "exposures.XP_URANIUM",
-              "label": "Depleted Uranium"
+              "label": "Depleted Uranium",
+              "description": "Exposure to Depleted Uranium (DU)"
             },
             "exposures.XP_WARFARE": {
               "field": "exposures.XP_WARFARE",
-              "label": "Chemical or biological warfare agents"
+              "label": "Chemical or biological warfare agents",
+              "description": "Exposure to chemical or biological warfare agents"
             },
             "exposures.XP_WOUNDS": {
               "field": "exposures.XP_WOUNDS",
-              "label": "Wounds"
+              "label": "Wounds",
+              "description": "Disability, injury, or sickness incurred as a result of wounds caused by military weapons, accidents involving a military combat vehicle or by fumes, gases, or explosion of military ordnance, vehicles, or material"
             },
             "exposures.XP_XRAY": {
               "field": "exposures.XP_XRAY",
-              "label": "X-ray"
+              "label": "X-ray",
+              "description": "Exposure to X-ray (fluoroscopic equipment or radioactive materials)"
             },
             "exposures.XP_OTHER": {
               "field": "exposures.XP_OTHER",
-              "label": "Other"
+              "label": "Other",
+              "description": "Other exposure (not specified)"
             }
           }
         },
