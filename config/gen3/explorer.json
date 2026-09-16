@@ -60,6 +60,7 @@
             "oncology_primaries.ICDOSite": {
               "field": "oncology_primaries.ICDOSite",
               "label": "Cancer Origin",
+              "description": "Cancer Origin",
               "moveValuesToBottom": [
                 "no data"
               ]
