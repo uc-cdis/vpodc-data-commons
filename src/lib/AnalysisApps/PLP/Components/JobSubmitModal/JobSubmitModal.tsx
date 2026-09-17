@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import type { JSX } from 'react';
 import { Modal, TextInput, Button, Loader, Alert, Text } from '@mantine/core';
 import ACTIONS from '../../Utils/StateManagement/Actions';
@@ -51,13 +51,18 @@ const JobSubmitModal: React.FC<Props> = ({
   //   ['monthly-workflow-limit-job-input-modal'],
   //   fetchMonthlyWorkflowLimitInfo,
   // );
+  const datasetRemainingSizeErrorMessage = (type: 'error' | 'warning') => ({
+      type: type,
+      title: 'Submission is blocked, attrition table still calculating.', 
+      body: (<>The <strong>Dataset size</strong>, <strong>Training set size</strong>, and <strong>Testing set size</strong> are not yet available. Please wait for the attrition table to finish before submitting.</>)
+    });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<{
     type?: 'error' | 'warning',
     title: string, 
     body?: JSX.Element
-  }| null>(null);
+  }| null>(datasetRemainingSize === null ? datasetRemainingSizeErrorMessage('warning'): null);
   const [jobNameError, setJobNameError] = useState(null as string | null);
 
   const isSubmitButtonDisabled =
@@ -66,18 +71,6 @@ const JobSubmitModal: React.FC<Props> = ({
     || datasetRemainingSize === null; // Add additional checks here if needed
     // !workflowLimitInfoIsValid(data) ||
     // workFlowLimitExceeded;
-
-  const datasetRemainingSizeErrorMessage = (type: 'error' | 'warning') => ({
-      type: type,
-      title: 'Submission is blocked, attrition table still calculating.', 
-      body: (<>The <strong>Dataset size</strong>, <strong>Training set size</strong>, and <strong>Testing set size</strong> are not yet available. Please wait for the attrition table to finish before submitting.</>)
-    });
-  useEffect(() => {
-      if (datasetRemainingSize === null) {
-        setSubmitError(datasetRemainingSizeErrorMessage('warning'));
-      }
-  }, [datasetRemainingSize]);
-
 
   const handleEnterJobName = (jobName: string) => {
     // validate job name
