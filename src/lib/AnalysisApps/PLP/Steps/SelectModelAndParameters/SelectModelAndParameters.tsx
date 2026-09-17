@@ -15,11 +15,11 @@ const modelOptions:ModelOptionType = {
   'Lasso-Logistic-Regression':'Lasso Logistic Regression',
   'Random-Forest':'Random Forest',
   'Support-Vector-Machine':'Support Vector Machine',
-  'Ada-Boost':'Ada Boost',
+  /*'Ada-Boost':'Ada Boost',
   'Decision-Tree':'Decision Tree',
   'Naive-Bayes':'Naïve Bayes',
   'Multilayer-Perception-Model':'Multilayer Perception Model',
-  'Nearest-Neighbors':'Nearest Neighbors',
+  'Nearest-Neighbors':'Nearest Neighbors',*/
 };
 
 type SelectModelAndParametersProps = {
