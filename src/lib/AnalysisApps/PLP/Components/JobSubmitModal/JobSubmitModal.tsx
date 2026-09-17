@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Modal, TextInput, Button, Loader } from '@mantine/core';
+import React, { useState, useEffect } from 'react';
+import type { JSX } from 'react';
+import { Modal, TextInput, Button, Loader, Alert, Text } from '@mantine/core';
 import ACTIONS from '../../Utils/StateManagement/Actions';
 //import './JobInputModal.css';
 import { SubmitWorkflowEndpoint, DefaultHeaders } from '@/lib/AnalysisApps/SharedUtils/Endpoints';
+import { MdWarning } from "react-icons/md";
 
 interface Props {
   jobName: string;
@@ -51,13 +53,31 @@ const JobSubmitModal: React.FC<Props> = ({
   // );
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<{
+    type?: 'error' | 'warning',
+    title: string, 
+    body?: JSX.Element
+  }| null>(null);
   const [jobNameError, setJobNameError] = useState(null as string | null);
 
   const isSubmitButtonDisabled =
-    !!jobNameError || isSubmitting; // Add additional checks here if needed
+    !!jobNameError 
+    || isSubmitting
+    || datasetRemainingSize === null; // Add additional checks here if needed
     // !workflowLimitInfoIsValid(data) ||
     // workFlowLimitExceeded;
+
+  const datasetRemainingSizeErrorMessage = (type: 'error' | 'warning') => ({
+      type: type,
+      title: 'Submission is blocked, attrition table still calculating.', 
+      body: (<>The <strong>Dataset size</strong>, <strong>Training set size</strong>, and <strong>Testing set size</strong> are not yet available. Please wait for the attrition table to finish before submitting.</>)
+    });
+  useEffect(() => {
+      if (datasetRemainingSize === null) {
+        setSubmitError(datasetRemainingSizeErrorMessage('warning'));
+      }
+  }, [datasetRemainingSize]);
+
 
   const handleEnterJobName = (jobName: string) => {
     // validate job name
@@ -77,7 +97,7 @@ const JobSubmitModal: React.FC<Props> = ({
   // Submit workflow request
   const handleSubmit = async () => {
     if (!datasetRemainingSize) {
-      setSubmitError('Please wait while the attrition table calculations finish and "Dataset size" is known...');
+      setSubmitError(datasetRemainingSizeErrorMessage('error'));
       return;
     }
     if (jobName === '') {
@@ -136,7 +156,7 @@ const JobSubmitModal: React.FC<Props> = ({
       });
       dispatch({ type: ACTIONS.HIDE_JOB_SUBMIT_MODAL });
     } catch (error: any) {
-      setSubmitError(error.message || 'Something went wrong during submission.');
+      setSubmitError({title: error.message || 'Something went wrong during submission.'});
       // Dispatch error-related actions
       dispatch({
         type: ACTIONS.SET_WORKFLOW_SUBMISSION_STATUS,
@@ -161,6 +181,8 @@ const JobSubmitModal: React.FC<Props> = ({
     }
   };
 
+  const WaitingBlock = (<Text fs="italic" c="dimmed"><Loader size={12}  color="dimmed"/> waiting for attrition table...</Text>);
+
   return (
     <Modal
       opened={true}
@@ -170,7 +192,8 @@ const JobSubmitModal: React.FC<Props> = ({
       title='Review Details'
       closeButtonProps={{ 'aria-label': 'Close modal' }}
       overlayProps={{ opacity: 0.55, blur: 3 }}
-      size="auto"
+      centered
+      size='lg'
     >
       <TextInput
         className="gwas-job-name"
@@ -230,7 +253,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Dataset size (after time window filters):
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? datasetRemainingSize : 'waiting for attrition table...'}
+                  {datasetRemainingSize !== null ? datasetRemainingSize : WaitingBlock}
                 </td>
               </tr>
               <tr>
@@ -238,7 +261,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Training set size:
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? `${Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100)}` : 'waiting for attrition table...'}
+                  {datasetRemainingSize !== null ? `${Math.round((100-percentageOfDataToUseAsTest)*datasetRemainingSize/100)}` : WaitingBlock}
                 </td>
               </tr>
               <tr>
@@ -246,7 +269,7 @@ const JobSubmitModal: React.FC<Props> = ({
                   Testing set size:
                 </td>
                 <td className="align-top">
-                  {datasetRemainingSize !== null ? `${calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize)}` : 'waiting for attrition table...'}
+                  {datasetRemainingSize !== null ? `${calculateTestSetSize(percentageOfDataToUseAsTest, datasetRemainingSize)}` : WaitingBlock}
                 </td>
               </tr>
               <tr>
@@ -262,9 +285,15 @@ const JobSubmitModal: React.FC<Props> = ({
         </div>
 
         {submitError && (
-          <div className="error-message">
-            <p style={{ color: 'red' }}>{submitError}</p>
-          </div>
+          <Alert
+            variant='light'
+            color={submitError.type === 'warning' ? 'orange': 'red'}
+            title={submitError.title}
+            icon={<MdWarning />}
+            className='my-4'
+          >
+            {submitError.body ? submitError.body : ''}
+          </Alert>
         )}
       </div>
       <div className="flex-row">
