@@ -11,7 +11,37 @@
             "clinical_demographics.Ethnicity",
             "clinical_demographics.Gender",
             "clinical_demographics.Race"
-          ]
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID",
+              "description": "Project identifier"
+            },
+            "clinical_demographics.Ethnicity": {
+              "field": "clinical_demographics.Ethnicity",
+              "label": "Ethnicity",
+              "description": "Ethnicity of participant",
+              "moveValuesToBottom": [
+                "no data"
+              ]
+            },
+            "clinical_demographics.Gender": {
+              "field": "clinical_demographics.Gender",
+              "label": "Gender",
+              "description": "Gender of participant",
+              "moveValuesToBottom": [
+                "no data"
+              ]
+            },
+            "clinical_demographics.Race": {
+              "field": "clinical_demographics.Race",
+              "label": "Race",
+              "description": "Race of participant",
+              "moveValuesToBottom": [
+                "no data"
+              ]
+            }
+          }
         },
         {
           "title": "Oncology Primary",
@@ -24,23 +54,40 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "oncology_primaries.ICDOSite": {
               "field": "oncology_primaries.ICDOSite",
-              "label": "Cancer Origin"
+              "label": "Cancer Origin",
+              "description": "Cancer Origin",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "oncology_primaries.Stagegroupclinical": {
               "field": "oncology_primaries.Stagegroupclinical",
-              "label": "Stage"
+              "label": "Stage",
+              "description": "Cancer stage",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "oncology_primaries.PrimarysiteX": {
               "field": "oncology_primaries.PrimarysiteX",
-              "label": "Primary Site"
+              "label": "Primary Site",
+              "description": "Primary site",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "oncology_primaries.Histologyicdo3X": {
               "field": "oncology_primaries.Histologyicdo3X",
-              "label": "Histology ICDO 3X"
+              "label": "Histology ICDO 3X",
+              "description": "Histology ICDO 3X",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             }
           }
         },
@@ -59,39 +106,72 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "exposures.SMOKE_CURRENT": {
               "field": "exposures.SMOKE_CURRENT",
-              "label": "Current Smoker"
+              "label": "Current Smoker",
+              "description": "Does participant currently smoke cigarettes",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.SMOKE_MIN_100": {
               "field": "exposures.SMOKE_MIN_100",
-              "label": "At least 100 cigarettes in lifetime"
+              "label": "At least 100 cigarettes in lifetime",
+              "description": "Has participant ever smoked at least 100 cigarettes (which is equal to 5 packs) in their entire life",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.SMOKE_DAILY_AMT": {
               "field": "exposures.SMOKE_DAILY_AMT",
-              "label": "Daily Amount (packs)"
+              "label": "Daily Amount (packs)",
+              "description": "Approximate number of packs per day participant smokes or smoked (when smoking). '< 0.5' = 'Less than a half a pack per day'; '0.5 - 1.0' = 'Half to 1 pack per day'; '1.0 - 2.0' = '1 to 2 packs per day'; '> 2.0' = 'More than 2 packs per day'",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.SMOKE_CIGAR_PIPE": {
               "field": "exposures.SMOKE_CIGAR_PIPE",
-              "label": "Cigar or Pipe Use"
+              "label": "Cigar or Pipe Use",
+              "description": "Has participant ever smoked at least 1 cigar a month for more than 6 months or smoked a pipe on a daily basis for more than 6 months",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.SMOKE_SMOKELESS": {
               "field": "exposures.SMOKE_SMOKELESS",
-              "label": "Smokeless Tobacco Use"
+              "label": "Smokeless Tobacco Use",
+              "description": "Has participant ever used smokeless tobacco (chew, dip, snuff) on a daily basis for more than 6 months",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.SMOKE_START_AGE": {
               "field": "exposures.SMOKE_START_AGE",
-              "label": "Age Start Smoking"
+              "label": "Age Start Smoking",
+              "description": "Age at which participant started smoking cigarettes",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.SMOKE_STOP_AGE": {
               "field": "exposures.SMOKE_STOP_AGE",
-              "label": "Age Stop Smoking"
+              "label": "Age Stop Smoking",
+              "description": "Age at which participant stopped smoking cigarettes",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.SMOKE_TOTAL_YEARS": {
               "field": "exposures.SMOKE_TOTAL_YEARS",
-              "label": "Total Years Smoking"
+              "label": "Total Years Smoking",
+              "description": "Approximately how many years participant smoked cigarettes (not including times when having quit)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             }
           }
         },
@@ -114,35 +194,67 @@
             },
             "exposures.DRINK_CURRENT": {
               "field": "exposures.DRINK_CURRENT",
-              "label": "Current Drinker"
+              "label": "Current Drinker",
+              "description": "Does participant currently drink alcohol",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.DRINK_MIN_12": {
               "field": "exposures.DRINK_MIN_12",
-              "label": "At least 12 drinks in lifetime"
+              "label": "At least 12 drinks in lifetime",
+              "description": "Has participant ever had at least 12 drinks of any kind of alcoholic bevarage in their entire life",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.DRINK_BEER_FREQ": {
               "field": "exposures.DRINK_BEER_FREQ",
-              "label": "Beer Frequency"
+              "label": "Beer Frequency",
+              "description": "How often participant consumed beer (12 oz. can) in the twelve months prior to current diagnosis. '1 D' = '1 beverage per day'; '2 - 3 D' = '2-3 beverages per day'; '> 4 D' = '4+ beverages per day'; '4 - 6 W' = '4-6 beverages per week'; '1 - 3 W' = '1-3 beverages per week'; '1 - 3 M' = '1-3 beverages per month'",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.DRINK_WINE_FREQ": {
               "field": "exposures.DRINK_WINE_FREQ",
-              "label": "Wine Frequency"
+              "label": "Wine Frequency",
+              "description": "How often participant consumed wine or wine coolers (5oz. glass) in the twelve months prior to current diagnosis. '1 D' = '1 beverage per day'; '2 - 3 D' = '2-3 beverages per day'; '> 4 D' = '4+ beverages per day'; '4 - 6 W' = '4-6 beverages per week'; '1 - 3 W' = '1-3 beverages per week'; '1 - 3 M' = '1-3 beverages per month'",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.DRINK_LIQUOR_FREQ": {
               "field": "exposures.DRINK_LIQUOR_FREQ",
-              "label": "Liquor Frequency"
+              "label": "Liquor Frequency",
+              "description": "How often participant consumed liquor or mixed drinks (1 shot) in the twelve months prior to current diagnosis. '1 D' = '1 beverage per day'; '2 - 3 D' = '2-3 beverages per day'; '> 4 D' = '4+ beverages per day'; '4 - 6 W' = '4-6 beverages per week'; '1 - 3 W' = '1-3 beverages per week'; '1 - 3 M' = '1-3 beverages per month'",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.DRINK_START_AGE": {
               "field": "exposures.DRINK_START_AGE",
-              "label": "Age Start Drinking"
+              "label": "Age Start Drinking",
+              "description": "Age at which participant started drinking alcohol",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.DRINK_STOP_AGE": {
               "field": "exposures.DRINK_STOP_AGE",
-              "label": "Age Stop Drinking"
+              "label": "Age Stop Drinking",
+              "description": "Age at which participant stopped drinking alcohol",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.DRINK_TOTAL_YEARS": {
               "field": "exposures.DRINK_TOTAL_YEARS",
-              "label": "Total Years Drinking"
+              "label": "Total Years Drinking",
+              "description": "Approximately how many years participant consumed alcohol (not including times when having quit)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             }
           }
         },
@@ -173,87 +285,168 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "exposures.XP_AGENTORANGE": {
               "field": "exposures.XP_AGENTORANGE",
-              "label": "Agent Orange"
+              "label": "Agent Orange",
+              "description": "Exposure to Agent Orange (AO)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_ANTHRAX": {
               "field": "exposures.XP_ANTHRAX",
-              "label": "Anthrax"
+              "label": "Anthrax",
+              "description": "Exposure to Anthrax",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_ASBESTOS": {
               "field": "exposures.XP_ASBESTOS",
-              "label": "Asbestos"
+              "label": "Asbestos",
+              "description": "Exposure to Asbestos",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_BURNPIT": {
               "field": "exposures.XP_BURNPIT",
-              "label": "Burn Pit"
+              "label": "Burn Pit",
+              "description": "Exposure to Burn Pits",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_CHROMIUM": {
               "field": "exposures.XP_CHROMIUM",
-              "label": "Hexavalent Chromium"
+              "label": "Hexavalent Chromium",
+              "description": "Exposure to Hexavalent Chromium",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_CONSTRUCT": {
               "field": "exposures.XP_CONSTRUCT",
-              "label": "Construction"
+              "label": "Construction",
+              "description": "Exposure to Construction and Demolition",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_MICROWAVE": {
               "field": "exposures.XP_MICROWAVE",
-              "label": "Microwave"
+              "label": "Microwave",
+              "description": "Exposure to Microwaves (excluding small microwave ovens)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_MUSTARD": {
               "field": "exposures.XP_MUSTARD",
-              "label": "Mustard Gas"
+              "label": "Mustard Gas",
+              "description": "Exposure to Mustard Gas or Lewisite (MG)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_NUCLEAR": {
               "field": "exposures.XP_NUCLEAR",
-              "label": "Nuclear"
+              "label": "Nuclear",
+              "description": "Exposure to communities near nuclear test sites, nuclear power and weapons plants, and uranium mines and mills",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_PAINT": {
               "field": "exposures.XP_PAINT",
-              "label": "Paint"
+              "label": "Paint",
+              "description": "Routine skin contact with paint and/or solvent and/or substances",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_PERCHLORATE": {
               "field": "exposures.XP_PERCHLORATE",
-              "label": "Perchlorate"
+              "label": "Perchlorate",
+              "description": "Exposure to Perchlorate (rocket fuel component/missile testing by-product)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_PESTICIDE": {
               "field": "exposures.XP_PESTICIDE",
-              "label": "Pesticide"
+              "label": "Pesticide",
+              "description": "Exposure to Pesticides or herbicides",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_PETROLEUM": {
               "field": "exposures.XP_PETROLEUM",
-              "label": "Petroleum"
+              "label": "Petroleum",
+              "description": "Exposure to crude petroleum or refining",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_RADIATION": {
               "field": "exposures.XP_RADIATION",
-              "label": "Radiation"
+              "label": "Radiation",
+              "description": "Exposure to Radiation",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_RESP": {
               "field": "exposures.XP_RESP",
-              "label": "Occupational hazards requiring protective equipment"
+              "label": "Occupational hazards requiring protective equipment",
+              "description": "Exposure to occupational hazards requiring protective equipment such as respirators",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_URANIUM": {
               "field": "exposures.XP_URANIUM",
-              "label": "Depleted Uranium"
+              "label": "Depleted Uranium",
+              "description": "Exposure to Depleted Uranium (DU)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_WARFARE": {
               "field": "exposures.XP_WARFARE",
-              "label": "Chemical or biological warfare agents"
+              "label": "Chemical or biological warfare agents",
+              "description": "Exposure to chemical or biological warfare agents",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_WOUNDS": {
               "field": "exposures.XP_WOUNDS",
-              "label": "Wounds"
+              "label": "Wounds",
+              "description": "Disability, injury, or sickness incurred as a result of wounds caused by military weapons, accidents involving a military combat vehicle or by fumes, gases, or explosion of military ordnance, vehicles, or material",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_XRAY": {
               "field": "exposures.XP_XRAY",
-              "label": "X-ray"
+              "label": "X-ray",
+              "description": "Exposure to X-ray (fluoroscopic equipment or radioactive materials)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             },
             "exposures.XP_OTHER": {
               "field": "exposures.XP_OTHER",
-              "label": "Other"
+              "label": "Other",
+              "description": "Other exposure (not specified)",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             }
           }
         },
@@ -264,7 +457,12 @@
           ],
           "fieldsConfig": {
             "exposures.MILITARY_ASSOCIATION": {
-              "label": "Military Association"
+              "field": "exposures.MILITARY_ASSOCIATION",
+              "label": "Military Association",
+              "description": "What branch of the military is participant or participant's sponsor associated with?",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             }
           }
         },
@@ -274,9 +472,52 @@
             "somatic_mutations.Gene"
           ],
           "fieldsConfig": {
-            "somatic_mutations.Gene": {
+            "data_category": {
               "label": "Gene",
-              "valueLabel": "Somatic Mutations"
+              "valueLabel": "Somatic Mutations",
+              "description": "Gene identifier",
+              "moveValuesToBottom": [
+                "no data"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Files",
+          "fields": [
+            "project_id",
+            "data_category",
+            "data_type",
+            "data_format"
+          ],
+          "fieldsConfig": {
+            "project_id": {
+              "label": "Project ID",
+              "description": "Project identifier"
+            },
+            "data_category": {
+              "label": "Data Category",
+              "valueLabel": "Files",
+              "description": "Data category",
+              "moveValuesToBottom": [
+                "no data"
+              ]
+            },
+            "data_type": {
+              "label": "Data Type",
+              "valueLabel": "Files",
+              "description": "Data type",
+              "moveValuesToBottom": [
+                "no data"
+              ]
+            },
+            "data_format": {
+              "label": "Data Format",
+              "valueLabel": "Files",
+              "description": "Data format",
+              "moveValuesToBottom": [
+                "no data"
+              ]
             }
           }
         }
@@ -372,16 +613,20 @@
           ],
           "fieldsConfig": {
             "project_id": {
-              "label": "Project ID"
+              "label": "Project ID",
+              "description": "Project identifier"
             },
             "data_type": {
-              "label": "Data Type"
+              "label": "Data Type",
+              "description": "Data type"
             },
             "data_format": {
-              "label": "Data Format"
+              "label": "Data Format",
+              "description": "Data format"
             },
             "file_size": {
-              "label": "File Size"
+              "label": "File Size",
+              "description": "File size"
             }
           }
         }
