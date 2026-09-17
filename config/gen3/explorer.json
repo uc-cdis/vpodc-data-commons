@@ -472,7 +472,7 @@
             "somatic_mutations.Gene"
           ],
           "fieldsConfig": {
-            "data_category": {
+            "somatic_mutations.Gene": {
               "label": "Gene",
               "valueLabel": "Somatic Mutations",
               "description": "Gene identifier",
