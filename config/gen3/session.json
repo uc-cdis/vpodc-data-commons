@@ -2,8 +2,9 @@
   "sessionConfig" : {
     "updateSessionTime": 4,
     "inactiveTimeLimit": 20,
-    "logoutInactiveUsers": true,
+    "logoutInactiveUsers": false,
     "monitorWorkspace": true,
-    "expireWarningMinutes": 0
+    "expireWarningMinutes": 0,
+    "renewAccessTokenEarlyMilliseconds": 15000
   }
 }
