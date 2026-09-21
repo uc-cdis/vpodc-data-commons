@@ -481,45 +481,6 @@
               ]
             }
           }
-        },
-        {
-          "title": "Files",
-          "fields": [
-            "project_id",
-            "data_category",
-            "data_type",
-            "data_format"
-          ],
-          "fieldsConfig": {
-            "project_id": {
-              "label": "Project ID",
-              "description": "Project identifier"
-            },
-            "data_category": {
-              "label": "Data Category",
-              "valueLabel": "Files",
-              "description": "Data category",
-              "moveValuesToBottom": [
-                "no data"
-              ]
-            },
-            "data_type": {
-              "label": "Data Type",
-              "valueLabel": "Files",
-              "description": "Data type",
-              "moveValuesToBottom": [
-                "no data"
-              ]
-            },
-            "data_format": {
-              "label": "Data Format",
-              "valueLabel": "Files",
-              "description": "Data format",
-              "moveValuesToBottom": [
-                "no data"
-              ]
-            }
-          }
         }
       ]
     },
