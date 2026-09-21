@@ -42,7 +42,8 @@
     "eslint/no-console": ["warn", { "allow": ["warn", "error"] }],
     "eslint/no-debugger": "error",
 
-    "jsx-a11y/prefer-tag-over-role": "warn"
+    "jsx-a11y/prefer-tag-over-role": "warn",
+    "unicorn/no-empty-file": "off"
   },
   "env": {
     "builtin": true,
