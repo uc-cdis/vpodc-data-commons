@@ -1,0 +1,9 @@
+[
+  {
+    "message": "Amazon RDS for SQL Server database instances update scheduled for Sunday between 7-10PM CST, downtime may be anticipated at the time of the upgrade",
+    "level": "WARNING",
+    "dismissible": true,
+    "isExternalLink": false,
+    "id": 1000
+  }
+]
