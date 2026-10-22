@@ -110,7 +110,13 @@ const nextConfig = {
           source: '/library/lists/:path*',
           destination: `${GEN3_TARGET}/library/lists/:path*`,
         },
-
+        // The manifest service redirects `/manifests` to `/manifests/` using
+        // its own absolute host, which the browser then blocks with CORS.
+        // Send the trailing slash upstream so the redirect never happens.
+        {
+          source: '/manifests',
+          destination: `${GEN3_TARGET}/manifests/`,
+        },
         {
           source: '/manifests/:path*',
           destination: `${GEN3_TARGET}/manifests/:path*`,
@@ -130,14 +136,6 @@ const nextConfig = {
         {
           source: '/login',
           destination: `${GEN3_TARGET}/login`,
-        },
-        {
-          source: '/cohort-middleware/:path*',
-          destination: `${GEN3_TARGET}/cohort-middleware/:path*`,
-        },
-        {
-          source: '/ga4gh/wes/v2/:path*',
-          destination: `${GEN3_TARGET}/ga4gh/wes/v2/:path*`,
         },
       ];
     } else {
