@@ -63,7 +63,7 @@
             "icon": "MdOutlineSearch",
             "bodyText": "Analyze your selected cases using Jupyter Notebooks in our secure cloud environment",
             "btnText": "Analyze Data",
-            "href": "/Workspace",
+            "href": "/Workspaces",
             "linkType": "portal"
           }
         ]
