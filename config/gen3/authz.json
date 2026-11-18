@@ -22,6 +22,16 @@
       ],
       "redirect403": "/WorkspaceRequestAccess"
     },
+    "/WorkspaceRequestAccess": {
+      "loginRequired": true,
+      "authz": [
+        {
+          "resource": "/workspace",
+          "service": "requestor",
+          "method": "create"
+        }
+      ]
+    },
     "*": {
       "loginRequired": true,
       "authz": ["/user-in-yaml"]
